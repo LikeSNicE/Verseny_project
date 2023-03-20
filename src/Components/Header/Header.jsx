@@ -22,6 +22,8 @@ import Logo from "../../assets/images/header/logo.svg";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import { createTheme, ThemeProvider } from "@mui/material";
+import {Link} from "react-router-dom";
+import CustomLink from "../Common/CutsomLink/CustomLink";
 
 const ToolBarStyled = styled(Toolbar)({
   background: "#fff",
@@ -37,45 +39,66 @@ const ToolBarStyled = styled(Toolbar)({
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#000'
-    }
+      main: "#000",
+    },
   },
   typography: {
-    fontFamily: ["Comfortaa","cursive"].join(','),
+    fontFamily: ["Comfortaa", "cursive"].join(","),
   },
 });
 const Header = () => {
   //tabs
-  const [tab, setTab] = useState(0);
-  const handleChangeTabs = (event, newValue) => {
-    setTab(newValue);
-  };
+  // const [tab, setTab] = useState(0);
+  // const handleChangeTabs = (event, newValue) => {
+  //   setTab(newValue);
+  // };
 
   // menu profile
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
-      <Box>
+      <Box sx={{ mb: "40px" }}>
         <AppBar position="static">
           <ToolBarStyled>
             <IconButton>
               <Avatar src={Logo} />
             </IconButton>
-
             <Tabs
-              value={tab}
-              onChange={handleChangeTabs}
+              //value={tab}
+              //onChange={handleChangeTabs}
               aria-label="icon position tabs example"
               indicatorColor="primary"
             >
-              <Tab icon={<HomeIcon />} iconPosition="start" label="Главная" />
               <Tab
+                component={Link}
+                value="/"
+                to="/"
+                icon={<HomeIcon />}
+                iconPosition="top"
+                label="Главная"
+              />
+              <Tab
+                component={Link}
+                value="/profileInfoChannel"
+                to="/profileInfoChannel"
                 icon={<CampaignIcon />}
-                iconPosition="start"
+                iconPosition="top"
                 label="Мои конкурсы"
               />
             </Tabs>
+            {/* <RouterLink to={"/"}>
+                <Tab icon={<HomeIcon />} iconPosition="start" label="Главная" />
+              </RouterLink>
+              <RouterLink to={"/profileInfoChannel"}>
+                <Tab
+                  icon={<CampaignIcon />}
+                  iconPosition="start"
+                  label="Мои конкурсы"
+                />
+              </RouterLink> */}
+            {/* <CustomLink to={"/"} chidren={"Главная"} /> */}
+            {/* {/* <CustomLink to={"/profileInfoChannel"} chidren={"Мои консурсы"} /> */}
 
             <Avatar
               onClick={(e) => setIsOpen(true)}
@@ -113,7 +136,10 @@ const Header = () => {
                 <Typography className={styles.menuProfileBoxLeftAuthor}>
                   Луценко Никита
                 </Typography>
-                <Typography fontWeight={'bold'}  className={styles.menuProfileBoxLeftCompany}>
+                <Typography
+                  fontWeight={"bold"}
+                  className={styles.menuProfileBoxLeftCompany}
+                >
                   Ubisoft
                 </Typography>
               </div>
@@ -123,13 +149,18 @@ const Header = () => {
             </Stack>
             <Divider />
             <div className={styles.menuProfileItems}>
-              <MenuItem>
+              <MenuItem onClick={() => setIsOpen(false)}>
                 <ListItemIcon>
                   <SettingsOutlinedIcon fontSize="small" />
                 </ListItemIcon>
-                <Typography>Настройка аккаунта</Typography>
+                <Typography>
+                  <CustomLink
+                    to={"/profileDetails"}
+                    chidren="Настройка аккаунта"
+                  />
+                </Typography>
               </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={() => setIsOpen(false)}>
                 <ListItemIcon>
                   <ExitToAppOutlinedIcon fontSize="small" />
                 </ListItemIcon>

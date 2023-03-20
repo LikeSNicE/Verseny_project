@@ -76,7 +76,7 @@ const ListItemStyled = (props) => {
   );
 };
 
-const ProfileDetals = () => {
+const ProfileDetails = () => {
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -215,7 +215,7 @@ const ProfileDetals = () => {
             onChange={handleChange}
             aria-label="icon position tabs example"
             // textColor="#4A4A4E"
-            indicatorColor="secondary"
+            indicatorColor="primary"
           >
             <Tab
               icon={<EditIcon />}
@@ -293,4 +293,4 @@ const ProfileDetals = () => {
   );
 };
 
-export default ProfileDetals;
+export default ProfileDetails;

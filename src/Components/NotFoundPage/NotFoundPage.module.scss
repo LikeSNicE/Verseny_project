@@ -1,0 +1,17 @@
+.error{
+  display: flex;
+  justify-content: space-between;
+  &Left{
+    width: 500px;
+    &Title{
+      font-size: 32px;
+      font-weight: bold;
+    }
+    &Text{
+      margin-top: 15px;
+    }
+    &Link{
+      color: #fff;
+    }
+  }
+}
