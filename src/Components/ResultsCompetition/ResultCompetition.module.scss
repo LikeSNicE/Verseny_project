@@ -1,0 +1,49 @@
+@import '../styles/vars-colors/varsColors';
+.result{
+  &Top{
+    display: flex;
+    &Left{
+      width: 500px;
+      margin-right: 20px;
+      & img{
+        border-radius: 15px;
+      }
+    }
+    &Right{
+      width: 565px;
+      &Title{
+        font-weight: bold;
+        font-size: 36px !important; 
+      }
+      &Grid{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 5px;
+      }
+      &Science{
+        width: 200px;
+      }
+      &TitleDate{
+         margin-top: 30px !important;
+        font-weight: bold !important;  
+      }
+      &Date{
+        color: $second !important;
+      }
+    }
+  }
+  &Main{
+    &Table{
+      margin-top: 50px;
+      &AvatarBox{
+        display: flex;
+        &Left{
+          margin-right: 10px;
+        }
+        &Right{
+          text-align: left;
+        }
+      }
+    }
+  }
+}

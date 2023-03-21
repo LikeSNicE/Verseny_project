@@ -80,8 +80,8 @@ const Header = () => {
               />
               <Tab
                 component={Link}
-                value="/profileInfoChannel"
-                to="/profileInfoChannel"
+                value="/myconcurs"
+                to="/myconcurs"
                 icon={<CampaignIcon />}
                 iconPosition="top"
                 label="Мои конкурсы"

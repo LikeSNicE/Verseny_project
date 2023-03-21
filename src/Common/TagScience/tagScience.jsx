@@ -3,15 +3,16 @@ import { Titles } from '../../theme';
 import { tagsColors } from '../../Components/styles/vars-colors/varsColors';
 import { Typography } from '@mui/material';
 
-const TagScience = ({children}) => {
+const TagScience = ({children,className,backgroundColor}) => {
 
   const {h6} = Titles;
 
   return (
     <Typography
+      className={className}
       fontSize={h6}
       sx={{
-        background: tagsColors.four,
+        background: backgroundColor,
         padding: "5px 8px",
         borderRadius: "10px",
         color: "#fff",
