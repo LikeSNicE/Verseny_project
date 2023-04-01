@@ -1,0 +1,105 @@
+.profile {
+  // position: relative;
+  &Banner {
+    position: relative;
+    &EditBtn {
+      font-size: 12px !important;
+      position: absolute !important;
+      top: 20px !important;
+      right: 20px !important;
+      z-index: 10 !important;
+      background: rgba(165, 165, 165, 0.3) !important;
+      justify-content: start;
+      transition: all 1s !important;
+      &:hover {
+        background: rgba(165, 165, 165, 1) !important;
+      }
+    }
+
+    &BtnText {
+      margin-left: 10px;
+      text-transform: none;
+    }
+  }
+  &Section {
+    padding: 10px;
+    // position: relative;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    height: 100px;
+    &Info {
+      &Left {
+        display: flex;
+        &Link {
+          width: 140px;
+          height: 140px;
+          border-radius: 50%;
+          background-color: #ccc;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          top: -75px;
+          border: none;
+        }
+        &Img {
+          max-width: 140px;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        &Text {
+          display: flex;
+          flex-direction: column;
+          margin-left: 30px;
+          &Name {
+            font-weight: bold;
+            font-size: 20px;
+          }
+          &Company {
+            font-weight: bold;
+          }
+        }
+      }
+      &Right {
+        display: flex !important;
+        height: 40px;
+        &Icon {
+          &Edit {
+            height: 40px;
+            transition: all 1s !important;
+            background: rgba(#7072D8,1) !important;
+            &:hover {
+              background: rgba(#2a2a99, 1) !important;
+            }
+          }
+          &Channel {
+            background-color: #ff7a00 !important;
+            border-radius: 10px !important;
+            max-width: 40px !important;
+            height: 40px !important;
+            margin-left: 10px !important;
+            & a {
+              color: #fff;
+              display: flex;
+            }
+          }
+          &Delete {
+            background-color: #e8533f !important;
+            border-radius: 10px !important;
+            width: 65px;
+            height: 40px;
+            margin-left: 10px !important;
+            & a {
+              color: #fff;
+              display: flex;
+            }
+          }
+        }
+      }
+    }
+  }
+}

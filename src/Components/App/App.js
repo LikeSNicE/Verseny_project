@@ -9,7 +9,42 @@ import ResultCompetition from '../ResultsCompetition/ResultCompetition';
 import MyConcurs from "../myConcurs/myConcurs";
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import { Routes,Route } from 'react-router-dom';
+import TagButton from '../TagButton/TagButton';
+import { useState } from 'react';
+// import { dataJson } from '../TagButton/data';
+
+// const data = [
+//   {
+//     id: 1,
+//     name: "Точные науки",
+//     color: "red",
+//   },
+//   {
+//     id: 2,
+//     name: "Програмирования",
+//     color: "blue",
+//   },
+//   {
+//     id: 3,
+//     name: "Физика",
+//     color: "purple",
+//   },
+//   {
+//     id: 4,
+//     name: "Геометрия",
+//     color: "orange",
+//   },
+//   {
+//     id: 5,
+//     name: "Английский язык",
+//     color: "green",
+//   },
+// ];
+
 const App = () =>{
+
+  const [checked,setChecked] = useState(null);
+  
   return (
     <Box>
       <Header />
@@ -22,8 +57,11 @@ const App = () =>{
           <Route path="/myconcurs" element={<MyConcurs/>} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        {/* <ResultCompetition/> */}
-        {/* <MyConcurs /> */}
+        {/* <TagButton tag={data}/> */}
+        {/* {data.map((item,index)=> (
+          <TagButton key={index} tag={item} state={setChecked} />
+        ))} */}
+        
       </Container>
     </Box>
   );

@@ -1,6 +1,9 @@
 .card{
   &Title{
     margin-bottom: 0.35em !important;
+      white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
   }
   &Involve{
     display: flex;

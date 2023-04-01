@@ -1,6 +1,5 @@
 import React from 'react';
 import { Titles } from '../../theme';
-import { tagsColors } from '../../Components/styles/vars-colors/varsColors';
 import { Typography } from '@mui/material';
 
 const TagScience = ({children,className,backgroundColor}) => {

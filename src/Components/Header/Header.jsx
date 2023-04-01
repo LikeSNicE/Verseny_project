@@ -12,6 +12,8 @@ import {
   Stack,
   Tabs,
   Tab,
+  createTheme,
+  ThemeProvider,
 } from "@mui/material";
 import React, { useState } from "react";
 import styles from "./Header.module.scss";
@@ -21,9 +23,10 @@ import HomeIcon from "@mui/icons-material/Home";
 import Logo from "../../assets/images/header/logo.svg";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
-import { createTheme, ThemeProvider } from "@mui/material";
-import {Link} from "react-router-dom";
-import CustomLink from "../Common/CutsomLink/CustomLink";
+import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
+import AirplayOutlinedIcon from "@mui/icons-material/AirplayOutlined";
+import { Link, useLocation, Navigate } from "react-router-dom";
+import { CustomLink, CustomLinkIcon } from "../../Common/CutsomLink/CustomLink";
 
 const ToolBarStyled = styled(Toolbar)({
   background: "#fff",
@@ -46,12 +49,42 @@ const theme = createTheme({
     fontFamily: ["Comfortaa", "cursive"].join(","),
   },
 });
+
+function getRouteIndex(pathname) {
+  switch (pathname) {
+    case "/":
+      return 0;
+    case "/myconcurs":
+      return 1;
+    case "/profileDetails":
+      return 2;
+    case "/profileInfoChannel":
+      return 3;
+    default:
+      return 0;
+  }
+}
+
 const Header = () => {
   //tabs
-  // const [tab, setTab] = useState(0);
-  // const handleChangeTabs = (event, newValue) => {
-  //   setTab(newValue);
-  // };
+  const location = useLocation();
+  const index = getRouteIndex(location.pathname);
+
+  const handleChangeTabs = (newValue) => {
+    // setTab(newValue);
+    switch (newValue) {
+      case 0:
+        return Navigate("/");
+      case 1:
+        return Navigate("/myconcurs");
+      case 2:
+        return Navigate("/profileDetails");
+      case 3:
+        return Navigate("/profileInfoChannel");
+      default:
+        return null;
+    }
+  };
 
   // menu profile
   const [isOpen, setIsOpen] = useState(false);
@@ -65,40 +98,58 @@ const Header = () => {
               <Avatar src={Logo} />
             </IconButton>
             <Tabs
-              //value={tab}
-              //onChange={handleChangeTabs}
+              value={index}
+              onChange={handleChangeTabs}
               aria-label="icon position tabs example"
               indicatorColor="primary"
             >
               <Tab
                 component={Link}
-                value="/"
                 to="/"
+                value={0}
                 icon={<HomeIcon />}
                 iconPosition="top"
                 label="Главная"
               />
               <Tab
                 component={Link}
-                value="/myconcurs"
                 to="/myconcurs"
+                value={1}
                 icon={<CampaignIcon />}
                 iconPosition="top"
                 label="Мои конкурсы"
               />
+              <Tab
+                component={Link}
+                to="/profileDetails"
+                value={2}
+                icon={<SubscriptionsOutlinedIcon />}
+                iconPosition="top"
+                label="Подписки"
+              />
+              <Tab
+                component={Link}
+                to="/profileInfoChannel"
+                value={3}
+                icon={<AirplayOutlinedIcon />}
+                iconPosition="top"
+                label="Мой канал"
+              />
             </Tabs>
-            {/* <RouterLink to={"/"}>
-                <Tab icon={<HomeIcon />} iconPosition="start" label="Главная" />
-              </RouterLink>
-              <RouterLink to={"/profileInfoChannel"}>
-                <Tab
-                  icon={<CampaignIcon />}
-                  iconPosition="start"
-                  label="Мои конкурсы"
-                />
-              </RouterLink> */}
-            {/* <CustomLink to={"/"} chidren={"Главная"} /> */}
-            {/* {/* <CustomLink to={"/profileInfoChannel"} chidren={"Мои консурсы"} /> */}
+
+            {/* <div>
+              {pages.map((page, index) => (
+                <MenuItem key={index}>
+                  <Link>{page}</Link>
+                </MenuItem>
+              ))}
+            </div> */}
+
+            {/* <Tabs value={index} onChange={handleChange}>
+              <Tab label="Home" component={Link} to="/" />
+              <Tab label="About" component={Link} to="/about" />
+              <Tab label="Contact" component={Link} to="/contact" />
+            </Tabs> */}
 
             <Avatar
               onClick={(e) => setIsOpen(true)}
@@ -116,7 +167,7 @@ const Header = () => {
           <Menu
             className={styles.menuProfile}
             id="basic-menu"
-            aria-aria-labelledby="demo-positioned-button"
+            aria-labelledby="demo-positioned-button"
             open={isOpen}
             onClose={(e) => setIsOpen(false)}
             anchorOrigin={{
@@ -150,21 +201,20 @@ const Header = () => {
             <Divider />
             <div className={styles.menuProfileItems}>
               <MenuItem onClick={() => setIsOpen(false)}>
-                <ListItemIcon>
-                  <SettingsOutlinedIcon fontSize="small" />
-                </ListItemIcon>
-                <Typography>
-                  <CustomLink
-                    to={"/profileDetails"}
-                    chidren="Настройка аккаунта"
-                  />
-                </Typography>
+                <CustomLinkIcon
+                  to={"/profileDetails"}
+                  children={"Настройка аккаунта"}
+                  Icon={<SettingsOutlinedIcon />}
+                  className={styles.menuProfileItemLink}
+                ></CustomLinkIcon>
               </MenuItem>
               <MenuItem onClick={() => setIsOpen(false)}>
-                <ListItemIcon>
-                  <ExitToAppOutlinedIcon fontSize="small" />
-                </ListItemIcon>
-                <Typography>Выйти</Typography>
+                <CustomLinkIcon
+                  to={"/ddd"}
+                  children={"Выйти"}
+                  Icon={<ExitToAppOutlinedIcon />}
+                  className={styles.menuProfileItemLink}
+                ></CustomLinkIcon>
               </MenuItem>
             </div>
           </Menu>

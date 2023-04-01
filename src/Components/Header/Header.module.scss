@@ -27,4 +27,13 @@
   &Items{
     margin-top: 10px;
   }
+  &ItemLink{
+    display: flex;
+    & svg{
+      margin-right: 10px;
+    }
+    &Text{
+      color: #000;
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './myConcurs.module.scss';
-import CardItem from '../Common/Card';
+import CardItem from '../../Common/Card';
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 
 const MyConcurs = () => {

@@ -24,6 +24,7 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import { Titles } from "../../theme";
+import {ButtonIconText} from "../../Common/ButtonIconText/ButtonIconText";
 
 const BoxMainStyled = styled(Box)({
   display: "flex",
@@ -68,10 +69,10 @@ const TypographySearch = styled(Typography)({
 });
 
 const ListItemStyled = (props) => {
-  const {info,infoValue} = props;
+  const { info, infoValue } = props;
   return (
     <ListItem>
-      <ListItemText primary={`${info} : ${infoValue}`}/>
+      <ListItemText primary={`${info} : ${infoValue}`} />
     </ListItem>
   );
 };
@@ -82,7 +83,7 @@ const ProfileDetails = () => {
     setValue(newValue);
   };
 
-  const {h1,h2} = Titles;
+  const { h1, h2 } = Titles;
 
   return (
     <BoxMainStyled
@@ -133,9 +134,7 @@ const ProfileDetails = () => {
           <ListItemStyled info="Имя" infoValue="Никита" />
           <ListItemStyled info="Фамилия" infoValue="Луценко" />
           <ListItemStyled info="Пол" infoValue="Мужской" />
-          <ListItemStyled
-            info="Почта" infoValue="bekkozha.ayan@mail.ru"
-          />
+          <ListItemStyled info="Почта" infoValue="bekkozha.ayan@mail.ru" />
         </List>
       </BoxMainLeft>
 
@@ -170,23 +169,12 @@ const ProfileDetails = () => {
               Роль: Организатор
             </Typography>
           </Box>
-
-          <Box>
-            <Button
-              startIcon={<ExitToAppIcon />}
-              sx={{
-                width: "125px",
-                background: tagsColors.one,
-                color: "#fff",
-                transition: "all .8s",
-                "&:hover": {
-                  background: tagsColors.four,
-                },
-              }}
-            >
-              Выйти
-            </Button>
-          </Box>
+          <ButtonIconText
+            startIcon={<ExitToAppIcon />}
+            background={tagsColors.one}
+            hoverBackground={tagsColors.four}
+            children={'Выйти'}
+          />
         </BoxMainRightTop>
 
         <BoxMainRightBottom>

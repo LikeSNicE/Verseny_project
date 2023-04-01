@@ -9,19 +9,89 @@ import {
   TableRow,
   Paper,
   Avatar,
+  Checkbox,
   TextField,
   Autocomplete,
-  IconButton,
 } from "@mui/material";
 import { styled, lighten, darken } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ResultCompetition.module.scss";
 import TagScience from "../../Common/TagScience/tagScience";
 import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
-import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import { top100Films } from "./resultData";
+import ModalResultCompetetition from "./ModalResultCompetetition";
 
-  // поиск поильзователя
+import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
+import Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
+
+// mychannel/concurs-share/{id}
+import SelectUi from "../../Common/Select/Select";
+import {ButtonIconText} from "../../Common/ButtonIconText/ButtonIconText";
+import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
+import BreadCrums from "../../Common/BreadCrums/BreadCrums";
+import Popup from "../../Common/Popup/Popup";
+import TableСustom from "../../Common/Table/Table";
+import TableUI from "../../Common/Table/Table";
+import SelectComboBox from "../../Common/Table/SelectComboBox/SelectComboBox";
+
+const dataBreads = [
+  { id: "1", name: "Мои Файлы", path: "/to" },
+  // { id: "2", name: "Луценко Никита" },
+];
+
+// const createDataShare = (id, userName, date, userPhoto, userEmail) => {
+//   return { id, userName, date, userPhoto, userEmail };
+// };
+
+// const shareRows = [
+//   createDataShare(
+//     "1",
+//     "Беккожа Аян",
+//     "11 февраля 2023",
+//     "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139",
+//     "bekkozha.ayan@mail.ru"
+//   ),
+//   createDataShare(
+//     "2",
+//     "Луценко Никита",
+//     "11 февраля 2023",
+//     "https://avatars.githubusercontent.com/u/85344443?s=400&u=6c92f6fc049c598f01fa6554b575c74dbf789e07&v=4",
+//     "nik.luzenko@mail.ru"
+//   ),
+// ];
+
+// const columnDataShare = [
+//   { name: "Имя" },
+//   { name: "О файле" },
+//   { name: "Пользователь" },
+// ];
+
+const dataTable = [
+  [
+    {
+      File: {
+        type: "folder",
+        name: "Беккожа Аян",
+      },
+    },
+    {
+      AboutFile: ["11 февраля 2023", "8,45 мб"],
+    },
+  
+    {
+      Avatar: {
+        photo:
+          "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
+        alt: "logo",
+        name: "Беккожа Аян",
+        email: "bekkozha.ayan@mail.ru",
+      },
+    },
+  ],
+];
+const head = ["Имя", "О файле", "Пользователь"];
+
+// поиск поильзователя
 const GroupHeader = styled("div")(({ theme }) => ({
   position: "sticky",
   top: "-8px",
@@ -33,15 +103,24 @@ const GroupHeader = styled("div")(({ theme }) => ({
       : darken(theme.palette.primary.main, 0.8),
 }));
 
-  // поиск поильзователя
 const GroupItems = styled("ul")({
   padding: 0,
 });
 
-const createData = (winPlace,userPhoto,userName,userEmail,chosenUser,hideSearch) => {
-  return { winPlace, userPhoto, userName, userEmail,  };
-} 
+const options = top100Films.map((option) => {
+  const firstLetter = option.title[0].toUpperCase();
+  return {
+    firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
+    ...option,
+  };
+});
 
+// Для таблицы
+const createData = (winPlace, userPhoto, userName, userEmail) => {
+  return { winPlace, userPhoto, userName, userEmail };
+};
+
+// table data
 const rows = [
   createData(
     "1 Место",
@@ -57,38 +136,42 @@ const rows = [
   ),
 ];
 
+// component
 const ResultCompetition = () => {
-  // science spans
+  // science data spans
   const namesOfScience = [
     {
-    name: "Математика",
-    backgroundColor: 'orange'
+      name: "Математика",
+      backgroundColor: "orange",
     },
     {
-    name: "Английский язык",
-    backgroundColor: 'red'
+      name: "Английский язык",
+      backgroundColor: "red",
     },
     {
-    name: "Физика",
-    backgroundColor: 'green'
+      name: "Физика",
+      backgroundColor: "green",
     },
     {
-    name: "Геометрия",
-    backgroundColor: 'purple'
-    }
-  ]
+      name: "Геометрия",
+      backgroundColor: "purple",
+    },
+    {
+      name: "Астнавтика dsadasdasddasdasdasd",
+      backgroundColor: "blueviolet",
+    },
+  ];
 
+  // View
+  const data = [
+    { id: 1, name: "John", age: 25 },
+    { id: 2, name: "Jane", age: 30 },
+    { id: 3, name: "Bob", age: 35 },
+  ];
 
+  const [date, setDate] = useState();
 
-  // поиск поильзователя
-  const options = top100Films.map((option) => {
-    const firstLetter = option.title[0].toUpperCase();
-    return {
-      firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
-      ...option,
-    };
-  });
-
+  // ui
   return (
     <div className={styles.result}>
       <div className={styles.resultTop}>
@@ -105,6 +188,7 @@ const ResultCompetition = () => {
           <div className={styles.resultTopRightGrid}>
             {namesOfScience.map((name) => (
               <TagScience
+                key={name.name}
                 className={styles.resultTopRightScience}
                 children={name.name}
                 backgroundColor={name.backgroundColor}
@@ -120,15 +204,16 @@ const ResultCompetition = () => {
           </Typography>
         </div>
       </div>
+{/* 
       <div className={styles.resultMain}>
         <Typography fontSize="32px" marginTop="50px">
           <Icon>
             <EmojiEventsOutlinedIcon sx={{ fontSize: 25, mr: "10px" }} />
           </Icon>
           Выбор победителя
-        </Typography>
+        </Typography> 
 
-        <TableContainer className={styles.resultMainTable} component={Paper}>
+         <TableContainer className={styles.resultMainTable} component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -182,15 +267,110 @@ const ResultCompetition = () => {
                     />
                   </TableCell>
                   <TableCell>
-                    <IconButton>
-                      <RemoveRedEyeOutlinedIcon />
-                    </IconButton>
+                    <ModalResultCompetetition />
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
+      </div>
+
+                      */}
+
+      <div className={styles.member}>
+        <Typography className={styles.memberMainTitle}>Участники</Typography>
+        <Typography className={styles.memberTypeParticipation}>
+          Тип участия :{" "}
+          {<InsertDriveFileOutlinedIcon sx={{ verticalAlign: "bottom" }} />}{" "}
+          Файлы{" "}
+        </Typography>
+
+        <Typography className={styles.memberCount}>
+          {<Diversity3OutlinedIcon sx={{ verticalAlign: "bottom" }} />} 4
+          Участников
+        </Typography>
+
+        <div className={styles.memberBox}>
+          <div className={styles.memberBoxLeft}>
+            <SelectUi
+              option={data}
+              state={setDate}
+              label={"Показать"}
+              name={"Аян"}
+            />
+          </div>
+          <div className={styles.memberBoxRight}>
+            <ButtonIconText
+              startIcon={<EmojiEventsOutlinedIcon />}
+              background={"#7272D8"}
+              hoverBackground={"#7272D8"}
+              children={"Выбрать Победителя"}
+              className={styles.memberBoxRightLinkChosenWinner}
+            />
+          </div>
+        </div> 
+
+        <BreadCrums data={dataBreads} />
+
+        {/* <TableContainer className={styles.concursShareTable} component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell></TableCell>
+                <TableCell>Имя</TableCell>
+                <TableCell>О файле</TableCell>
+                <TableCell>Пользователь</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {shareRows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>
+                    <Checkbox />
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    <div className={styles.concursShareTableBoxName}>
+                      <img
+                        className={styles.concursShareTableBoxNameImg}
+                        src="https://img.freepik.com/free-icon/folder_318-315155.jpg?size=338&ext=jpg"
+                        alt="folder icon"
+                      />
+                      <div className={styles.concursShareTableBoxNameText}>
+                        {row.userName}
+                      </div>
+                    </div>
+                  </TableCell>
+
+                  <TableCell>{row.date}</TableCell>
+                  <TableCell>
+                    {
+                      <div className={styles.resultMainTableAvatarBox}>
+                        <div className={styles.resultMainTableAvatarBoxLeft}>
+                          <Avatar src={row.userPhoto} />
+                        </div>
+                        <div className={styles.resultMainTableAvatarBoxRight}>
+                          <Typography>{row.userName}</Typography>
+                          <Typography>{row.userEmail}</Typography>
+                        </div>
+                      </div>
+                    }
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer> */}
+
+        {/* <TableСustom columnData={columnDataShare} /> */}
+
+        <TableUI head={head} data={dataTable}  isCheckBox={true}/>
+
+
+        {/* <Popup /> */}
       </div>
     </div>
   );

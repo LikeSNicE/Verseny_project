@@ -18,7 +18,7 @@ const NotFoundPage = () => {
             background: 'main'
           }
         }} className={styles.errorLeftButton}>
-          <Link className={styles.errorLeftLink} to={"/home"}>
+          <Link className={styles.errorLeftLink} to={"/"}>
             Назад к домашней странице
           </Link>
         </Button>

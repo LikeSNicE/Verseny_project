@@ -1,49 +1,96 @@
-@import '../styles/vars-colors/varsColors';
-.result{
-  &Top{
+@import "../styles/vars-colors/varsColors";
+.result {
+  &Top {
+    margin-bottom: 10px;
     display: flex;
-    &Left{
+    &Left {
       width: 500px;
       margin-right: 20px;
-      & img{
+      & img {
         border-radius: 15px;
       }
     }
-    &Right{
+    &Right {
       width: 565px;
-      &Title{
-        font-weight: bold;
-        font-size: 36px !important; 
+      &Title {
+        font-weight: bold !important;
+        font-size: 36px !important;
+        line-height: 40px !important;
       }
-      &Grid{
+      &Grid {
         display: grid;
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-gap: 5px;
       }
-      &Science{
+      &Science {
         width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-      &TitleDate{
-         margin-top: 30px !important;
-        font-weight: bold !important;  
+      &TitleDate {
+        margin-top: 30px !important;
+        font-weight: bold !important;
       }
-      &Date{
+      &Date {
         color: $second !important;
       }
     }
   }
-  &Main{
-    &Table{
-      margin-top: 50px;
-      &AvatarBox{
+  &Main {
+    &Table {
+      // overflow: auto;
+      // height: 480px;
+      // margin-top: 10px;
+      &AvatarBox {
         display: flex;
-        &Left{
+        &Left {
           margin-right: 10px;
         }
-        &Right{
+        &Right {
           text-align: left;
         }
       }
+    }
+  }
+}
+
+.member {
+  &MainTitle {
+    font-weight: bold;
+    font-size: 32px;
+  }
+  &TypeParticipation {
+    font-weight: bold;
+    margin-top: 7px;
+  }
+  &Count {
+    margin-top: 10px;
+    color: #4a4a4e;
+  }
+  &Box{
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    &Right{
+      margin-left: 25px;
+      &LinkChosenWinner{
+        width: 240px !important;
+        height: 39px;
+      }
+    }
+  }
+}
+
+.concursShareTable{
+  margin: 20px 0 50px;
+  &BoxName{
+    display: flex;
+    align-items: center;
+    &Img{
+      margin-right: 10px;
+      width: 30px;
+      height: 30px;
     }
   }
 }
