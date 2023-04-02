@@ -18,6 +18,8 @@ import {
   Tooltip,
   TooltipClasses,
   tooltipClasses,
+  TextField,
+  Divider,
 } from "@mui/material";
 
 import { Titles } from "../../theme";
@@ -36,91 +38,21 @@ import {
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AirplayOutlinedIcon from "@mui/icons-material/AirplayOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
+import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import TransgenderOutlinedIcon from "@mui/icons-material/TransgenderOutlined";
+import Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
 import { Link } from "react-router-dom";
+import { CustomLinkIcon } from "../../Common/CutsomLink/CustomLink";
 import imgEdit from "../../assets/images/icons/Edit.svg";
 import styles from "./ProfileInfo.module.scss";
 
 const ProfileInfoChannel = () => {
   let [hovered, setHovered] = useState(false);
 
-  // tabs
-  // const [tab, setTab] = useState(0);
-  // const handleChangeTabs = (event, newValue) => {
-  //   setTab(newValue);
-  // };
-
-  // select date
-  // const [date, setDate] = useState("");
-  // const handleChangeDate = (event) => {
-  //   setDate(event.target.value);
-  // };
-
-  // select type
-  // const ITEM_HEIGHT = 48;
-  // const ITEM_PADDING_TOP = 8;
-  // const MenuProps = {
-  //   PaperProps: {
-  //     style: {
-  //       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-  //       width: 250,
-  //     },
-  //   },
-  // };
-
-  // const names = [
-  //   "Ссылка",
-  //   "Файлы",
-  //   "Фото",
-  // ];
-
-  // function getStyles(name, personName, theme) {
-  //   return {
-  //     fontWeight:
-  //       personName.indexOf(name) === -1
-  //         ? theme.typography.fontWeightRegular
-  //         : theme.typography.fontWeightMedium,
-  //   };
-  // }
-
-  //   const theme = useTheme();
-  //   const [personName, setPersonName] = React.useState([]);
-
-  //   const handleChange = (event) => {
-  //     const {
-  //       target: { value },
-  //     } = event;
-  //     setPersonName(
-  //       // On autofill we get a stringified value.
-  //       typeof value === "string" ? value.split(",") : value
-  //     );
-  //   };
-
-  // render buttons
-  // const initialState = {
-  //   buttons: [
-  //     { id: 1, title: "Точные Науки" },
-  //     { id: 2, title: "Програмирования" },
-  //     { id: 3, title: "Рисования" },
-  //     { id: 4, title: "Гуманитарные науки" },
-  //     { id: 5, title: "3D Модели" },
-  //     { id: 6, title: "Эссе" },
-  //     { id: 7, title: "Сценарий" },
-  //   ],
-  // };
-
   // new
-
-  // const theme = createTheme({
-  //   typography: {
-  //     fontFamily: ["Comfortaa", "cursive"].join(","),
-  //   },
-  //   palette: {
-  //     primary: {
-  //       main: "#7272D8",
-  //     },
-  //   },
-  // });
-
+  // Tooltip
   const BootstrapTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} arrow classes={{ popper: className }} placement="top" />
   ))(({ theme }) => ({
@@ -133,7 +65,6 @@ const ProfileInfoChannel = () => {
   }));
 
   return (
-    // <ThemeProvider theme={theme}>
     <div className={styles.profile}>
       {/*profile header*/}
       <div className={styles.profileBanner}>
@@ -141,16 +72,6 @@ const ProfileInfoChannel = () => {
           src="https://pbs.twimg.com/media/D6H3CT0WwAA5_yg.jpg"
           alt="profile header_photo"
         />
-        {/* <Button
-            variant="contained"
-            component="label"
-            className={styles.profileBannerEditBtn}
-            sx={}
-          >
-            <EditOutlinedIcon />
-            <div className={styles.profileBannerBtnText}>Изменить обложку</div>
-            <input type="file" hidden />
-          </Button> */}
         <ButtonIconText
           startIcon={<EditOutlinedIcon />}
           children={"Изменить обложку"}
@@ -163,7 +84,9 @@ const ProfileInfoChannel = () => {
       <div className={styles.profileSection}>
         <div className={styles.profileSectionInfoLeft}>
           <div>
-            <Link
+            <Button
+              variant="contained"
+              component="label"
               className={styles.profileSectionInfoLeftLink}
               to={"#"}
               onMouseLeave={() => setHovered(false)}
@@ -173,8 +96,9 @@ const ProfileInfoChannel = () => {
               }}
             >
               {hovered ? (
-                <div>
+                <div className={styles.profileSectionInfoLeftLinkHover}>
                   <img src={imgEdit} alt="" />
+                  <input type="file" hidden />
                 </div>
               ) : (
                 <img
@@ -183,7 +107,7 @@ const ProfileInfoChannel = () => {
                   alt=""
                 />
               )}
-            </Link>
+            </Button>
           </div>
           <div className={styles.profileSectionInfoLeftText}>
             <p className={styles.profileSectionInfoLeftTextName}>Беккожа Аян</p>
@@ -193,12 +117,13 @@ const ProfileInfoChannel = () => {
 
         <div className={styles.profileSectionInfoRight}>
           <div>
-            <ButtonIconText
-              startIcon={<EditOutlinedIcon />}
-              children={"Редактировать профиль"}
-              isFile={true}
-              className={styles.profileSectionInfoRightIconEdit}
-            />
+            <Link to={"/"}>
+              <ButtonIconText
+                startIcon={<EditOutlinedIcon />}
+                children={"Редактировать профиль"}
+                className={styles.profileSectionInfoRightIconEdit}
+              />
+            </Link>
           </div>
           <div>
             <Button className={styles.profileSectionInfoRightIconChannel}>
@@ -220,8 +145,101 @@ const ProfileInfoChannel = () => {
           </div>
         </div>
       </div>
+
+      <div className={styles.profileSetting}>
+        {/*Setting user left*/}
+        <div className={styles.profileSettingLeft}>
+          <div className={styles.profileSettingLeftTitle}>
+            <div className={styles.profileSettingLeftTitleIcon}>
+              {<Diversity3OutlinedIcon />}
+            </div>
+            <div className={styles.profileSettingLeftTitleSubtitle}>
+              Профиль
+            </div>
+          </div>
+
+          <div className={styles.profileSettingLeftField}>
+            <div className={styles.profileSettingLeftFieldName}>Имя:</div>
+            <div>
+              <TextField
+                className={styles.profileSettingLeftFieldInput}
+                fullWidth
+                type="search"
+                placeholder="Имя"
+              ></TextField>
+            </div>
+          </div>
+
+          <div className={styles.profileSettingLeftField}>
+            <div className={styles.profileSettingLeftFieldName}>Фамилия:</div>
+            <div>
+              <TextField
+                className={styles.profileSettingLeftFieldInput}
+                fullWidth
+                type="search"
+                placeholder="Фамилия:"
+              ></TextField>
+            </div>
+          </div>
+
+          <div className={styles.profileSettingLeftField}>
+            <div className={styles.profileSettingLeftFieldName}>Почта:</div>
+            <div>
+              <TextField
+                className={styles.profileSettingLeftFieldInput}
+                fullWidth
+                type="search"
+                placeholder="bekkozha.ayan@mail.ru"
+              ></TextField>
+            </div>
+          </div>
+        </div>
+        {/*Setting user right*/}
+        <div className={styles.profileSettingRight}>
+          <div className={styles.profileSettingRightChildren}>
+            <h3>Личные данные</h3>
+            <div className={styles.profileSettingRightChildrenData}>
+              <CustomLinkIcon
+                to={"/ddd"}
+                children={"Мужской"}
+                Icon={<TransgenderOutlinedIcon />}
+                className={styles.profileSettingRightChildrenDataIcon}
+              ></CustomLinkIcon>
+            </div>
+            <div className={styles.profileSettingRightChildrenData}>
+              <CustomLinkIcon
+                to={"/ddd"}
+                children={"Канал"}
+                Icon={<AirplayOutlinedIcon />}
+                className={styles.profileSettingRightChildrenDataIcon}
+              ></CustomLinkIcon>
+            </div>
+          </div>
+
+          <div className={styles.profileSettingRightChildren}>
+            <h3>Подробная информация</h3>
+            {/* <Divider /> */}
+            <div className={styles.profileSettingRightChildrenData}>
+              <p>{<AlternateEmailOutlinedIcon />}</p>
+              <p>id_1</p>
+            </div>
+            <div className={styles.profileSettingRighChildrentData}>
+              <p>{<CardGiftcardOutlinedIcon />}</p>
+              <p>Дата создание аккаунта: 10.11.2023 г.</p>
+            </div>
+            <div className={styles.profileSettingRightChildrenData}>
+              <p>{<EmailOutlinedIcon />}</p>
+              <p>bekkozha.ayan@mail.ru</p>
+            </div>
+            <div className={styles.profileSettingRightChildrenData}>
+              <p>{<TransgenderOutlinedIcon />}</p>
+              <p>Мужской</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    // </ThemeProvider>
+
     //  {/*Box Main*/}
     // <Box>
     //   {/* Header Channel */}
