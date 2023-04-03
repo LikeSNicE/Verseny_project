@@ -1,13 +1,14 @@
 
 import './App.css';
-import MainPage from '../MainPage/MainPage';
-import Header from '../Header/Header';
+import MainPage from '../../pages/MainPage/MainPage';
+import Header from '../../pages/Header/Header';
 import { Box, Container } from "@mui/material";
-import ProfileInfoChannel from "../ProfileInfo/ProfileInfo";
-import ProfileDetails from '../ProfileDetails/ProfileDetails';
-import ResultCompetition from '../ResultsCompetition/ResultCompetition';
-import MyConcurs from "../myConcurs/myConcurs";
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import ProfileInfoChannel from "../../pages/ProfileInfo/ProfileInfo";
+import ProfileDetails from '../../pages/ProfileDetails/ProfileDetails';
+import ResultCompetition from '../../pages/ResultsCompetition/ResultCompetition';
+import SettingUser from '../../pages/settingUser/settingUser';
+import MyConcurs from '../../pages/myConcurs/myConcurs';
+import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import { Routes,Route } from 'react-router-dom';
 import TagButton from '../TagButton/TagButton';
 import { useState } from 'react';
@@ -52,6 +53,7 @@ const App = () =>{
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/profileInfoChannel" element={<ProfileInfoChannel />} />
+          <Route path='/profileInfoChannel/setting/user' element={<SettingUser/>}/>
           <Route path="/profileDetails" element={<ProfileDetails />} />
           <Route path="/concurs/result" element={<ResultCompetition/>} />
           <Route path="/myconcurs" element={<MyConcurs/>} />

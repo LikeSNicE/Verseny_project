@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Popup.module.scss'
-import { ButtonIconText } from "../../Common/ButtonIconText/ButtonIconText";
+import { ButtonIconText } from '../ButtonIconText/ButtonIconText';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import DownloadDoneOutlinedIcon from "@mui/icons-material/DownloadDoneOutlined";
 import { Button } from '@mui/material';

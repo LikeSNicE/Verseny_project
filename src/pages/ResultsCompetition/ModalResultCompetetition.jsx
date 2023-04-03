@@ -18,11 +18,11 @@ import {
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import SelectUi from "../../Common/Select/Select";
+import SelectUi from "../../Components/Select/Select";
 import { Link } from "react-router-dom";
 import styles from "./ModalResultCompetetition.module.scss";
-import Popup from "../../Common/Popup/Popup";
-import BreadCrums from "../../Common/BreadCrums/BreadCrums";
+import Popup from "../../Components/Popup/Popup";
+import BreadCrums from "../../Components/BreadCrums/BreadCrums";
 
 const ModalResultCompetetition = () => {
   // модалка

@@ -10,7 +10,7 @@ import {
   Stack,
 } from "@mui/material";
 import styles from "./Card.module.scss";
-import { tagsColors } from "../Components/styles/vars-colors/varsColors";
+import { tagsColors } from "./styles/vars-colors/varsColors";
 import { Titles } from "../theme";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 

@@ -26,7 +26,7 @@ import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
 import AirplayOutlinedIcon from "@mui/icons-material/AirplayOutlined";
 import { Link, useLocation, Navigate } from "react-router-dom";
-import { CustomLink, CustomLinkIcon } from "../../Common/CutsomLink/CustomLink";
+import { CustomLinkIcon } from "../../Components/CutsomLink/CustomLink";
 
 const ToolBarStyled = styled(Toolbar)({
   background: "#fff",

@@ -20,21 +20,25 @@ import {
   tooltipClasses,
   TextField,
   Divider,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+  Radio
 } from "@mui/material";
 
 import { Titles } from "../../theme";
-import { ButtonColors } from "../styles/vars-colors/varsColors";
+import { ButtonColors } from "../../Components/styles/vars-colors/varsColors";
 import ShareIcon from "@mui/icons-material/Share";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
-import CardItem from "../../Common/Card";
+import CardItem from "../../Components/Card";
 
 // new
 import {
   ButtonIconText,
-  ButtonIconTextFile,
-} from "../../Common/ButtonIconText/ButtonIconText";
+
+} from "../../Components/ButtonIconText/ButtonIconText";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AirplayOutlinedIcon from "@mui/icons-material/AirplayOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -43,10 +47,12 @@ import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import TransgenderOutlinedIcon from "@mui/icons-material/TransgenderOutlined";
 import Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
-import { Link } from "react-router-dom";
-import { CustomLinkIcon } from "../../Common/CutsomLink/CustomLink";
+import { Link,Routes,Route } from "react-router-dom";
+import { CustomLinkIcon } from "../../Components/CutsomLink/CustomLink";
 import imgEdit from "../../assets/images/icons/Edit.svg";
 import styles from "./ProfileInfo.module.scss";
+import SettingUser from "../settingUser/settingUser";
+import SettingChannel from "../settingChannel/settingChannel";
 
 const ProfileInfoChannel = () => {
   let [hovered, setHovered] = useState(false);
@@ -117,15 +123,6 @@ const ProfileInfoChannel = () => {
 
         <div className={styles.profileSectionInfoRight}>
           <div>
-            <Link to={"/"}>
-              <ButtonIconText
-                startIcon={<EditOutlinedIcon />}
-                children={"Редактировать профиль"}
-                className={styles.profileSectionInfoRightIconEdit}
-              />
-            </Link>
-          </div>
-          <div>
             <Button className={styles.profileSectionInfoRightIconChannel}>
               <BootstrapTooltip title="Мой канал">
                 <Link>
@@ -147,91 +144,55 @@ const ProfileInfoChannel = () => {
       </div>
 
       <div className={styles.profileSetting}>
-        {/*Setting user left*/}
-        <div className={styles.profileSettingLeft}>
-          <div className={styles.profileSettingLeftTitle}>
-            <div className={styles.profileSettingLeftTitleIcon}>
-              {<Diversity3OutlinedIcon />}
-            </div>
-            <div className={styles.profileSettingLeftTitleSubtitle}>
-              Профиль
-            </div>
-          </div>
+        {/* <div className={styles.profileSettingLeft}>
+          <Routes>
+            <Route
+              path="/profileInfoChannel/setting/user"
+              element={<SettingUser />}
+            />
+          </Routes> 
+        </div> */}
 
-          <div className={styles.profileSettingLeftField}>
-            <div className={styles.profileSettingLeftFieldName}>Имя:</div>
-            <div>
-              <TextField
-                className={styles.profileSettingLeftFieldInput}
-                fullWidth
-                type="search"
-                placeholder="Имя"
-              ></TextField>
-            </div>
-          </div>
+        
+        <SettingChannel/>
 
-          <div className={styles.profileSettingLeftField}>
-            <div className={styles.profileSettingLeftFieldName}>Фамилия:</div>
-            <div>
-              <TextField
-                className={styles.profileSettingLeftFieldInput}
-                fullWidth
-                type="search"
-                placeholder="Фамилия:"
-              ></TextField>
-            </div>
-          </div>
-
-          <div className={styles.profileSettingLeftField}>
-            <div className={styles.profileSettingLeftFieldName}>Почта:</div>
-            <div>
-              <TextField
-                className={styles.profileSettingLeftFieldInput}
-                fullWidth
-                type="search"
-                placeholder="bekkozha.ayan@mail.ru"
-              ></TextField>
-            </div>
-          </div>
-        </div>
         {/*Setting user right*/}
         <div className={styles.profileSettingRight}>
-          <div className={styles.profileSettingRightChildren}>
+          <div className={styles.profileSettingRightTop}>
             <h3>Личные данные</h3>
-            <div className={styles.profileSettingRightChildrenData}>
+            <div className={styles.profileSettingRightTopData}>
               <CustomLinkIcon
-                to={"/ddd"}
-                children={"Мужской"}
-                Icon={<TransgenderOutlinedIcon />}
-                className={styles.profileSettingRightChildrenDataIcon}
+                to={"/profileInfoChannel/setting/user"}
+                children={"Профиль"}
+                Icon={<Diversity3OutlinedIcon />}
+                className={styles.profileSettingRightTopDataIcon}
               ></CustomLinkIcon>
             </div>
-            <div className={styles.profileSettingRightChildrenData}>
+            <div className={styles.profileSettingRightTopData}>
               <CustomLinkIcon
                 to={"/ddd"}
                 children={"Канал"}
                 Icon={<AirplayOutlinedIcon />}
-                className={styles.profileSettingRightChildrenDataIcon}
+                className={styles.profileSettingRightTopDataIcon}
               ></CustomLinkIcon>
             </div>
           </div>
 
-          <div className={styles.profileSettingRightChildren}>
+          <div className={styles.profileSettingRightBottom}>
             <h3>Подробная информация</h3>
-            {/* <Divider /> */}
-            <div className={styles.profileSettingRightChildrenData}>
+            <div className={styles.profileSettingRightBottomData}>
               <p>{<AlternateEmailOutlinedIcon />}</p>
               <p>id_1</p>
             </div>
-            <div className={styles.profileSettingRighChildrentData}>
+            <div className={styles.profileSettingRightBottomData}>
               <p>{<CardGiftcardOutlinedIcon />}</p>
               <p>Дата создание аккаунта: 10.11.2023 г.</p>
             </div>
-            <div className={styles.profileSettingRightChildrenData}>
+            <div className={styles.profileSettingRightBottomData}>
               <p>{<EmailOutlinedIcon />}</p>
               <p>bekkozha.ayan@mail.ru</p>
             </div>
-            <div className={styles.profileSettingRightChildrenData}>
+            <div className={styles.profileSettingRightBottomData}>
               <p>{<TransgenderOutlinedIcon />}</p>
               <p>Мужской</p>
             </div>

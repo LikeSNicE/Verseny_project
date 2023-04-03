@@ -16,7 +16,7 @@ import {
 import { styled, lighten, darken } from "@mui/system";
 import React, { useState } from "react";
 import styles from "./ResultCompetition.module.scss";
-import TagScience from "../../Common/TagScience/tagScience";
+import TagScience from "../../Components/TagScience/tagScience";
 import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
 import { top100Films } from "./resultData";
 import ModalResultCompetetition from "./ModalResultCompetetition";
@@ -25,11 +25,11 @@ import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutl
 import Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
 
 // mychannel/concurs-share/{id}
-import SelectUi from "../../Common/Select/Select";
-import {ButtonIconText} from "../../Common/ButtonIconText/ButtonIconText";
+import SelectUi from "../../Components/Select/Select";
+import { ButtonIconText } from "../../Components/ButtonIconText/ButtonIconText";
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
-import BreadCrums from "../../Common/BreadCrums/BreadCrums";
-import Popup from "../../Common/Popup/Popup";
+import BreadCrums from "../../Components/BreadCrums/BreadCrums";
+import Popup from '../../Components/Popup/Popup';
 import TableСustom from "../../Common/Table/Table";
 import TableUI from "../../Common/Table/Table";
 import SelectComboBox from "../../Common/Table/SelectComboBox/SelectComboBox";

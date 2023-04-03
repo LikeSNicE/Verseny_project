@@ -19,12 +19,12 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
-import { tagsColors } from "../styles/vars-colors/varsColors";
+import { tagsColors } from "../../Components/styles/vars-colors/varsColors";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import { Titles } from "../../theme";
-import {ButtonIconText} from "../../Common/ButtonIconText/ButtonIconText";
+import {ButtonIconText} from "../../Components/ButtonIconText/ButtonIconText";
 
 const BoxMainStyled = styled(Box)({
   display: "flex",

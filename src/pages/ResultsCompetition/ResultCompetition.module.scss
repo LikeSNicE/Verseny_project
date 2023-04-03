@@ -1,4 +1,4 @@
-@import "../styles/vars-colors/varsColors";
+// @import "../styles/vars-colors/varsColors";
 .result {
   &Top {
     margin-bottom: 10px;
@@ -33,7 +33,7 @@
         font-weight: bold !important;
       }
       &Date {
-        color: $second !important;
+        // color: $second !important;
       }
     }
   }
