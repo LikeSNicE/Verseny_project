@@ -12,6 +12,7 @@ import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import { Routes,Route } from 'react-router-dom';
 import TagButton from '../TagButton/TagButton';
 import { useState } from 'react';
+import SettingChannel from '../../pages/settingChannel/settingChannel';
 // import { dataJson } from '../TagButton/data';
 
 // const data = [
@@ -52,18 +53,16 @@ const App = () =>{
       <Container maxWidth={"lg"}>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/profileInfoChannel" element={<ProfileInfoChannel />} />
-          <Route path='/profileInfoChannel/setting/user' element={<SettingUser/>}/>
+          <Route path="/profileInfoChannel/*" element={<ProfileInfoChannel />}/>
           <Route path="/profileDetails" element={<ProfileDetails />} />
-          <Route path="/concurs/result" element={<ResultCompetition/>} />
-          <Route path="/myconcurs" element={<MyConcurs/>} />
+          <Route path="/concurs/result" element={<ResultCompetition />} />
+          <Route path="/myconcurs" element={<MyConcurs />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         {/* <TagButton tag={data}/> */}
         {/* {data.map((item,index)=> (
           <TagButton key={index} tag={item} state={setChecked} />
         ))} */}
-        
       </Container>
     </Box>
   );

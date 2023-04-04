@@ -23,7 +23,7 @@ import {
   FormLabel,
   RadioGroup,
   FormControlLabel,
-  Radio
+  Radio,
 } from "@mui/material";
 
 import { Titles } from "../../theme";
@@ -35,10 +35,7 @@ import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import CardItem from "../../Components/Card";
 
 // new
-import {
-  ButtonIconText,
-
-} from "../../Components/ButtonIconText/ButtonIconText";
+import { ButtonIconText } from "../../Components/ButtonIconText/ButtonIconText";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AirplayOutlinedIcon from "@mui/icons-material/AirplayOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -47,12 +44,13 @@ import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import TransgenderOutlinedIcon from "@mui/icons-material/TransgenderOutlined";
 import Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
-import { Link,Routes,Route } from "react-router-dom";
+import { Link, Routes, Route, NavLink } from "react-router-dom";
 import { CustomLinkIcon } from "../../Components/CutsomLink/CustomLink";
 import imgEdit from "../../assets/images/icons/Edit.svg";
 import styles from "./ProfileInfo.module.scss";
 import SettingUser from "../settingUser/settingUser";
 import SettingChannel from "../settingChannel/settingChannel";
+import ModalDeleteAccount from "../ModalDeleteAccount/ModalDeleteAccount";
 
 const ProfileInfoChannel = () => {
   let [hovered, setHovered] = useState(false);
@@ -69,6 +67,13 @@ const ProfileInfoChannel = () => {
       backgroundColor: theme.palette.common.black,
     },
   }));
+
+  const navLinkStyles = ({isActive}) => {
+    return {
+      backgroundColor: isActive ? "rgba(217, 217, 217, 0.5)" : null ,
+      borderRadius:  isActive ? '15px' : null,
+    }
+  }
 
   return (
     <div className={styles.profile}>
@@ -134,9 +139,7 @@ const ProfileInfoChannel = () => {
           <div>
             <IconButton className={styles.profileSectionInfoRightIconDelete}>
               <BootstrapTooltip title="Удалить канал">
-                <Link>
-                  <DeleteOutlineOutlinedIcon />
-                </Link>
+                <ModalDeleteAccount />
               </BootstrapTooltip>
             </IconButton>
           </div>
@@ -144,37 +147,38 @@ const ProfileInfoChannel = () => {
       </div>
 
       <div className={styles.profileSetting}>
-        {/* <div className={styles.profileSettingLeft}>
+        <div className={styles.profileSettingLeft}>
           <Routes>
-            <Route
-              path="/profileInfoChannel/setting/user"
-              element={<SettingUser />}
-            />
-          </Routes> 
-        </div> */}
+            <Route path="setting/user" element={<SettingUser />} />
+            <Route path="setting/channel" element={<SettingChannel />} />
+          </Routes>
+        </div>
 
-        
-        <SettingChannel/>
+        {/* <SettingChannel/> */}
 
         {/*Setting user right*/}
         <div className={styles.profileSettingRight}>
           <div className={styles.profileSettingRightTop}>
             <h3>Личные данные</h3>
             <div className={styles.profileSettingRightTopData}>
-              <CustomLinkIcon
-                to={"/profileInfoChannel/setting/user"}
-                children={"Профиль"}
-                Icon={<Diversity3OutlinedIcon />}
+              <NavLink
+                style={navLinkStyles}
                 className={styles.profileSettingRightTopDataIcon}
-              ></CustomLinkIcon>
+                to={"setting/user"}
+              >
+                <Diversity3OutlinedIcon />
+                Профиль
+              </NavLink>
             </div>
             <div className={styles.profileSettingRightTopData}>
-              <CustomLinkIcon
-                to={"/ddd"}
-                children={"Канал"}
-                Icon={<AirplayOutlinedIcon />}
+              <NavLink
+                style={navLinkStyles}
                 className={styles.profileSettingRightTopDataIcon}
-              ></CustomLinkIcon>
+                to={"setting/channel"}
+              >
+                <AirplayOutlinedIcon />
+                Канал
+              </NavLink>
             </div>
           </div>
 

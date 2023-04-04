@@ -9,7 +9,6 @@ import styles from "./settingChannel.module.scss";
 const SettingChannel = () => {
   // Details left
   const [formats, setFormats] = React.useState(() => ["bold", "italic"]);
-  const [textFormat, setTextFormat] = React.useState(() => []);
 
   const handleFormat = (event, newFormats) => {
     setFormats(newFormats);
