@@ -191,7 +191,7 @@ const Header = () => {
                   fontWeight={"bold"}
                   className={styles.menuProfileBoxLeftCompany}
                 >
-                  Ubisoft
+                  Ubisoft1
                 </Typography>
               </div>
               <div>
@@ -202,7 +202,7 @@ const Header = () => {
             <div className={styles.menuProfileItems}>
               <MenuItem onClick={() => setIsOpen(false)}>
                 <CustomLinkIcon
-                  to={"/profileDetails"}
+                  to={"/profileInfoChannel/setting/user"}
                   children={"Настройка аккаунта"}
                   Icon={<SettingsOutlinedIcon />}
                   className={styles.menuProfileItemLink}
