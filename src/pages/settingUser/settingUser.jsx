@@ -3,6 +3,7 @@ import  Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
 import { TextField,FormControl,FormLabel,RadioGroup,
 FormControlLabel,Radio,Button } from '@mui/material';
 import styles from './settingUser.module.scss';
+import InputCustom from "../../Components/InputCustom/InputCustom";
 
 const SettingUser = () => {
   return (
@@ -17,36 +18,39 @@ const SettingUser = () => {
       <div className={styles.profileSettingLeftField}>
         <div className={styles.profileSettingLeftFieldName}>Имя :</div>
         <div className={styles.profileSettingLeftFieldInput}>
-          <TextField
+          {/* <TextField
             label="Имя"
             fullWidth
             type="search"
             placeholder="Имя"
-          ></TextField>
+          ></TextField> */}
+          <InputCustom label="Имя" />
         </div>
       </div>
 
       <div className={styles.profileSettingLeftField}>
         <div className={styles.profileSettingLeftFieldName}>Фамилия :</div>
         <div className={styles.profileSettingLeftFieldInput}>
-          <TextField
+          {/* <TextField
             label="Фамилия"
             fullWidth
             type="search"
             placeholder="Фамилия"
-          ></TextField>
+          ></TextField> */}
+          <InputCustom label="Фамилия" />
         </div>
       </div>
 
       <div className={styles.profileSettingLeftField}>
         <div className={styles.profileSettingLeftFieldName}>Почта :</div>
         <div className={styles.profileSettingLeftFieldInput}>
-          <TextField
+          {/* <TextField
             label="Введите почту"
             fullWidth
             type="search"
             placeholder="bekkozha.ayan@mail.ru"
-          ></TextField>
+          ></TextField> */}
+          <InputCustom label="Введите почту"/>
         </div>
       </div>
 

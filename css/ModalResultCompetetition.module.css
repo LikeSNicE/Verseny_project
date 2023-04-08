@@ -1,0 +1,118 @@
+.modal {
+  position: relative;
+}
+
+.modalTopBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modalTopBoxIcon {
+  background-color: #000000;
+  border-radius: 15px;
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modalTopBoxIcon svg {
+  color: #fff;
+}
+
+.modalTopBoxTitle {
+  margin-left: 25px;
+}
+
+.modalTopUserBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 25px;
+}
+
+.modalTopUserBoxLeft {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modalTopUserBoxLeftTextInfo {
+  margin-left: 16px;
+}
+
+.modalTopUserBoxLeftTextInfo p:nth-child(1) {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.modalTopUserBoxLeftTextInfo p:nth-child(2) {
+  color: #696969;
+}
+
+.modalTopUserBoxRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modalTopUserBoxRightDownloadBtn {
+  margin-right: 16px;
+}
+
+.modalPopup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  background-color: #FFFAFA;
+  margin-top: 20px;
+  bottom: 0;
+  padding: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.modalPopupRemoveAllIcon {
+  margin-right: 10px;
+}
+
+.modalPopupDownload {
+  margin-right: 10px;
+}
+
+.modalTableBox {
+  overflow: auto;
+  height: 370px;
+}
+
+.modalTableBoxFieldName, .modalTableBoxFieldFile {
+  font-weight: bold !important;
+}
+
+.selectFilter {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=ModalResultCompetetition.module.css.map */

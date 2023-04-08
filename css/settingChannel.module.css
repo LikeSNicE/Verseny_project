@@ -1,0 +1,83 @@
+.channelSettingLeftTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #4a4a4e;
+  padding-bottom: 15px;
+}
+
+.channelSettingLeftTitleSubtitle {
+  margin-left: 10px;
+}
+
+.channelSettingLeftField {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.channelSettingLeftFieldName {
+  width: 110px;
+  margin-top: 20px;
+}
+
+.channelSettingLeftFieldInput {
+  width: 700px;
+  max-width: 100%;
+  margin-top: 25px;
+}
+
+.channelSettingLeftFieldInput input {
+  height: 20px !important;
+}
+
+.channelSettingLeftTitleDetails {
+  margin-top: 45px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.channelSettingLeftDetails {
+  margin-top: 30px !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.channelSettingLeftDetails div:nth-child(2) {
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 1px solid #000;
+}
+
+.channelSettingLeftDetailsBtn {
+  border-radius: 10px !important;
+  border: 2px solid #7272d8 !important;
+  color: black !important;
+}
+
+.channelSettingLeftDetailsBtn + .channelSettingLeftDetailsBtn {
+  margin-left: 10px !important;
+}
+
+.channelSettingLeftDetailsBtnBtn .selected {
+  color: red !important;
+}
+
+.channelSettingLeftTextArea {
+  height: 210px;
+  padding: 20px;
+  color: inherit;
+  resize: none;
+  width: 740px;
+  border-radius: 15px;
+  border: 3px solid #ADADD7;
+  margin-top: 20px;
+}
+/*# sourceMappingURL=settingChannel.module.css.map */

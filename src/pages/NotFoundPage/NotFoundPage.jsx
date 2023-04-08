@@ -7,24 +7,28 @@ const NotFoundPage = () => {
   return (
     <div className={styles.error}>
       <div className={styles.errorLeft}>
-        <h1 className={styles.errorLeftTitle}>Ой!,Страница не найдена</h1>
-        <p className={styles.errorLeftText}>
+        <img src={errorImg} alt="error img" />
+      </div>
+      <div className={styles.errorRight}>
+        <h1 className={styles.errorRightTitle}>Ой!,Страница не найдена</h1>
+        <p className={styles.errorRightText}>
           Мы извиняемся, похоже мы не смогли найти страницу по запросу. Может
-          быть вы ввели не правильный адрес
+          быть вы ввели не правильный адрес, либо она была удалена
         </p>
-        <Button variant='contained' sx={{
-          mt: '20px',
-          '&:hover': {
-            background: 'main'
-          }
-        }} className={styles.errorLeftButton}>
-          <Link className={styles.errorLeftLink} to={"/"}>
+        <Button
+          variant="contained"
+          sx={{
+            mt: "20px",
+            "&:hover": {
+              background: "main",
+            },
+          }}
+          className={styles.errorRightButton}
+        >
+          <Link className={styles.errorRightLink} to={"/"}>
             Назад к домашней странице
           </Link>
         </Button>
-      </div>
-      <div className={styles.errorRight}>
-        <img src={errorImg} alt="error img" />
       </div>
     </div>
   );

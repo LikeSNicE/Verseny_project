@@ -1,0 +1,130 @@
+.modalSection {
+  &Top {
+    &Icon {
+      background-color: #7272D8 !important;
+      border-radius: 10px !important;
+      width: 65px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff !important;
+    }
+  }
+  &Main{
+    &DropZone{
+      padding: 20px;
+      &Icon{
+        // for changing 
+        & img{
+          width: 1000px;
+          height: 270px;
+          object-fit: cover;
+          padding: 20px;
+        }
+        & svg{
+          font-size: 85px;
+        }
+      }
+      &Title{
+        font-size: 20px;
+        line-height: 23px;
+        width: 400px;
+        text-align: center;
+        font-weight: 500;
+      }
+      &Subtitle{
+        color: #949494;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: auto;
+      }
+      &WrapBtns{
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+.imageUploaderWrapper{
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+  //  padding: 20px;
+   .displayBox{
+     position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 400px;
+      width: 100%;
+      padding: 20px;
+      &:hover, &.dragOver {
+         .iconTextBox {
+            background-color: #ccc;
+            cursor: pointer;
+            color: #fff;
+            text-shadow: 0px 1px 0 #999;
+            .uploadIcon {
+               transform: translateY(-20px);
+               animation: bounce 1s ease-in-out infinite;
+            }
+            & h4{
+                color: #000;
+               }
+         }
+      }
+
+      .iconTextBox {
+         position: relative;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border-width: 4px;
+         border-style: dashed;
+         border-color: #000;
+         width: 100%;
+         height: 100%;
+         text-shadow: 0px 0px 0 #999;
+         transition: background-color 0.2s ease-in, color 0.2s ease-in, border-color 0.2s ease-in, text-shadow 0.2s ease-in;
+         text-align: center;
+         & h1{
+          // text-align: center;
+          margin: 0 auto 20px;
+         }
+         
+         .uploadButton, .cancelUploadButton {
+            margin: 0 10px;
+            position: relative;
+            z-index: 9999;
+            background-color: #7272D8 !important;
+         }
+        
+         .errorNotification {
+            animation: fadeInDown 0.5s;
+            position: absolute;
+            top: 20px;
+            background-color: #dfb852;
+            border-radius: 5px;
+            color: #444;
+            padding: 5px 10px;
+            p {
+               margin: 0;
+               text-shadow: none;
+            }
+         }
+      }
+      .uploadImageInput {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         opacity: 0;
+         cursor: pointer;
+      }
+   }
+}

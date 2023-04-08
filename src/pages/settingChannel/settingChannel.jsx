@@ -3,12 +3,12 @@ import AirplayOutlinedIcon from "@mui/icons-material/AirplayOutlined";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
-import TextFormatIcon from "@mui/icons-material/TextFormat";
 import { TextField, ToggleButton, ToggleButtonGroup,Button } from "@mui/material";
+import InputCustom from "../../Components/InputCustom/InputCustom";
 import styles from "./settingChannel.module.scss";
+
 const SettingChannel = () => {
-  // Details left
-  const [formats, setFormats] = React.useState(() => ["bold", "italic"]);
+  const [formats, setFormats] = React.useState(() => []);
 
   const handleFormat = (event, newFormats) => {
     setFormats(newFormats);
@@ -26,12 +26,7 @@ const SettingChannel = () => {
       <div className={styles.channelSettingLeftField}>
         <div className={styles.channelSettingLeftFieldName}>Никнеим :</div>
         <div className={styles.channelSettingLeftFieldInput}>
-          <TextField
-            label="Введите никнеим"
-            fullWidth
-            type="search"
-            placeholder="Введите никнеим"
-          />
+          <InputCustom label="Никнейм"/>
         </div>
       </div>
 

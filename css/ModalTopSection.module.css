@@ -1,0 +1,29 @@
+.modalSectionTop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 2px solid #d9d9d9;
+  padding-bottom: 20px;
+}
+
+.modalSectionTopLeft {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modalSectionTopLeftTitle {
+  margin-left: 20px;
+}
+/*# sourceMappingURL=ModalTopSection.module.css.map */

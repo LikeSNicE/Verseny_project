@@ -7,11 +7,16 @@ import {
   Box,
   IconButton,
   TextField,
+  Tooltip,
+  tooltipClasses,
 } from "@mui/material";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import styled from "@emotion/styled";
+import ModalTopSection from "../../Components/modalTopSection/modalTopSection";
+import InputCustom from '../../Components/InputCustom/InputCustom';
+
 const ModalDeleteAccount = () => {
   const styleModal = {
     position: "absolute",
@@ -24,20 +29,31 @@ const ModalDeleteAccount = () => {
     p: 4,
   };
 
-
-
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const BootstrapTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} arrow classes={{ popper: className }} placement="top" />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.arrow}`]: {
+      color: theme.palette.common.black,
+    },
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: theme.palette.common.black,
+    },
+  }));
+
   return (
     <div>
-      <IconButton
-        className={styles.modalSectionTopLeftIcon}
-        onClick={handleOpen}
-      >
-        <DeleteOutlineOutlinedIcon />
-      </IconButton>
+      <BootstrapTooltip title="Удалить канал">
+        <IconButton
+          className={styles.modalSectionTopLeftIcon}
+          onClick={handleOpen}
+        >
+          <DeleteOutlineOutlinedIcon />
+        </IconButton>
+      </BootstrapTooltip>
       <Modal
         open={open}
         onClose={handleClose}
@@ -45,21 +61,13 @@ const ModalDeleteAccount = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={styleModal}>
-          <div className={styles.modalSectionTop}>
-            <div className={styles.modalSectionTopLeft}>
-              <div className={styles.modalSectionTopLeftIcon}>
-                <DeleteOutlineOutlinedIcon />
-              </div>
-              <div className={styles.modalSectionTopLeftTitle}>
-                Удаление аккаунта
-              </div>
-            </div>
-            <div>
-              <IconButton onClick={handleClose}>
-                <CloseOutlinedIcon />
-              </IconButton>
-            </div>
-          </div>
+          <ModalTopSection
+            icon={<DeleteOutlineOutlinedIcon />}
+            iconStyles={styles.modalSectionTopLeftIcon}
+            text="Удаление аккаунта"
+            onClick={handleClose}
+            iconCross={<CloseOutlinedIcon />}
+          />
           <div className={styles.modalSectionMain}>
             <h1 className={styles.modalSectionMainTitle}>
               Для удаление вашего аккаунта,требуется подтверждение вашей почтой
@@ -76,11 +84,12 @@ const ModalDeleteAccount = () => {
             <h4 className={styles.modalSectionMainPinCode}>Пин код</h4>
 
             <form className={styles.modalSectionForm}>
-              <TextField
+              {/* <TextField
                 className={styles.modalSectionMainInputCode}
                 label="Введите пин код"
                 placeholder="Введите пин код"
-              />
+              /> */}
+              <InputCustom label='Введите пин код' type="search"/>
 
               <div className={styles.modalSectionMainWrapWrongCase}>
                 <div>Вы не получили пин код?</div>

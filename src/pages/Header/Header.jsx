@@ -58,7 +58,7 @@ function getRouteIndex(pathname) {
       return 1;
     case "/profileDetails":
       return 2;
-    case "/profileInfoChannel/setting/user":
+    case "/ddd":
       return 3;
     default:
       return 0;
@@ -80,7 +80,9 @@ const Header = () => {
       case 2:
         return Navigate("/profileDetails");
       case 3:
-        return Navigate("/profileInfoChannel/setting/user");
+        return (
+          Navigate("/ddd")
+        );
       default:
         return null;
     }
@@ -113,7 +115,7 @@ const Header = () => {
               />
               <Tab
                 component={Link}
-                to="/myconcurs"
+                to="/dddd"
                 value={1}
                 icon={<CampaignIcon />}
                 iconPosition="top"
@@ -121,7 +123,7 @@ const Header = () => {
               />
               <Tab
                 component={Link}
-                to="/profileDetails"
+                to="/dddd"
                 value={2}
                 icon={<SubscriptionsOutlinedIcon />}
                 iconPosition="top"
@@ -129,7 +131,7 @@ const Header = () => {
               />
               <Tab
                 component={Link}
-                to="/profileInfoChannel/setting/user"
+                to="/dddd"
                 value={3}
                 icon={<AirplayOutlinedIcon />}
                 iconPosition="top"

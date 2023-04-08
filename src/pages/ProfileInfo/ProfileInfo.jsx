@@ -51,6 +51,8 @@ import styles from "./ProfileInfo.module.scss";
 import SettingUser from "../settingUser/settingUser";
 import SettingChannel from "../settingChannel/settingChannel";
 import ModalDeleteAccount from "../ModalDeleteAccount/ModalDeleteAccount";
+import ModalChangeCoverChannel from "../ModalChangeCoverChannel/ModalChangeCoverChannel";
+
 
 const ProfileInfoChannel = () => {
   let [hovered, setHovered] = useState(false);
@@ -200,6 +202,7 @@ const ProfileInfoChannel = () => {
               <p>{<TransgenderOutlinedIcon />}</p>
               <p>Мужской</p>
             </div>
+            <ModalChangeCoverChannel/>
           </div>
         </div>
       </div>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../src/pages/ProfileDetails/ProfileDetails.module.scss"
+    ],
+    "names": [],
+    "file": "ProfileDetails.module.css"
+}

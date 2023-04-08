@@ -1,0 +1,29 @@
+.error {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.errorRight {
+  width: 500px;
+  text-align: center;
+  margin: 60px auto 30px;
+}
+
+.errorRightTitle {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 36px;
+}
+
+.errorRightText {
+  margin-top: 15px;
+}
+
+.errorRightLink {
+  color: #fff;
+}
+/*# sourceMappingURL=NotFoundPage.module.css.map */

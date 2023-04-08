@@ -1,0 +1,34 @@
+.cardTitle {
+  margin-bottom: 0.35em !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardInvolve {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+}
+
+.cardInvolveTitleRight {
+  margin-left: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+}
+
+.cardInvolveTitleRightIcon {
+  margin-right: 5px;
+}
+
+.cardInvolveTitleRightIcon svg {
+  vertical-align: bottom;
+}
+/*# sourceMappingURL=Card.module.css.map */
