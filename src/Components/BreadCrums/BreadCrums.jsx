@@ -14,8 +14,6 @@ const BreadCrums = (props) => {
     <div className={styles.breadcrumb}>
       <div role="presentation" onClick={handleClick}>
         <Breadcrumbs className={styles.breadcrumb} aria-label="breadcrumb">
-          {/* <Link>Мои файлы</Link>
-          <Link className={styles.breadcrumbUser}>Луценко Никита</Link> */}
           {data.map((data, index) => (
             <Link className={styles.breadcrumbLink} key={index} to={data.path}>
               {data.name}

@@ -7,7 +7,6 @@ import {
   Typography,
   Menu,
   MenuItem,
-  ListItemIcon,
   Divider,
   Stack,
   Tabs,
@@ -138,20 +137,6 @@ const Header = () => {
                 label="Мой канал"
               />
             </Tabs>
-
-            {/* <div>
-              {pages.map((page, index) => (
-                <MenuItem key={index}>
-                  <Link>{page}</Link>
-                </MenuItem>
-              ))}
-            </div> */}
-
-            {/* <Tabs value={index} onChange={handleChange}>
-              <Tab label="Home" component={Link} to="/" />
-              <Tab label="About" component={Link} to="/about" />
-              <Tab label="Contact" component={Link} to="/contact" />
-            </Tabs> */}
 
             <Avatar
               onClick={(e) => setIsOpen(true)}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./File.module.scss";
 
 export default function File({ data }) {
@@ -30,7 +31,9 @@ export default function File({ data }) {
         className={styles.iconFile}
         alt={data.type}
       />
-      <h3 className={styles.fileName}>{data.name}</h3>
+      <h3 className={styles.fileName}>
+        <Link to={data.link} className={styles.fileNameLink}>{data.name}</Link>
+      </h3>
     </div>
   );
 }

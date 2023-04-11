@@ -1,0 +1,92 @@
+@import "../styles/vars-colors/varsColors";
+
+.cardSection {
+  width: 280px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  &Top {
+    background: rgba(114, 114, 216, 0.5);
+    border-radius: 10px 10px 0px 0px;
+    color: #fff;
+    padding: 15px;
+    &Title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 12px;
+    }
+    &Box {
+      display: flex;
+      align-items: center;
+      &Icon {
+        & svg {
+          vertical-align: middle;
+        }
+      }
+      &Title {
+        margin-left: 12px;
+        margin-top: 2px;
+      }
+    }
+  }
+  &Main {
+    padding: 10px;
+  }
+  &Title {
+    @extend %textCut;
+    padding: 5px 10px;
+    border-bottom: 1px solid #d9d9d9;
+    font-weight: bold;
+  }
+
+  &BoxAuthor {
+    display: flex;
+    align-items: center;
+  }
+  &AuthorName {
+    margin-left: 12px;
+  }
+
+  &Participate {
+    display: flex;
+    align-content: inherit;
+    &Type {
+      display: flex;
+      margin-left: 7px;
+      & svg {
+        font-size: 20px;
+      }
+      & span {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &CountType {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &TabBtn {
+      width: 150px;
+      padding: 6px 8px;
+      @extend %textCut;
+      font-size: 11px;
+      font-weight: bold;
+      background: #f8b84a;
+      border-radius: 15px;
+      color: #fff;
+    }
+    &User {
+      display: flex;
+      & p {
+        margin-top: 3px;
+      }
+    }
+  }
+  &ShowUserBtn{
+    width: 100%;
+  }
+  &Participate,&BoxAuthor,&TopBox,&CountType,&ShowUserBtn{
+    margin-top: 12px;
+  }
+}

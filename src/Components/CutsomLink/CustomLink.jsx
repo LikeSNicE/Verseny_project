@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useMatch } from "react-router-dom";
-import styles from "./CustomLink.module.scss";
 
 export const CustomLink = ({ to, className, chidren }) => {
   const match = useMatch({
@@ -8,9 +7,6 @@ export const CustomLink = ({ to, className, chidren }) => {
     end: to.length === 1,
   });
 
-  // if(!isMatch){
-  //   match = false
-  // }
 
   return (
     <Link
@@ -41,7 +37,6 @@ export const CustomLinkIcon = ({ to, className, children,Icon }) => {
       }}
     >
       {Icon} {children}
-      {/* <Icon /> + {children} */}
     </Link>
   );
 };

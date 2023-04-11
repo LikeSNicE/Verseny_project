@@ -12,6 +12,7 @@ export default function TextFieldUI({
   const CssTextField = styled(TextField)({
     "& label.Mui-focused": {
       color: "#7272D8",
+      
     },
     "& label.MuiFormLabel-root": {
       fontWeight: "bold",
@@ -25,11 +26,13 @@ export default function TextFieldUI({
         border: "2px solid #B4B4B5",
         color: "#B4B4B5",
         borderRadius: "10px",
-        height: '50px'
+        height: '50px',
+        padding: '5px'
       },
       "&:hover fieldset": {
         borderColor: "#7272D8",
         color: "#7272D8",
+        
       },
       "&.Mui-focused fieldset": {
         borderColor: "#7272D8",

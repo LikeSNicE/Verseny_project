@@ -1,21 +1,17 @@
 import React from "react";
 import styles from "./ModalDeleteAccount.module.scss";
 import {
-  Button,
   Modal,
-  Typography,
   Box,
   IconButton,
-  TextField,
-  Tooltip,
-  tooltipClasses,
 } from "@mui/material";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import styled from "@emotion/styled";
 import ModalTopSection from "../../Components/modalTopSection/modalTopSection";
-import InputCustom from '../../Components/InputCustom/InputCustom';
+import InputCustom from "../../Components/InputCustom/InputCustom";
+import TooltipCustom from "../../Components/ToolTipCustom/ToolTipCustom";
+import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 
 const ModalDeleteAccount = () => {
   const styleModal = {
@@ -33,27 +29,16 @@ const ModalDeleteAccount = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const BootstrapTooltip = styled(({ className, ...props }) => (
-    <Tooltip {...props} arrow classes={{ popper: className }} placement="top" />
-  ))(({ theme }) => ({
-    [`& .${tooltipClasses.arrow}`]: {
-      color: theme.palette.common.black,
-    },
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: theme.palette.common.black,
-    },
-  }));
-
   return (
     <div>
-      <BootstrapTooltip title="Удалить канал">
+      <TooltipCustom placement="top" titleText="Удалить Текст">
         <IconButton
           className={styles.modalSectionTopLeftIcon}
           onClick={handleOpen}
         >
           <DeleteOutlineOutlinedIcon />
         </IconButton>
-      </BootstrapTooltip>
+      </TooltipCustom>
       <Modal
         open={open}
         onClose={handleClose}
@@ -84,12 +69,7 @@ const ModalDeleteAccount = () => {
             <h4 className={styles.modalSectionMainPinCode}>Пин код</h4>
 
             <form className={styles.modalSectionForm}>
-              {/* <TextField
-                className={styles.modalSectionMainInputCode}
-                label="Введите пин код"
-                placeholder="Введите пин код"
-              /> */}
-              <InputCustom label='Введите пин код' type="search"/>
+              <InputCustom label="Введите пин код" type="search" />
 
               <div className={styles.modalSectionMainWrapWrongCase}>
                 <div>Вы не получили пин код?</div>
@@ -98,18 +78,14 @@ const ModalDeleteAccount = () => {
 
               <div className={styles.modalSectionMainWrapButtons}>
                 <div className={styles.modalSectionMainWrapButtonsLeft}>
-                  <Button className={styles.modalSectionMainDeleteBtn}>
+                  <ButtonCustom className={styles.modalSectionMainDeleteBtn}>
                     Удалить аккаунт
-                  </Button>
+                  </ButtonCustom>
                 </div>
                 <div className={styles.modalSectionMainWrapButtonsRight}>
-                  <Button
-                    className={styles.modalSectionMainCancelBtn}
-                    variant="outlined"
-                    onClick={handleClose}
-                  >
+                  <ButtonCustom className={styles.modalSectionMainCancelBtn}>
                     Отмена
-                  </Button>
+                  </ButtonCustom>
                 </div>
               </div>
             </form>

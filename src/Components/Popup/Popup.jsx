@@ -1,34 +1,20 @@
-import React from 'react';
-import styles from './Popup.module.scss'
-import { ButtonIconText } from '../ButtonIconText/ButtonIconText';
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import DownloadDoneOutlinedIcon from "@mui/icons-material/DownloadDoneOutlined";
-import { Button } from '@mui/material';
-import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import React from "react";
+import styles from "./Popup.module.scss";
+import CloseIcon from "@mui/icons-material/Close";
+import TooltipCustom from "../ToolTipCustom/ToolTipCustom";
+import { Button } from "@mui/material";
 
-const Popup = () => {
+const Popup = ({ data, setData, children }) => {
+  if (!data.length) return;
   return (
-    <div className={styles.Popup}>
-      <div className={styles.PopupRemoveAllIcon}>
-        <Button>
-          <CloseOutlinedIcon />
-        </Button>
-      </div>
-      <div className={styles.PopupDownload}>
-        <ButtonIconText
-          startIcon={<DownloadDoneOutlinedIcon />}
-          background={"#696969"}
-          hoverBackground={"#696969"}
-          children={"Cкачать"}
-        />
-      </div>
-      <div className={styles.PopupDelete}>
-        <ButtonIconText
-          startIcon={<DeleteOutlineOutlinedIcon />}
-          background={"#E8533F"}
-          hoverBackground={"#E8533F"}
-          children={"Удалить"}
-        />
+    <div className={styles.popup}>
+      <div className={styles.popupContainer}>
+        <TooltipCustom titleText="Очистить выделение">
+          <Button sx={{ color: "#4A4A4E" }} onClick={setData}>
+            <CloseIcon sx={{ fontSize: "30px" }} />
+          </Button>
+        </TooltipCustom>
+        {children}
       </div>
     </div>
   );

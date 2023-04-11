@@ -1,14 +1,10 @@
-import { Avatar, Box, Button, Container, IconButton, Stack, Typography } from '@mui/material';
+import { Avatar, Box, Button, Typography } from '@mui/material';
 import React from 'react';
 import MainPhoto from '../../assets/images/header/main.jpg';
 import Star from "../../assets/images/header/star.svg";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import styles from './MainPage.module.scss';
-// import Tab from '@mui/material/Tab';
-// import TabContext from '@mui/lab/TabContext';
-// import TabList from '@mui/lab/TabList';
-// import TabPanel from '@mui/lab/TabPanel';
 
 const MainPage = () => {
   return (
@@ -17,8 +13,8 @@ const MainPage = () => {
         mt: "40px",
       }}
     >
-      <Container>
-        <img src={MainPhoto} className={styles.MainPageImage} />
+  
+        <img src={MainPhoto} className={styles.MainPageImage} alt='' />
         <Box
           sx={{
             display: "flex",
@@ -63,7 +59,7 @@ const MainPage = () => {
           </Box>
 
           <Button>
-            <img src={Star} />
+            <img src={Star} alt='' />
           </Button>
         </Box>
 
@@ -181,23 +177,7 @@ const MainPage = () => {
           классов. Проект посвящен 350-летию со дня рождения императора Петра I,
           поэтому задания связаны с периодом его правления. Участие в конкурсе
           бесплатное!
-        </Typography>
-
-        {/* <Box>
-         <TabContext> 
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Item One" value="1" />
-              <Tab label="Item Two" value="2" />
-              <Tab label="Item Three" value="3" />
-            </TabList>
-          </Box>
-          <TabPanel value="1">Item One</TabPanel>
-          <TabPanel value="2">Item Two</TabPanel>
-          <TabPanel value="3">Item Three</TabPanel>
-         </TabContext>
-      </Box> */}
-      </Container>
+        </Typography> 
     </Box>
   );
 };

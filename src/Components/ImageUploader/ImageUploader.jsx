@@ -3,24 +3,6 @@ import styles from "./ImageUploader.module.scss";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import { Button, Alert, AlertTitle, Stack } from "@mui/material";
 
-//   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-// });
-
-// const ErrorAlert = () => {
-//   const [open, setOpen] = useState(false);
-
-//   const handleClose = () => {
-//     setOpen(false);
-//   };
-
-//   return (
-//     <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-//       <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-//         This is a success message!
-//       </Alert>
-//     </Snackbar>
-//   );
-// };
 
 const ImageUploader = () => {
   const [drag, setDrag] = useState(false);
