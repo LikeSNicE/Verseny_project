@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,WAAW,CAAA;EACT,UAAU,EAAE,IAAI;CAOjB;;AARD,AAEE,WAFS,CAEP,CAAC,CAAA;EACD,KAAK,EAAE,IAAI;CACZ;;AACA,AAAD,eAAK,CAAA;EACH,WAAW,EAAE,IAAI;CAClB",
-    "sources": [
-        "../src/Components/BreadCrums/BreadCrums.module.scss"
-    ],
-    "names": [],
-    "file": "BreadCrums.module.css"
-}

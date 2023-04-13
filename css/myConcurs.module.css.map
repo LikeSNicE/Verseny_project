@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,QAAQ,CAAA;EACN,OAAO,EAAE,IAAI;EACb,qBAAqB,EAAE,cAAa;EACpC,QAAQ,EAAE,IAAI;CACf",
-    "sources": [
-        "../src/pages/myConcurs/myConcurs.module.scss"
-    ],
-    "names": [],
-    "file": "myConcurs.module.css"
-}

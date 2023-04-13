@@ -3,7 +3,9 @@ import styles from "./Select.module.scss";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
-function SelectUI({ option, state, label, name }) {
+function SelectUI(props) {
+
+  const { option, state, label, name,placeholder} = props;
 
   let classLabel = label ? styles.RadiusNone : "";
   return (
@@ -19,6 +21,7 @@ function SelectUI({ option, state, label, name }) {
         name={name}
         className={styles.MySelect  + " " + classLabel}
         onChange={(e) => state(e.target.value)}
+        placeholder={placeholder}
       >
         {option.map((value,index) => (
           <MenuItem key={index} sx={{ fontFamily: "Comfortaa" }} value={value.name}>

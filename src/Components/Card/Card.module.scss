@@ -1,4 +1,4 @@
-@import "../styles/vars-colors/varsColors";
+@import "../styles/vars/vars";
 
 .cardSection {
   width: 280px;
@@ -6,13 +6,13 @@
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
   &Top {
-    background: rgba(114, 114, 216, 0.5);
+    // background: rgba(114, 114, 216, 0.5);
     border-radius: 10px 10px 0px 0px;
     color: #fff;
     padding: 15px;
     &Title {
       font-weight: 500;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 12px;
     }
     &Box {
@@ -26,6 +26,8 @@
       &Title {
         margin-left: 12px;
         margin-top: 2px;
+        font-weight: bold;
+        font-size: 15px;
       }
     }
   }
@@ -33,8 +35,8 @@
     padding: 10px;
   }
   &Title {
-    @extend %textCut;
-    padding: 5px 10px;
+    // @extend %textCut;
+    // padding: 5px 10px;
     border-bottom: 1px solid #d9d9d9;
     font-weight: bold;
   }
@@ -45,6 +47,7 @@
   }
   &AuthorName {
     margin-left: 12px;
+    font-weight: bold;
   }
 
   &Participate {
@@ -79,7 +82,8 @@
     &User {
       display: flex;
       & p {
-        margin-top: 3px;
+        margin: 2px 0 0 5px !important;
+        font-weight: bold;
       }
     }
   }
@@ -87,6 +91,6 @@
     width: 100%;
   }
   &Participate,&BoxAuthor,&TopBox,&CountType,&ShowUserBtn{
-    margin-top: 12px;
+    margin-top: 12px !important;
   }
 }

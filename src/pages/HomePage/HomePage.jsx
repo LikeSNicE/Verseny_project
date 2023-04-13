@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import styles from "./myConcurs.module.scss";
-import SelectUI from "../../Components/Select/Select";
-import CardCustom from "../../Components/Card/Card";
-import TagButton from "../../Components/TagButton/TagButton";
+import React from "react";
+import styles from "./HomePage.module.scss";
 import FilterBlockCustom from "../../Components/FilterBlock/FilterBlock";
+import { TextField} from "@mui/material";
+import CardCustom from "../../Components/Card/Card";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 
-const MyConcurs = () => {
+const HomePage = () => {
 
-  // card
+
   const dataForCard = [
     {
       backgroundTop: "rgba(114, 114, 216, 0.5)",
@@ -67,12 +66,14 @@ const MyConcurs = () => {
   ];
 
   return (
-    <div className={styles.myconcurs}>
-      
-      <div className={styles.myconcursTitle}>Ваши участия</div>
-      <FilterBlockCustom/>
+    <div className={styles.sectionHomePage}>
+      <div className={styles.sectionHomePageTitle}>Главная</div>
+      <div className={styles.sectionHomePageSearchInput}>
+        <TextField type="search" fullWidth placeholder="Поиск" />
+      </div>
+      <FilterBlockCustom />
 
-      <div className={styles.myconcursInner}>
+      <div className={styles.sectionHomePageInner}>
         {dataForCard.map((item, index) => (
           <CardCustom
             key={index}
@@ -93,4 +94,4 @@ const MyConcurs = () => {
   );
 };
 
-export default MyConcurs;
+export default HomePage;

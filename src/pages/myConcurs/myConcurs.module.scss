@@ -1,5 +1,16 @@
-.concurs{
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  grid-gap: 20px;
+@import "../../Components/styles/vars/vars";
+.myconcurs {
+  padding: 0 0 40px;
+  &Title {
+    @extend %title;
+  }
+  &TagsFilter {
+    margin-top: 20px;
+  }
+  &Inner {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+  }
 }

@@ -35,25 +35,12 @@
     background: orange;
   }
   &.green:checked {
-    background: greenyellow;
+    background: #47E10C;
+  }
+   &.black:checked {
+    background: black;
+  }
+  &.gray:checked {
+    background: gray;
   }
 }
-
-// .tagButton:before {
-//   content: attr(label);
-//   display: inline-block;
-//   text-align: center;
-//   width: 100%;
-//   align-items: center;
-// }
-// .tagButton:checked::before {
-//   color: #fff;
-// }
-
-// .tagButton.red:checked {
-//   background: #e8533f;
-// }
-
-// .tagButton.blue:checked {
-//   background: blue;
-// }

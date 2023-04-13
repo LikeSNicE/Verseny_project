@@ -5,8 +5,9 @@ import AboutFile from "../AboutFile/AboutFile";
 import File from "../File/File";
 import SelectComboBox from "../SelectComboBox/SelectComboBox";
 import FormCheckBox from "../FormCheckBox/FormCheckBox";
+import PlaceIcon from "../../../Components/PlaceIconCustom/PlaceIconCustom";
 
-function GetElementOfObject(dataElement,control) {
+function GetElementOfObject(dataElement, control) {
   const elementMap = new Map([
     ["Avatar", <AvatarUI data={dataElement.Avatar} />],
     ["AboutFile", <AboutFile data={dataElement.AboutFile} />],
@@ -20,14 +21,15 @@ function GetElementOfObject(dataElement,control) {
         control={control}
       />,
     ],
+    ["PlaceIcon",<PlaceIcon place={dataElement.PlaceIcon}/>]
   ]);
   return elementMap.get(Object.keys(dataElement)[0]);
 }
 
-export default function GetElementTable({ dataElement,control }) {
+export default function GetElementTable({ dataElement, control }) {
   return typeof dataElement === "string" ? (
     <h3>{dataElement}</h3>
   ) : (
-    GetElementOfObject(dataElement,control)
+    GetElementOfObject(dataElement, control)
   );
 }

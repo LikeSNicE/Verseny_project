@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,gBAAgB,CAAC;EACb,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAE,MAAM;EACnB,aAAa,EAAE,iBAAiB;EAChC,cAAc,EAAE,IAAI;CASrB;;AARE,AAAD,oBAAK,CAAC;EACJ,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,QAAQ;EACpB,WAAW,EAAE,MAAM;CAIpB;;AAHE,AAAD,yBAAM,CAAC;EACL,WAAW,EAAE,IAAI;CAClB",
-    "sources": [
-        "../src/Components/modalTopSection/ModalTopSection.module.scss"
-    ],
-    "names": [],
-    "file": "ModalTopSection.module.css"
-}

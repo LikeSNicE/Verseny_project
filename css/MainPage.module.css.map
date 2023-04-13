@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,cAAc,CAAA;EACZ,KAAK,EAAE,IAAI;CACZ",
-    "sources": [
-        "../src/pages/MainPage/MainPage.module.scss"
-    ],
-    "names": [],
-    "file": "MainPage.module.css"
-}

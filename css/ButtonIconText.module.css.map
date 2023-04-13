@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,SAAS,CAAA;EACP,cAAc,EAAE,eAAe;CAChC",
-    "sources": [
-        "../src/Components/ButtonIconText/ButtonIconText.module.scss"
-    ],
-    "names": [],
-    "file": "ButtonIconText.module.css"
-}

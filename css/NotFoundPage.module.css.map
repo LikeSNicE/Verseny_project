@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,MAAM,CAAA;EACJ,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;CAiB/B;;AAhBE,AAAD,WAAM,CAAA;EACJ,KAAK,EAAE,KAAK;EACZ,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,cAAc;CAYvB;;AAXE,AAAD,gBAAM,CAAA;EACJ,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;EACjB,WAAW,EAAE,IAAI;CAClB;;AACA,AAAD,eAAK,CAAA;EACH,UAAU,EAAE,IAAI;CACjB;;AACA,AAAD,eAAK,CAAA;EACH,KAAK,EAAE,IAAI;CACZ",
-    "sources": [
-        "../src/pages/NotFoundPage/NotFoundPage.module.scss"
-    ],
-    "names": [],
-    "file": "NotFoundPage.module.css"
-}

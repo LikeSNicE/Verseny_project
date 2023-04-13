@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,MAAM,CAAA;EACJ,MAAM,EAAE,WAAW;CAMpB;;AALE,AAAD,UAAK,CAAA;EACH,WAAW,EAAE,cAAc;EAC3B,SAAS,EAAE,eAAe;EAC1B,WAAW,EAAE,eAAe;CAC/B",
-    "sources": [
-        "../src/Common/Table/Table.module.scss"
-    ],
-    "names": [],
-    "file": "Table.module.css"
-}

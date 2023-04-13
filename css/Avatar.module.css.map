@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,KAAK,CAAA;EACD,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,GAAG;EAClB,UAAU,EAAE,KAAK;EACjB,YAAY,EAAE,IAAI;CACrB;;AACD,AAAA,YAAY,CAAA;EACR,UAAU,EAAE,IAAI;CACnB;;AACD,AAAA,SAAS,CAAA;EACL,aAAa,EAAE,GAAG;CACrB;;AACD,AAAA,KAAK,CAAA;EACD,KAAK,EAAE,OAAO;CACjB",
-    "sources": [
-        "../src/Common/Table/Avatar/Avatar.module.scss"
-    ],
-    "names": [],
-    "file": "Avatar.module.css"
-}
