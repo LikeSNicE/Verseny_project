@@ -1,0 +1,35 @@
+@import '../../Components/styles/vars/vars';
+.sectionSubscriptions{
+  padding: 0 0 40px;
+  &Title{
+    @extend %title;
+  }
+
+  &Inner{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &Item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    margin-top: 20px;
+    &Info{
+      display: flex;
+      align-items: center;
+      &Company{
+        margin-left: 10px;
+      }
+    }
+    &CountSubcription{
+      display: flex;
+      & span{
+        margin-left: 10px;
+      }
+    }
+  }
+}

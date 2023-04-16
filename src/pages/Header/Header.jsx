@@ -77,7 +77,7 @@ const Header = () => {
       case 1:
         return Navigate("/myconcurs");
       case 2:
-        return Navigate("/profileDetails");
+        return Navigate("/allSubcription");
       case 3:
         return (
           Navigate("/ddd")
@@ -122,7 +122,7 @@ const Header = () => {
               />
               <Tab
                 component={Link}
-                to="/dddd"
+                to="/allSubcription"
                 value={2}
                 icon={<SubscriptionsOutlinedIcon />}
                 iconPosition="top"

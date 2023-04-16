@@ -4,6 +4,8 @@ import styles from "./settingUser.module.scss";
 import InputCustom from "../../Components/InputCustom/InputCustom";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import RadioButtonCustom from "../../Components/RadioBtn/RadioBtn";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+
 
 
 const SettingUser = () => {
@@ -14,7 +16,7 @@ const SettingUser = () => {
     <div className={styles.profileSettingLeft}>
       <div className={styles.profileSettingLeftTitle}>
         <div className={styles.profileSettingLeftTitleIcon}>
-          {<Diversity3OutlinedIcon />}
+          {<PersonOutlineOutlinedIcon />}
         </div>
         <div className={styles.profileSettingLeftTitleSubtitle}>Профиль</div>
       </div>
@@ -42,10 +44,18 @@ const SettingUser = () => {
 
       {/*Нижния часть пользователя настройки*/}
 
-      <RadioButtonCustom radio={arrayRadioBtn} formLabel="Пол" row className={styles.profileSettingLeftBtnRadioSection}/>
+      <RadioButtonCustom
+        radio={arrayRadioBtn}
+        formLabel="Пол"
+        row
+        className={styles.profileSettingLeftBtnRadioSection}
+      />
 
-      <ButtonCustom variant="contained" children={"Редактировать"} className={styles.profileSettingLeftBtnEdit} />
-     
+      <ButtonCustom
+        variant="contained"
+        children={"Редактировать"}
+        className={styles.profileSettingLeftBtnEdit}
+      />
     </div>
   );
 };

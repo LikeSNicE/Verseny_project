@@ -55,8 +55,7 @@ const ConcursDetails = (props) => {
           Дата начало - конец :
         </h1>
         <h3 className={styles.concursDetailsSectionDateSubtitle}>
-          {dataStartNumber} {dataStartMonth} {dataStartYear} - {dataEndNumber}
-          {dataEndMonth} {dataEndYear}
+          {dataStartNumber}- {dataEndNumber}
         </h3>
       </div>
 
@@ -113,7 +112,6 @@ const ConcursDetails = (props) => {
         </div>
         <div className={styles.concursDetailsSectionNavCondition}>
           <NavLink to={"condition"} style={navLinkStyles}>
-            {" "}
             Условия проведения
           </NavLink>
         </div>

@@ -1,27 +1,26 @@
 import React, { useState } from "react";
-import {
-  Button,
-  IconButton,
-} from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 
 import AirplayOutlinedIcon from "@mui/icons-material/AirplayOutlined";
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import TransgenderOutlinedIcon from "@mui/icons-material/TransgenderOutlined";
-import Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
 import { Link, Routes, Route, NavLink } from "react-router-dom";
 import imgEdit from "../../assets/images/icons/Edit.svg";
 import styles from "./ProfileSettings.module.scss";
 import SettingUser from "../settingUser/settingUser";
 import SettingChannel from "../settingChannel/settingChannel";
 import ModalDeleteAccount from "../ModalDeleteAccount/ModalDeleteAccount";
-import ModalChangeCoverChannel from "../ModalChangeCoverChannel/ModalChangeCoverChannel";
+// import ModalChangeCoverChannel from "../ModalChangeCoverChannel/ModalChangeCoverChannel";
 import TooltipCustom from "../../Components/ToolTipCustom/ToolTipCustom";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import ModalCustom from "../../Components/Modal/Modal";
+import ImageUploader from "../../Components/ImageUploader/ImageUploader";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
 const ProfileInfoChannel = () => {
   let [hovered, setHovered] = useState(false);
-
 
   const navLinkStyles = ({ isActive }) => {
     return {
@@ -38,8 +37,18 @@ const ProfileInfoChannel = () => {
           src="https://pbs.twimg.com/media/D6H3CT0WwAA5_yg.jpg"
           alt="profile header_photo"
         />
-
-        <ModalChangeCoverChannel className={styles.profileBannerEditBtn} />
+        {/* 
+        <ModalChangeCoverChannel className={styles.profileBannerEditBtn} /> */}
+        <ModalCustom
+          rootClass={styles.profileBannerEditBtn}
+          icon={<EditOutlinedIcon />}
+          iconStyles={styles.modalSectionTopIcon}
+          text="Изменить обложку"
+          btnStyles={styles.editBtn}
+          btnLabel="Изменить обложку"
+          btnStartIcon={<EditOutlinedIcon />}
+          label={<ImageUploader />}
+        />
       </div>
 
       {/*Profile Section*/}
@@ -92,9 +101,9 @@ const ProfileInfoChannel = () => {
             </Button>
           </div>
           <div>
-            <IconButton className={styles.profileSectionInfoRightIconDelete}>
-              <ModalDeleteAccount/>
-            </IconButton>
+            <div className={styles.profileSectionInfoRightIconDelete}>
+              <ModalDeleteAccount />
+            </div>
           </div>
         </div>
       </div>
@@ -119,7 +128,7 @@ const ProfileInfoChannel = () => {
                 className={styles.profileSettingRightTopDataIcon}
                 to={"setting/user"}
               >
-                <Diversity3OutlinedIcon />
+                <PersonOutlineOutlinedIcon />
                 Профиль
               </NavLink>
             </div>

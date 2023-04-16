@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "./HomePage.module.scss";
 import FilterBlockCustom from "../../Components/FilterBlock/FilterBlock";
-import { TextField} from "@mui/material";
+import { TextField,styled} from "@mui/material";
 import CardCustom from "../../Components/Card/Card";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
+import InputCustom from '../../Components/InputCustom/InputCustom';
+import SearchInputCustom from "../../Components/SeacrhInput/SearchInput";
+
 
 const HomePage = () => {
 
@@ -69,7 +72,8 @@ const HomePage = () => {
     <div className={styles.sectionHomePage}>
       <div className={styles.sectionHomePageTitle}>Главная</div>
       <div className={styles.sectionHomePageSearchInput}>
-        <TextField type="search" fullWidth placeholder="Поиск" />
+        {/* <InputCustom type="search"/> */}
+        <SearchInputCustom label="Найдется все"/>
       </div>
       <FilterBlockCustom />
 
@@ -77,16 +81,7 @@ const HomePage = () => {
         {dataForCard.map((item, index) => (
           <CardCustom
             key={index}
-            backgroundTop={item.backgroundTop}
-            iconStatus={item.iconStatus}
-            statusText={item.statusText}
-            posterCard={item.posterCard}
-            titleCard={item.titleCard}
-            photoAuthor={item.photoAuthor}
-            nameAuthor={item.nameAuthor}
-            iconType={item.iconType}
-            textType={item.textType}
-            countUser={item.countUser}
+            {...item}
           />
         ))}
       </div>

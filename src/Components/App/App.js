@@ -8,9 +8,8 @@ import MyConcurs from "../../pages/myConcurs/myConcurs";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../../pages/HomePage/HomePage";
-// import CardCustom from "../Card/Card";
-// import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
-// import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
+import AllSubcriptions from "../../pages/AllSubcriptions/AllSubcriptions";
+import Channel from "../../pages/Channel/Channel";
 
 const App = () => {
   return (
@@ -18,11 +17,13 @@ const App = () => {
       <Header />
       <Container maxWidth={"lg"}>
         <Routes>
-          <Route path="/" element={<HomePage/>}/>
+          <Route path="/" element={<HomePage />} />
           <Route path="/concurs/id/*" element={<ConcursDetailsContainer />} />
           <Route path="/profileInfoChannel/*" element={<ProfileSettings />} />
           <Route path="/concurs/id/result" element={<ResultCompetition />} />
           <Route path="/myconcurs" element={<MyConcurs />} />
+          <Route path="/allSubcription" element={<AllSubcriptions />} />
+          <Route path="/channel/id/*" element={<Channel/>}/>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Container>

@@ -12,7 +12,6 @@ export default function TextFieldUI({
   const CssTextField = styled(TextField)({
     "& label.Mui-focused": {
       color: "#7272D8",
-      
     },
     "& label.MuiFormLabel-root": {
       fontWeight: "bold",
@@ -26,18 +25,25 @@ export default function TextFieldUI({
         border: "2px solid #B4B4B5",
         color: "#B4B4B5",
         borderRadius: "10px",
-        height: '50px',
-        padding: '5px'
+        height: "50px",
       },
       "&:hover fieldset": {
         borderColor: "#7272D8",
         color: "#7272D8",
-        
       },
       "&.Mui-focused fieldset": {
         borderColor: "#7272D8",
       },
     },
+    "& .css-1g24dm6-MuiInputBase-input-MuiOutlinedInput-input": {
+      padding: "5px 10px",
+    },
+    "& .css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input":{
+      padding: '10px'
+    },
+    "& .css-1o6kl88-MuiInputBase-input-MuiOutlinedInput-input":{
+      padding: '10px'
+    } 
   });
   return (
     <CssTextField
