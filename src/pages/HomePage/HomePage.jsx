@@ -54,7 +54,7 @@ const HomePage = () => {
       countUser: "100",
     },
     {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
+      backgroundTop: "green",
       iconStatus: <AccessTimeOutlinedIcon />,
       statusText: "Через 10 часов",
       posterCard:

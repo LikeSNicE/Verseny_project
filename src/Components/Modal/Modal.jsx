@@ -14,8 +14,10 @@ const ModalCustom = (props) => {
     btnLabel,
     btnStartIcon,
     labelStyles,
-    label,
-    heightModal
+    children,
+    heightModal,
+    open,
+    setIsOpen,
   } = props;
 
   const style = {
@@ -31,7 +33,7 @@ const ModalCustom = (props) => {
     height: heightModal
   };
 
-  const [isopen, setIsOpen] = useState(false);
+
   const handleOpen = () => {
     setIsOpen(true);
   };
@@ -48,8 +50,8 @@ const ModalCustom = (props) => {
         className={btnStyles}
       />
       <Modal
-        open={isopen}
-        onClose={handleClose}
+        open={open}
+        onClose={() => setIsOpen(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -61,7 +63,7 @@ const ModalCustom = (props) => {
             iconStyles={iconStyles}
             icon={icon}
           />
-          <div className={labelStyles}>{label}</div>
+          <div className={labelStyles}>{children}</div>
         </Box>
       </Modal>
     </div>

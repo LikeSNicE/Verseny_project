@@ -9,11 +9,9 @@ const FilterBlockCustom = () => {
     { id: 1, name: "По дате" },
     { id: 2, name: "По количеству" },
   ];
-  const [date, setDate] = useState("Сегодня");
+  const [date, setDate] = useState("");
 
   // tag button
-
-  // const [checked, setChecked] = useState(null);
 
   const arrayTagButton = [
     { id: 1, name: "Точные науки", color: "red" },
@@ -33,7 +31,6 @@ const FilterBlockCustom = () => {
           state={setDate}
           label={"Показать"}
           name={"myconcurs"}
-          placeholder="Выберите категорию"
         />
       </div>
 

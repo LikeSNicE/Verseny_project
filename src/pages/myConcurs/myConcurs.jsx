@@ -6,8 +6,13 @@ import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import ModalCustom from "../../Components/Modal/Modal";
 import TableUI from "../../Common/Table/Table";
+import { useState } from "react";
 
 const MyConcurs = () => {
+
+  // modalstate
+  const [isOpenModal,setOpenModal] = useState(false);
+
   // card
   const dataForCard = [
     {
@@ -179,20 +184,21 @@ const MyConcurs = () => {
         btnLabel="Open Modal"
         labelStyles={styles.modalSectionMain}
         heightModal="700px"
-        label={
-          <div>
-            <img
-              className={styles.modalSectionImg}
-              src="https://mobimg.b-cdn.net/v3/fetch/04/04bbc582f281ec9c6a67139d1e228ff4.jpeg"
-              alt="poster of concurs"
-            />
+        open={isOpenModal}
+        setIsOpen={setOpenModal}
+      >
+        <div>
+          <img
+            className={styles.modalSectionImg}
+            src="https://mobimg.b-cdn.net/v3/fetch/04/04bbc582f281ec9c6a67139d1e228ff4.jpeg"
+            alt="poster of concurs"
+          />
 
-            <div className={styles.myconcursTable}>
-              <TableUI head={headData} data={dataTable} />
-            </div>
+          <div className={styles.myconcursTable}>
+            <TableUI head={headData} data={dataTable} />
           </div>
-        }
-      ></ModalCustom>
+        </div>
+      </ModalCustom>
     </div>
   );
 };

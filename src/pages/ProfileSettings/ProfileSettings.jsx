@@ -21,6 +21,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
 const ProfileInfoChannel = () => {
   let [hovered, setHovered] = useState(false);
+  const [isOpen,setOpen] = useState(false);
 
   const navLinkStyles = ({ isActive }) => {
     return {
@@ -47,8 +48,11 @@ const ProfileInfoChannel = () => {
           btnStyles={styles.editBtn}
           btnLabel="Изменить обложку"
           btnStartIcon={<EditOutlinedIcon />}
-          label={<ImageUploader />}
-        />
+          open={isOpen}
+          setIsOpen={setOpen}
+        >
+          <ImageUploader />
+        </ModalCustom>
       </div>
 
       {/*Profile Section*/}

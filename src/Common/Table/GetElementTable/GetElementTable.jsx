@@ -6,6 +6,8 @@ import File from "../File/File";
 import SelectComboBox from "../SelectComboBox/SelectComboBox";
 import FormCheckBox from "../FormCheckBox/FormCheckBox";
 import PlaceIcon from "../../../Components/PlaceIconCustom/PlaceIconCustom";
+import AutocompleteComponent from "../AutoComplete/AutoComplete";
+import ModalConcursShare from "../../../pages/ModalConcursShareWinner/ModalConcursShare";
 
 function GetElementOfObject(dataElement, control) {
   const elementMap = new Map([
@@ -21,7 +23,9 @@ function GetElementOfObject(dataElement, control) {
         control={control}
       />,
     ],
-    ["PlaceIcon",<PlaceIcon place={dataElement.PlaceIcon}/>]
+    ["PlaceIcon",<PlaceIcon place={dataElement.PlaceIcon}/>],
+    ["AutoComplete", <AutocompleteComponent data={dataElement.data}/>],
+    ["Modal", <ModalConcursShare/>]
   ]);
   return elementMap.get(Object.keys(dataElement)[0]);
 }
