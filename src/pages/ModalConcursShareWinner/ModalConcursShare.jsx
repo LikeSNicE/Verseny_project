@@ -26,7 +26,7 @@ import BreadCrums from "../../Components/BreadCrums/BreadCrums";
 import ModalCustom from "../../Components/Modal/Modal";
 import TableUI from "../../Common/Table/Table";
 import { headData,dataTable } from "./ModalConcursShareData";
-import {useForm} from "react-hook-form"
+import {useForm} from "react-hook-form";
 import HandleCheckBox from "../../Common/Table/HandleCheckBox/HandleCheckBox";
 
 const ModalConcursShare = () => {

@@ -18,17 +18,12 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ModalCustom from "../../Components/Modal/Modal";
 import ImageUploader from "../../Components/ImageUploader/ImageUploader";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import TabsCustom from "../../Components/TabsCustom/TabsCustom";
 
 const ProfileInfoChannel = () => {
   let [hovered, setHovered] = useState(false);
-  const [isOpen,setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
-  const navLinkStyles = ({ isActive }) => {
-    return {
-      backgroundColor: isActive ? "rgba(217, 217, 217, 0.5)" : null,
-      borderRadius: isActive ? "15px" : null,
-    };
-  };
 
   return (
     <div className={styles.profile}>
@@ -127,24 +122,23 @@ const ProfileInfoChannel = () => {
           <div className={styles.profileSettingRightTop}>
             <h3>Личные данные</h3>
             <div className={styles.profileSettingRightTopData}>
-              <NavLink
-                style={navLinkStyles}
+              <TabsCustom
                 className={styles.profileSettingRightTopDataIcon}
                 to={"setting/user"}
+                children={"Профиль"}
               >
                 <PersonOutlineOutlinedIcon />
                 Профиль
-              </NavLink>
+              </TabsCustom>
             </div>
             <div className={styles.profileSettingRightTopData}>
-              <NavLink
-                style={navLinkStyles}
+              <TabsCustom
                 className={styles.profileSettingRightTopDataIcon}
                 to={"setting/channel"}
               >
                 <AirplayOutlinedIcon />
                 Канал
-              </NavLink>
+              </TabsCustom>
             </div>
           </div>
 

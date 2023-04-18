@@ -1,18 +1,15 @@
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import React from "react";
-import MainPhoto from "../../assets/images/header/main.jpg";
-import Star from "../../assets/images/header/star.svg";
-import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
-import Diversity3Icon from "@mui/icons-material/Diversity3";
 import styles from "./ConcursDetails.module.scss";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import AddReactionOutlinedIcon from "@mui/icons-material/AddReactionOutlined";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import TableUI from "../../Common/Table/Table";
-import PlaceIconCustom from "../../Components/PlaceIconCustom/PlaceIconCustom";
-import { NavLink, Route, Routes } from "react-router-dom";
+import {Route, Routes } from "react-router-dom";
 import PropTypes from "prop-types";
-import SwitchTabStyles from "../../Components/SwitchTabStyles/SwitchTabStyles";
+import TabsCustom from "../../Components/TabsCustom/TabsCustom";
+import { headData,dataTable } from "./ConcursDetailsData";
+
 
 const ConcursDetails = (props) => {
   const {
@@ -20,11 +17,7 @@ const ConcursDetails = (props) => {
     titleMain,
     tabText,
     dataStartNumber,
-    dataStartMonth,
-    dataStartYear,
-    dataEndMonth,
     dataEndNumber,
-    dataEndYear,
     countUser,
     authorPhoto,
     authorName,
@@ -32,13 +25,7 @@ const ConcursDetails = (props) => {
     descriptionText,
   } = props;
 
-  const navLinkStyles = ({ isActive }) => {
-    return {
-      backgroundColor: isActive ? "rgba(217, 217, 217, 0.5)" : null,
-      borderRadius: isActive ? "15px" : null,
-    };
-  };
-
+ 
   return (
     <div className={styles.concursDetailsSection}>
       <div className={styles.concursDetailsSectionPoster}>
@@ -55,7 +42,7 @@ const ConcursDetails = (props) => {
           Дата начало - конец :
         </h1>
         <h3 className={styles.concursDetailsSectionDateSubtitle}>
-          {dataStartNumber}- {dataEndNumber}
+          {dataStartNumber} - {dataEndNumber}
         </h3>
       </div>
 
@@ -106,29 +93,32 @@ const ConcursDetails = (props) => {
 
       <div className={styles.concursDetailsSectionNav}>
         <div className={styles.concursDetailsSectionNavPrizes}>
-          <NavLink to={"prizes"} style={navLinkStyles}>
-            Призы консурса
-          </NavLink>
+          <TabsCustom to="prizes">Призы консурса</TabsCustom>
         </div>
         <div className={styles.concursDetailsSectionNavCondition}>
-          <NavLink to={"condition"} style={navLinkStyles}>
-            Условия проведения
-          </NavLink>
+          <TabsCustom to="condition"> Условия проведения</TabsCustom>
         </div>
       </div>
 
       <div className={styles.concursDetailsSectionSwitchTabs}>
         {/* <TableUI data={dataTable} head={headData}  /> */}
         <Routes>
-          <Route path="prizes" element={<TableDD />} />
-          <Route path="condition" element={<DD />} />
+          <Route path="prizes" element={<TableBlock />} />
+          <Route path="condition" element={<FeatuersBlock />} />
         </Routes>
       </div>
     </div>
   );
 };
 
-const DD = () => {
+const TableBlock = () => {
+   
+  return (
+     <TableUI data={dataTable} head={headData}/> 
+  );
+}
+
+const FeatuersBlock = () => {
   return (
     <div className={styles.conditionSection}>
       <h3 className={styles.conditionSectionTitle}>Условия конкурса : </h3>
@@ -136,75 +126,14 @@ const DD = () => {
         <li className={styles.conditionSectionListItem}>
           Для участия в розыгрыше необходимо: - Подписаться на группу: *ссылка*;
           - Сделать репост этой записи.
-        </li>
-        <li className={styles.conditionSectionListItem}>
-          Выполни условия: - Подпишись на группу; - Поставь лайк на эту и 2
-          предыдущие записи; - Сделай репост этой записи к себе на страницу и не
-          удаляй до завершения конкурса.
-        </li>
-        <li className={styles.conditionSectionListItem}>
-          Условия участия: - Быть участником группы; - Поставить лайк этому
-          посту; - Сделать репост к себе на страницу; - Написать "участвую в
-          конкурсе" в комментариях.
-        </li>
-        <li className={styles.conditionSectionListItem}>
-          Условия участия: - Быть участником группы; - Поставить лайк этому
-          посту; - Сделать репост к себе на страницу; - Написать "участвую в
-          конкурсе" в комментариях.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur corporis repudiandae veniam perferendis sit! Accusamus autem debitis impedit exercitationem quam? Nesciunt minima, qui quibusdam in culpa quod similique facere provident?
+          Nisi repellendus ducimus ipsam cupiditate dolorem omnis. Recusandae maiores quam iste velit commodi veritatis facilis reprehenderit nisi dolorem vel officiis sint et, a illo, molestiae doloremque, aperiam voluptatum deserunt voluptas.
         </li>
       </ul>
     </div>
   );
-}
+};
 
-const TableDD = () => {
-    const headData = ["Место", "Приз"];
-  const dataTable = [
-    [
-      {
-        PlaceIcon: "1",
-      },
-      {
-        AboutFile: ["100000 тенге"],
-      },
-    ],
-    [
-      {
-        PlaceIcon: "2",
-      },
-      {
-        AboutFile: ["50000 тенге"],
-      },
-    ],
-    [
-      {
-        PlaceIcon: "3",
-      },
-      {
-        AboutFile: ["25000 тенге"],
-      },
-    ],
-    [
-      {
-        PlaceIcon: "4",
-      },
-      {
-        AboutFile: ["12500 тенге"],
-      },
-    ],
-    [
-      {
-        PlaceIcon: "5",
-      },
-      {
-        AboutFile: ["6250 тенге"],
-      },
-    ],
-  ];
-  return (
-     <TableUI data={dataTable} head={headData}/> 
-  );
-}
 
 export default ConcursDetails;
 

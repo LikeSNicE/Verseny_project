@@ -4,7 +4,6 @@ import {
 
 import React, { useState } from "react";
 import styles from "./ConcursShare.module.scss";
-import TagScience from "../../Components/TagScience/tagScience";
 import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
 
 
@@ -17,7 +16,6 @@ import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import { Link, Route, Routes } from "react-router-dom";
 import ConcursSharePhotos from "./ConcursSharePhotos/ConcursSharePhotos";
 import ConcursShareFiles from "./ConcursShareFiles/ConcursShareFiles";
-import { CustomLink } from "../../Components/CutsomLink/CustomLink";
 import ConcursShareTop from "./ConcursShareTop/ConcursShareTop";
 
 

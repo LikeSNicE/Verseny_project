@@ -13,6 +13,9 @@ import Channel from "../../pages/Channel/Channel";
 import TestPages from "../../pages/testPages/testPages";
 import ConcursShareWinners from "../../pages/ConcursShareWinners/ConcursShareWinners";
 import ConcursShare from "../../pages/ConcursShare/ConcursShare";
+import ConcursShareUser from "../../pages/ConcursShareUser/ConcursShareUser";
+import MyChannel from "../../pages/MyChannel/MyChannel";
+
 
 const App = () => {
   return (
@@ -27,10 +30,15 @@ const App = () => {
             path="/mychannel/concurs-share/id/*"
             element={<ConcursShare />}
           />
-          <Route path="/mychannel/concurs-share/concurs-winner/id" element={<ConcursShareWinners/>}/>
+          <Route
+            path="/mychannel/concurs-share/concurs-winner/id"
+            element={<ConcursShareWinners />}
+          />
+          <Route path="/mychannel/concurs-share/id/user/id" element={<ConcursShareUser/>} />
           <Route path="/myconcurs" element={<MyConcurs />} />
           <Route path="/allSubcription" element={<AllSubcriptions />} />
           <Route path="/channel/id/*" element={<Channel />} />
+          <Route path="/mychannel" element={<MyChannel/>}/>
           <Route path="/test" element={<TestPages />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

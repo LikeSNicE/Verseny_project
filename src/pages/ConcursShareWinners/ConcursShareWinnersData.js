@@ -1,7 +1,7 @@
 import ModalConcursShare from "../ModalConcursShareWinner/ModalConcursShare";
 
 export const top100Films = [
-  {title: 'Данил',year: 2003},
+  { title: "Данил", year: 2003 },
   { title: "The Shawshank Redemption", year: 1994 },
   { title: "The Godfather", year: 1972 },
   { title: "The Godfather: Part II", year: 1974 },
@@ -129,9 +129,7 @@ export const top100Films = [
   { title: "Monty Python and the Holy Grail", year: 1975 },
 ];
 
-
-
-export const headData = ["Место", "Пользователь", "Выбор победителя",""];
+export const headData = ["Место", "Пользователь", "Выбор победителя", ""];
 export const dataTable = [
   [
     {
@@ -150,18 +148,14 @@ export const dataTable = [
       AutoComplete: top100Films,
     },
     {
-      Modal: <ModalConcursShare/>
-    }
+      Modal: <ModalConcursShare />,
+    },
   ],
   [
     {
       PlaceIcon: "2",
     },
     {
-      AboutFile: ["50000 тенге"],
-    },
-    {
-      //import Avatar from './UI/User/Avatar';
       Avatar: {
         photo:
           "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
@@ -170,59 +164,12 @@ export const dataTable = [
         email: "bekkozha.ayan@mail.ru",
       },
     },
-  ],
-  [
     {
-      PlaceIcon: "3",
+      AutoComplete: top100Films,
     },
     {
-      AboutFile: ["25000 тенге"],
-    },
-    {
-      //import Avatar from './UI/User/Avatar';
-      Avatar: {
-        photo:
-          "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
-        alt: "logo",
-        name: "Беккожа Аян",
-        email: "bekkozha.ayan@mail.ru",
-      },
+      Modal: <ModalConcursShare />,
     },
   ],
-  [
-    {
-      PlaceIcon: "4",
-    },
-    {
-      AboutFile: ["12500 тенге"],
-    },
-    {
-      //import Avatar from './UI/User/Avatar';
-      Avatar: {
-        photo:
-          "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
-        alt: "logo",
-        name: "Беккожа Аян",
-        email: "bekkozha.ayan@mail.ru",
-      },
-    },
-  ],
-  [
-    {
-      PlaceIcon: "5",
-    },
-    {
-      AboutFile: ["6250 тенге"],
-    },
-    {
-      //import Avatar from './UI/User/Avatar';
-      Avatar: {
-        photo:
-          "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
-        alt: "logo",
-        name: "Беккожа Аян",
-        email: "bekkozha.ayan@mail.ru",
-      },
-    },
-  ],
+
 ];

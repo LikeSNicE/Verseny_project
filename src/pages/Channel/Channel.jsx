@@ -8,6 +8,7 @@ import FilterBlockCustom from "../../Components/FilterBlock/FilterBlock";
 import CardCustom from "../../Components/Card/Card";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
+import TabsCustom from "../../Components/TabsCustom/TabsCustom";
 
 const Channel = () => {
   const navLinkStyles = ({ isActive }) => {
@@ -57,20 +58,18 @@ const Channel = () => {
         </div>
 
         <div className={styles.sectionChannelInfoBottom}>
-          <NavLink
+          <TabsCustom
             className={styles.sectionChannelInfoBottomLink}
-            style={navLinkStyles}
             to="all-concurs"
           >
             Конкурсы
-          </NavLink>
-          <NavLink
+          </TabsCustom>
+          <TabsCustom
             className={styles.sectionChannelInfoBottomLink}
-            style={navLinkStyles}
             to="feauters"
           >
             Подробности
-          </NavLink>
+          </TabsCustom>
         </div>
       </div>
 

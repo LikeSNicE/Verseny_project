@@ -20,7 +20,7 @@ const dataTable = [
       File: {
         type: "folder",
         name: "Беккожа Аян",
-        link: "./Мои Файлы/Беккожа Аян",
+        link: "/mychannel/concurs-share/id/user/id",
       },
     },
     {
@@ -45,7 +45,7 @@ const dataTable = [
       File: {
         type: "folder",
         name: "Луценко Никита",
-        link: "./Мои Файлы/Луценко Никита",
+        link: "/mychannel/concurs-share/id/user/id",
       },
     },
     {
@@ -65,8 +65,11 @@ const dataTable = [
 const head = ["", "Имя", "О файле", "Пользователь"];
 
   const dataBreads = [
-    { id: "1", name: "Мои Файлы", path: "/to" },
-    // { id: "2", name: "Луценко Никита" },
+    {
+      id: "1",
+      name: "Мои Файлы",
+      path: "/mychannel/concurs-share/id/files",
+    },
   ];
 
   // new Table
