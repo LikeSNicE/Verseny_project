@@ -5,16 +5,14 @@ import AirplayOutlinedIcon from "@mui/icons-material/AirplayOutlined";
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import TransgenderOutlinedIcon from "@mui/icons-material/TransgenderOutlined";
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import { Link, Routes, Route, NavLink } from "react-router-dom";
 import imgEdit from "../../assets/images/icons/Edit.svg";
 import styles from "./ProfileSettings.module.scss";
 import SettingUser from "../settingUser/settingUser";
 import SettingChannel from "../settingChannel/settingChannel";
 import ModalDeleteAccount from "../ModalDeleteAccount/ModalDeleteAccount";
-// import ModalChangeCoverChannel from "../ModalChangeCoverChannel/ModalChangeCoverChannel";
 import TooltipCustom from "../../Components/ToolTipCustom/ToolTipCustom";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ModalCustom from "../../Components/Modal/Modal";
 import ImageUploader from "../../Components/ImageUploader/ImageUploader";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
@@ -39,9 +37,9 @@ const ProfileInfoChannel = () => {
           rootClass={styles.profileBannerEditBtn}
           icon={<EditOutlinedIcon />}
           iconStyles={styles.modalSectionTopIcon}
-          text="Изменить обложку"
+          text="Изменить баннер"
           btnStyles={styles.editBtn}
-          btnLabel="Изменить обложку"
+          btnLabel="Изменить баннер"
           btnStartIcon={<EditOutlinedIcon />}
           open={isOpen}
           setIsOpen={setOpen}
@@ -157,7 +155,7 @@ const ProfileInfoChannel = () => {
               <p>bekkozha.ayan@mail.ru</p>
             </div>
             <div className={styles.profileSettingRightBottomData}>
-              <p>{<TransgenderOutlinedIcon />}</p>
+              <p>{<PersonOutlineOutlinedIcon />}</p>
               <p>Мужской</p>
             </div>
           </div>

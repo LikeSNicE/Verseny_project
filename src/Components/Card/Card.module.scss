@@ -70,12 +70,12 @@
     justify-content: space-between;
     align-items: center;
     &TabBtn {
-      width: 180;
+      // width: 180;
       padding: 6px 8px;
       @extend %textCut;
       font-size: 12px;
       font-weight: bold;
-      background: #f8b84a;
+      background: red;
       border-radius: 15px;
       color: #fff;
     }

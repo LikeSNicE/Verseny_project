@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import styles from "./ImageUploader.module.scss";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import { Button, Alert, AlertTitle, Stack } from "@mui/material";
+import ButtonCustom from "../ButtonCustom/ButtonCustom";
 
 
 const ImageUploader = () => {
@@ -56,23 +57,11 @@ const ImageUploader = () => {
     return (
       <div>
         <div className={styles.imagePreview}>
-          <img onChange={handleAddImage}  src={image} alt="preview" />
+          <img onChange={handleAddImage} src={image} alt="preview" />
 
           <div className={styles.imagePreviewBoxBtns}>
-            <Button
-              variant="contained"
-              className="upload-button btn btn-primary"
-              onClick={() => console.log("Загрузка...")}
-            >
-              Загрузить
-            </Button>
-            <Button
-              variant="contained"
-              className="cancel-upload-button btn btn-warning"
-              onClick={handleRemoveImage}
-            >
-              Отменить
-            </Button>
+            <ButtonCustom>Загрузить</ButtonCustom>
+            <ButtonCustom>Отменить</ButtonCustom>
           </div>
         </div>
       </div>

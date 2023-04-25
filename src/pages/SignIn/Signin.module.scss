@@ -1,0 +1,19 @@
+.containerSignin{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.containerSigninLogo{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.containerSigninForm{
+    display: grid;
+    gap: 30px;
+    max-width: 500px;
+}

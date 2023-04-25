@@ -36,3 +36,32 @@
     }
   }
 }
+
+.sectionLogin{
+  &ToolBar{
+    display: flex !important;
+    justify-content: flex-end !important;
+    & button + button {
+      margin-left: 10px;
+    }
+  }
+  &BtnLogin{
+    & a{
+      color: #fff;
+    }
+  }
+  &BtnRegistration{
+     border-color: #7272D8 !important;
+    & a{
+      color: #7272D8;
+    }
+    &:hover{
+      background-color: #fff !important;
+      color: #7272D8;
+    }
+  }
+  &BtnRegistration,&BtnLogin{
+    min-height: 40px;
+    border-radius: 5px !important;
+  }
+}

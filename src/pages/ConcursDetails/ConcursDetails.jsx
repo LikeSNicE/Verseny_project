@@ -9,6 +9,7 @@ import {Route, Routes } from "react-router-dom";
 import PropTypes from "prop-types";
 import TabsCustom from "../../Components/TabsCustom/TabsCustom";
 import { headData,dataTable } from "./ConcursDetailsData";
+import TagScience from "../../Components/TagScience/tagScience";
 
 
 const ConcursDetails = (props) => {
@@ -34,7 +35,12 @@ const ConcursDetails = (props) => {
 
       <div className={styles.concursDetailsSectionBoxTitles}>
         <div className={styles.concursDetailsSectionTitleMain}>{titleMain}</div>
-        <div className={styles.concursDetailsSectionTab}>{tabText}</div>
+        <div className={styles.concursDetailsSectionTab}>
+          <TagScience
+            className={styles.concursDetailsSectionTabItem}
+            children={tabText}
+          />
+        </div>
       </div>
 
       <div className={styles.concursDetailsSectionDate}>

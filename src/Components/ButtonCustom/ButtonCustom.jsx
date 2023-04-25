@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { LoadingButton } from "@mui/lab";
 
-const BootstrapButton = styled(Button)({
+const BootstrapButton = styled(LoadingButton)({
   boxShadow: "none",
   textTransform: "none",
-  fontSize: 14,
-  padding: "10px",
+  fontSize: 16,
+  padding: "6px 12px",
   borderRadius: "10px",
   lineHeight: 1.5,
   backgroundColor: "black",
@@ -17,6 +18,9 @@ const BootstrapButton = styled(Button)({
   "&:active": {
     boxShadow: "none",
     backgroundColor: "#ADADD7",
+  },
+  "&:disabled": {
+    background: "rgba(114, 114, 216, 0.3) !important",
   },
 
   //Outlined
@@ -65,6 +69,16 @@ const BootstrapButton = styled(Button)({
     background: "#F8B84A",
     color: "#fff",
   },
+  "&.MuiLoadingButton-loading": {
+    color: "#fff",
+    padding: "18px",
+    background: "rgba(114, 114, 216, 0.4)",
+  },
+  ".MuiCircularProgress-root": {
+    color: "#fff",
+    width: "20px !important",
+    height: "20px !important",
+  },
 });
 
 function ButtonCustom({
@@ -74,19 +88,26 @@ function ButtonCustom({
   startIcon,
   endIcon,
   onClick,
+  style,
+  type = "button",
+  loading = false,
   className,
+  disabled = false,
 }) {
   return (
     <BootstrapButton
-      
-      className={className}
       variant={variant}
       color={color}
       startIcon={startIcon}
       onClick={onClick}
+      loading={loading}
+      type={type}
+      style={style}
+      className={className}
       endIcon={endIcon}
+      disabled={disabled}
     >
-      {children}
+      {loading ? "" : children}
     </BootstrapButton>
   );
 }

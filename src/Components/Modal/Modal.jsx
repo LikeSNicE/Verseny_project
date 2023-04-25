@@ -3,6 +3,9 @@ import styles from "./Modal.module.scss";
 import { Box, Modal, IconButton } from "@mui/material";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import ButtonCustom from "../ButtonCustom/ButtonCustom";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+
 
 const ModalCustom = (props) => {
   const {
@@ -18,6 +21,7 @@ const ModalCustom = (props) => {
     heightModal,
     open,
     setIsOpen,
+    className,
   } = props;
 
   const style = {
@@ -30,7 +34,8 @@ const ModalCustom = (props) => {
     boxShadow: 24,
     p: 4,
     overflow: "auto",
-    height: heightModal
+    height: heightModal,
+    borderRadius: '10px',
   };
 
 
@@ -50,6 +55,7 @@ const ModalCustom = (props) => {
         className={btnStyles}
       />
       <Modal
+        className={className}
         open={open}
         onClose={() => setIsOpen(false)}
         aria-labelledby="modal-modal-title"
@@ -76,12 +82,14 @@ const ModalTopSection = (props) => {
   const { onClick, text, icon, iconStyles } = props;
   return (
     <div className={styles.modalSectionTop}>
-      <div className={styles.modalSectionTopLeft}>
-        <div className={iconStyles}>{icon}</div>
-        <div className={styles.modalSectionTopLeftTitle}>{text}</div>
-      </div>
-      <div>
-        <IconButton onClick={onClick}>{<CloseOutlinedIcon />}</IconButton>
+      <div className={styles.modalSectionTopContainer}>
+        <div className={styles.modalSectionTopLeft}>
+          <div className={iconStyles}>{icon}</div>
+          <div className={styles.modalSectionTopLeftTitle}>{text}</div>
+        </div>
+        <div>
+          <IconButton onClick={onClick}>{<CloseOutlinedIcon />}</IconButton>
+        </div>
       </div>
     </div>
   );

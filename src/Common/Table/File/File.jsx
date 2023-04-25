@@ -6,9 +6,9 @@ export default function File({ data }) {
   const fileMap = new Map([
     ["folder", "https://img.icons8.com/color/256/folder-invoices.png"],
     [
-      "txt",
-      "https://img.icons8.com/external-others-iconmarket/256/external-txt-file-types-others-iconmarket-3.png",
-    ],
+        "txt",
+        "https://img.icons8.com/external-others-iconmarket/256/external-txt-file-types-others-iconmarket-3.png",
+      ],
     [
       "css",
       "https://img.icons8.com/external-others-iconmarket/256/external-css-file-types-others-iconmarket-3.png",

@@ -5,6 +5,7 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 
 import ButtonCustom from "../ButtonCustom/ButtonCustom";
 import { Link } from "react-router-dom";
+import TagScience from "../TagScience/tagScience";
 
 const CardCustom = ({
   backgroundTop,
@@ -62,7 +63,7 @@ const CardCustom = ({
 
         <div className={styles.cardSectionCountType}>
           <div className={styles.cardSectionCountTypeTabBtn}>
-            Гуманитарные науки
+            <TagScience children={'Гумманитарные науки'}/>
           </div>
           <div className={styles.cardSectionCountTypeUser}>
             <PeopleOutlineIcon />

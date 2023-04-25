@@ -1,59 +1,67 @@
-@import '../../Components/styles/vars/vars';
+@import "../../Components/styles/vars/vars";
 
-.sectionConcursShareUser{
+.sectionConcursShareUser {
   padding: 0 0 40px;
-  &Title{
+  &Title {
     font-size: 32px;
     font-weight: bold;
   }
-  &Block{
+  &Block {
     display: flex;
     margin-top: 30px;
-    &Info{
+    &Info {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      &Name{
+      &Img {
+        width: 55px !important;
+        height: 55px !important;
+        & img {
+          width: 55px !important;
+          height: 55px !important;
+        }
+      }
+      &Name {
+        font-size: 20px;
         margin-top: 10px;
         font-weight: bold;
       }
     }
-    &Upload{
+    &Upload {
       margin-left: 60px;
-      &Date{
-        & span{
-          color: #4A4A4E;
+      &Date {
+        & span {
+          color: #4a4a4e;
         }
       }
-      &TypeParticipate{
+      &TypeParticipate {
         margin: 20px 0 10px;
       }
-      &Btns{
-        button + button{
+      &Btns {
+        button + button {
           margin-left: 10px;
         }
-        & button:nth-child(2){
-          background-color: #E8533F !important;
+        & button:nth-child(2) {
+          background-color: #e8533f !important;
         }
       }
-      
     }
   }
-  &Choose{
+  &Choose {
     display: flex;
     margin-top: 55px;
     align-items: center;
   }
-  &Select{
+  &Select {
     margin-right: 25px;
   }
-  &ChooseBtn{
-    & a{
+  &ChooseBtn {
+    & a {
       color: #fff;
     }
   }
-  &Table{
+  &Table {
     margin-top: 20px;
   }
 }

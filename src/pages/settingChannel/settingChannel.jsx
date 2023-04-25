@@ -6,6 +6,7 @@ import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import { TextField, ToggleButton, ToggleButtonGroup,Button } from "@mui/material";
 import InputCustom from "../../Components/InputCustom/InputCustom";
 import styles from "./settingChannel.module.scss";
+import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 
 const SettingChannel = () => {
   const [formats, setFormats] = React.useState(() => []);
@@ -26,7 +27,7 @@ const SettingChannel = () => {
       <div className={styles.channelSettingLeftField}>
         <div className={styles.channelSettingLeftFieldName}>Никнеим :</div>
         <div className={styles.channelSettingLeftFieldInput}>
-          <InputCustom label="Никнейм"/>
+          <InputCustom label="Никнейм" />
         </div>
       </div>
 
@@ -79,7 +80,7 @@ const SettingChannel = () => {
         placeholder="Введите подробности"
         className={styles.channelSettingLeftTextArea}
       ></textarea>
-      <Button
+      {/* <Button
         variant="contained"
         sx={{
           display: "block",
@@ -91,7 +92,10 @@ const SettingChannel = () => {
         }}
       >
         Редактировать
-      </Button>
+      </Button> */}
+      <ButtonCustom className={styles.channelSettingLeftBtn}>
+        Редактировать
+      </ButtonCustom>
     </div>
   );
 };

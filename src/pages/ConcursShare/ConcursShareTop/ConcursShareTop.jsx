@@ -9,22 +9,6 @@ const ConcursShareTop = () => {
       name: "Математика",
       backgroundColor: "orange",
     },
-    {
-      name: "Английский язык",
-      backgroundColor: "red",
-    },
-    {
-      name: "Физика",
-      backgroundColor: "green",
-    },
-    {
-      name: "Геометрия",
-      backgroundColor: "purple",
-    },
-    {
-      name: "Астнавтика dsadasdasddasdasdasd",
-      backgroundColor: "blueviolet",
-    },
   ];
 
   return (

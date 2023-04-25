@@ -2,13 +2,17 @@ import { TextField } from "@mui/material";
 import React from "react";
 import { styled } from "@mui/material/styles";
 
-export default function TextFieldUI({
-  label,
-  variant,
-  id,
-  style,
-  type = "text",
-}) {
+export default function TextFieldUI(props) {
+  const {
+    label,
+    variant,
+    id,
+    style,
+    type = "text",
+    register,
+    errorText = "",
+  } = props;
+
   const CssTextField = styled(TextField)({
     "& label.Mui-focused": {
       color: "#7272D8",
@@ -38,12 +42,12 @@ export default function TextFieldUI({
     "& .css-1g24dm6-MuiInputBase-input-MuiOutlinedInput-input": {
       padding: "5px 10px",
     },
-    "& .css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input":{
-      padding: '10px'
+    "& .css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input": {
+      padding: "10px",
     },
-    "& .css-1o6kl88-MuiInputBase-input-MuiOutlinedInput-input":{
-      padding: '10px'
-    } 
+    "& .css-1o6kl88-MuiInputBase-input-MuiOutlinedInput-input": {
+      padding: "10px",
+    },
   });
   return (
     <CssTextField
@@ -53,6 +57,9 @@ export default function TextFieldUI({
       variant={variant}
       label={label}
       size="small"
+      error={errorText.length !== 0}
+      helperText={errorText.length !== 0 && errorText}
+      {...register}
     />
   );
 }
