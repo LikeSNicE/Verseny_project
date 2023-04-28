@@ -6,7 +6,7 @@ import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlin
 import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import { Link, Routes, Route, NavLink } from "react-router-dom";
+import { Link, Routes, Route, } from "react-router-dom";
 import imgEdit from "../../assets/images/icons/Edit.svg";
 import styles from "./ProfileSettings.module.scss";
 import SettingUser from "../settingUser/settingUser";
@@ -17,6 +17,7 @@ import ModalCustom from "../../Components/Modal/Modal";
 import ImageUploader from "../../Components/ImageUploader/ImageUploader";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import TabsCustom from "../../Components/TabsCustom/TabsCustom";
+
 
 const ProfileInfoChannel = () => {
   let [hovered, setHovered] = useState(false);

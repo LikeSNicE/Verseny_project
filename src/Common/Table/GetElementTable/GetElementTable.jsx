@@ -8,6 +8,7 @@ import FormCheckBox from "../FormCheckBox/FormCheckBox";
 import PlaceIcon from "../../../Components/PlaceIconCustom/PlaceIconCustom";
 import AutocompleteComponent from "../AutoComplete/AutoComplete";
 import ModalConcursShare from "../../../pages/ModalConcursShareWinner/ModalConcursShare";
+import TextFieldUI from "../../../Components/InputCustom/InputCustom";
 
 function GetElementOfObject(dataElement, control) {
   const elementMap = new Map([
@@ -25,7 +26,8 @@ function GetElementOfObject(dataElement, control) {
     ],
     ["PlaceIcon",<PlaceIcon place={dataElement.PlaceIcon}/>],
     ["AutoComplete", <AutocompleteComponent data={dataElement.data}/>],
-    ["Modal", <ModalConcursShare/>]
+    ["Modal", <ModalConcursShare/>],
+    ["TextField", <TextFieldUI label={dataElement.TextField}/>]
   ]);
   return elementMap.get(Object.keys(dataElement)[0]);
 }

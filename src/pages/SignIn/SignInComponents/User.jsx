@@ -34,10 +34,6 @@ export default function User() {
         radio={["Мужской", "Женский"]}
         formLabel={"Пол"}
       />
-      {/* <TextFieldUI
-         register={contextOutlet.register("email")}
-        label="Введите email"
-      /> */}
       <TextFieldUI
         type="email"
         label="Email"

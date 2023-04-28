@@ -14,7 +14,7 @@ const TagScience = ({children,className,backgroundColor}) => {
         borderRadius: "10px",
         color: "#fff",
         fontSize: '12px',
-        height: '30px'
+        height: '30px',
       }}
     >
       {children}

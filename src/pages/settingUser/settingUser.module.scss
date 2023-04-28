@@ -3,7 +3,7 @@
   &Title {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #4a4a4e;
+    border-bottom: 2px solid #4a4a4e;
     padding-bottom: 15px;
     &Subtitle {
       margin-left: 10px;
@@ -18,14 +18,14 @@
     &Input {
       max-width: 700px;
       width: 100%;
-      margin-top: 25px;
+      margin-top: 25px !important;
       input {
         height: 20px !important;
       }
     }
   }
   &BtnRadioSection{
-    margin-top: 40px ;
+    margin-top: 40px !important;
   }
   &BtnEdit{
     display: block !important;

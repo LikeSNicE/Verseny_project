@@ -20,6 +20,13 @@ import ChannelForm from "../../pages/SignIn/SignInComponents/Channel";
 import Signin from "../../pages/SignIn/Signin";
 import ForgotPassword from "../../pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "../../pages/ResetPassword/ResetPassword";
+import CreateComponent from "../../pages/MyChannel/create/Create";
+import MainConcurs from "../../pages/MyChannel/create/pages/main";
+import DescriptionConcurs from "../../pages/MyChannel/create/pages/description";
+import Prizes from "../../pages/MyChannel/create/pages/prizes";
+import ConditionsConcurs from "../../pages/MyChannel/create/pages/conditions";
+import ResultConcurs from "../../pages/MyChannel/create/pages/result";
+import UpdateConcurs from "../../pages/MyChannel/update/Update";
 
 const App = () => {
   return (
@@ -46,13 +53,26 @@ const App = () => {
           <Route path="/allSubcription" element={<AllSubcriptions />} />
           <Route path="/channel/id/*" element={<Channel />} />
           <Route path="/mychannel" element={<MyChannel />} />
+          <Route path="/mychannel/create/*" element={<CreateComponent />}>
+            <Route path="main" element={<MainConcurs />} />
+            <Route path="description" element={<DescriptionConcurs />} />
+            <Route path="prizes" element={<Prizes />} />
+            <Route path="conditions" element={<ConditionsConcurs />} />
+            <Route path="result" element={<ResultConcurs />} />
+          </Route>
+          <Route path="/mychannel/update/*" element={<UpdateConcurs/>}>
+            {/* <Route path="main/id" element />
+            <Route path="description/id" element />
+            <Route path="prizes/id" element />
+            <Route path="conditions/id" element /> */}
+          </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signin/*" element={<Signin />}>
             <Route path="user" element={<User />} />
             <Route path="channel" element={<ChannelForm />} />
           </Route>
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword/>}/>
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/test" element={<TestPages />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

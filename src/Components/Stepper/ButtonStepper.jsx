@@ -16,7 +16,11 @@ export default function ButtonStepper({
   if (activeStep === 1)
     return (
       <Link
-        to={stepRoute[indexStep + 1].path}
+        to={
+          stepRoute[indexStep + 1] === undefined
+            ? ""
+            : stepRoute[indexStep + 1].path
+        }
         style={{ textDecoration: "none" }}
       >
         <ButtonCustom
@@ -34,7 +38,11 @@ export default function ButtonStepper({
       <Grid container spacing={2}>
         <Grid item xs={4}>
           <Link
-            to={stepRoute[indexStep - 1].path}
+            to={
+              stepRoute[indexStep - 1] === undefined
+                ? ""
+                : stepRoute[indexStep - 1].path
+            }
             style={{ textDecoration: "none" }}
           >
             <ButtonCustom
@@ -57,7 +65,11 @@ export default function ButtonStepper({
     <Grid container spacing={2}>
       <Grid item xs={4}>
         <Link
-          to={stepRoute[indexStep - 1].path}
+          to={
+            stepRoute[indexStep - 1] === undefined
+              ? ""
+              : stepRoute[indexStep - 1].path
+          }
           style={{ textDecoration: "none" }}
         >
           <ButtonCustom
@@ -71,7 +83,11 @@ export default function ButtonStepper({
       </Grid>
       <Grid item xs={8}>
         <Link
-          to={stepRoute[indexStep + 1].path}
+          to={
+            stepRoute[indexStep + 1] === undefined
+              ? ""
+              : stepRoute[indexStep + 1].path
+          }
           style={{ textDecoration: "none" }}
         >
           <ButtonCustom
