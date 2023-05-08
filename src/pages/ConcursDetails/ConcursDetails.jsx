@@ -5,7 +5,7 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import AddReactionOutlinedIcon from "@mui/icons-material/AddReactionOutlined";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import TableUI from "../../Common/Table/Table";
-import {Route, Routes } from "react-router-dom";
+import {Route, Routes, useLocation,Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import TabsCustom from "../../Components/TabsCustom/TabsCustom";
 import { headData,dataTable } from "./ConcursDetailsData";
@@ -26,6 +26,12 @@ const ConcursDetails = (props) => {
     descriptionText,
   } = props;
 
+  const location = useLocation();
+
+     if (location.pathname === "/concurs/id") {
+       return <Navigate to={"/concurs/id/prizes"} />;
+     }
+
  
   return (
     <div className={styles.concursDetailsSection}>
@@ -37,7 +43,6 @@ const ConcursDetails = (props) => {
         <div className={styles.concursDetailsSectionTitleMain}>{titleMain}</div>
         <div className={styles.concursDetailsSectionTab}>
           <TagScience
-            className={styles.concursDetailsSectionTabItem}
             children={tabText}
           />
         </div>

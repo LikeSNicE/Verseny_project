@@ -23,7 +23,11 @@ const ModalDeleteAccount = () => {
             className={styles.modalSectionTopLeftIcon}
             onClick={() => setIsOpen(true)}
           >
-            <DeleteOutlineOutlinedIcon />
+            <TooltipCustom placement='top' titleText="Удалить канал">
+              <div style={{display: 'flex'}}>
+                <DeleteOutlineOutlinedIcon/>
+              </div>
+            </TooltipCustom>
           </div>
         }
         open={isOpen}
@@ -61,7 +65,9 @@ const ModalDeleteAccountChildren = ({setOpen}) => {
 
           <div className={styles.modalSectionMainWrapWrongCase}>
             <div>Вы не получили пин код?</div>
-            <div>Повторить</div>
+            <ButtonCustom className={styles.modalSectionMainWrapWrongCaseBtn}>
+              Повторить
+            </ButtonCustom>
           </div>
 
           <div className={styles.modalSectionMainWrapButtons}>
@@ -71,7 +77,10 @@ const ModalDeleteAccountChildren = ({setOpen}) => {
               </ButtonCustom>
             </div>
             <div className={styles.modalSectionMainWrapButtonsRight}>
-              <ButtonCustom onClick={() => setOpen(false)} className={styles.modalSectionMainCancelBtn}>
+              <ButtonCustom
+                onClick={() => setOpen(false)}
+                className={styles.modalSectionMainCancelBtn}
+              >
                 Отмена
               </ButtonCustom>
             </div>

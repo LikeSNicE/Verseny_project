@@ -8,7 +8,7 @@ const ConcursDetailsContainer = () => {
     {
        posterMain:"https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
       titleMain:"Конкурс открытки «Герои сказок А. С. Пушкина поздравляют с Новым годом и Рождеством»",
-      tabText: "Гумманитарные науки",
+      tabText: "dsadasdasdasdaddasdasdas",
       dataStartNumber: "22 Февраля 2022",
       dataEndNumber: "01 марта 2023",
       countUser: 20,

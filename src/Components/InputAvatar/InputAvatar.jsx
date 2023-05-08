@@ -54,7 +54,8 @@ export default function InputAvatar({getAvatar,defaultAvatar}) {
         onClose={onClose}
         onCrop={onCrop}
         cropRadius={0}
-        
+        className={'ss-1'}
+        imageHeight={400}
       />
       <ButtonCustom
         variant="outlined"

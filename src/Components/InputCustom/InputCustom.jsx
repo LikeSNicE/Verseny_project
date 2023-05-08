@@ -22,7 +22,7 @@ export default function TextFieldUI(props) {
       fontSize: "16px",
     },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "green",
+      borderBottomColor: "#7272d8",
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {

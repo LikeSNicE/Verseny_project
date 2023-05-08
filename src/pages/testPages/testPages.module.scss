@@ -1,92 +1,107 @@
-// modal
-.modal {
-  position: relative;
-  &TopBox {
-    display: flex;
-    margin-bottom: 10px;
-    align-items: center;
-    &Icon {
-      background-color: #000000;
-      border-radius: 15px;
-      padding: 5px;
-      width: 50px;
-      height: 50px;
+.sectionSubscription {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 40px;
+  &List {
+    max-width: 360px;
+    width: 100%;
+    padding: 25px 15px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 80vh;
+    &Top {
       display: flex;
       align-items: center;
-      justify-content: center;
-      & svg {
-        color: #fff;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #d9d9d9;
+      & span {
+        margin-right: 11px;
+        & svg {
+          vertical-align: text-bottom;
+          fill: #000;
+        }
       }
+      &Title {
+        font-weight: 700;
+        font-size: 20px;
+      }
+    }
+    &Search {
+      margin-top: 20px;
+    }
+
+    &Channels {
+      margin-top: 30px;
+      height: 600px;
+      overflow: auto;
+      & a {
+        color: #000 !important;
+      }
+      &Item {
+        display: flex;
+        padding: 10px;
+        margin: 10px 10px 10px 0;
+        border-radius: 10px;
+        &Img {
+          margin-right: 20px;
+        }
+        &CompanyInfo {
+          word-wrap: break-word !important;
+          width: 250px !important;
+        }
+      }
+    }
+  }
+  &InfoChannel {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    margin-left: 20px;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    padding: 20px;
+    // text-align: center;
+    border-radius: 10px;
+    width: 100%;
+    & img {
+      margin: 0 auto;
     }
     &Title {
-      margin-left: 25px;
+      margin: 40px 0 20px;
+      font-size: 24px;
+      font-weight: bold;
     }
   }
-  &TopUserBox{
+}
+
+.sectionSubInfoChannel {
+  &Top {
     display: flex;
     justify-content: space-between;
-    margin-top: 25px;
-    &Left{
-      display: flex;
-      &TextInfo{
-        margin-left: 16px;
-        & p:nth-child(1){
-          font-weight: bold;
-          font-size: 16px;
-        }
-        & p:nth-child(2){
-          color: #696969;
+    border-bottom: 2px solid #d9d9d9;
+    padding-bottom: 15px;
+    &Left {
+      display: flex !important;
+      & a {
+        display: flex !important;
+        color: #000 !important;
+        font-weight: bold !important;
+        & div:nth-child(2) {
+          margin-left: 10px;
         }
       }
     }
-    &Right{
-      display: flex;
-      &DownloadBtn{
-        margin-right: 16px;
-      }
-      
-    }
+    
   }
-  &Popup{
-    display: flex;
-    // position: absolute;
-    position: fixed;
-    background-color: #FFFAFA;
+  &Concurs{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 10px;
     margin-top: 20px;
-    bottom: 0;
-    padding: 10px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    &RemoveAllIcon{
-      margin-right: 10px;
-    }
-    &Download{
-      margin-right: 10px;
-    }
-  }
-  &TableBox{
-    overflow: auto;
-    height: 370px;
-    &FieldName,
-    &FieldFile{
-      font-weight: bold !important;
-    }
   }
 }
 
-// Select filter
-.selectFilter{
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
+
+.tabs{
+  margin: 15px 0 30px !important;
 }
-
-// .breadcrumb{
-//   margin-top: 40px;
-//   & a{
-//     color: #000;
-//   }
-//   &User{
-//     font-weight: bold;
-//   }
-// }
-

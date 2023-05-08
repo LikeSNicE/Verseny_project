@@ -3,7 +3,7 @@ import styles from "./Channel.module.scss";
 import { Avatar } from "@mui/material";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import FilterBlockCustom from "../../Components/FilterBlock/FilterBlock";
 import CardCustom from "../../Components/Card/Card";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
@@ -11,13 +11,13 @@ import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import TabsCustom from "../../Components/TabsCustom/TabsCustom";
 
 const Channel = () => {
-  const navLinkStyles = ({ isActive }) => {
-    return {
-      backgroundColor: isActive ? "rgba(217, 217, 217, 0.5)" : null,
-      borderRadius: isActive ? "15px" : null,
-    };
-  };
+  const location = useLocation();
 
+  if (location.pathname === "/channel/id"){
+    return <Navigate to={"/channel/id/all-concurs"} />;
+  }else{
+    
+  }
   return (
     <div className={styles.sectionChannel}>
       <img

@@ -17,7 +17,7 @@ const CardCustom = ({
   nameAuthor,
   iconType,
   textType,
-  countUser
+  countUser,
 }) => {
   return (
     <div className={styles.cardSection}>
@@ -34,9 +34,11 @@ const CardCustom = ({
         </div>
       </div>
 
-      <div className={styles.cardSectionImg}>
-        <img src={posterCard} alt="card poster" />
-      </div>
+      <img
+        className={styles.cardSectionImg}
+        src={posterCard}
+        alt="card poster"
+      />
 
       <div className={styles.cardSectionMain}>
         <div className={styles.cardSectionTitle}>{titleCard}</div>
@@ -63,7 +65,7 @@ const CardCustom = ({
 
         <div className={styles.cardSectionCountType}>
           <div className={styles.cardSectionCountTypeTabBtn}>
-            <TagScience children={'Гумманитарные науки'}/>
+            <TagScience children={"Гумманитарные науки"} />
           </div>
           <div className={styles.cardSectionCountTypeUser}>
             <PeopleOutlineIcon />
@@ -71,7 +73,7 @@ const CardCustom = ({
           </div>
         </div>
 
-        <Link to={'/concurs/id/prizes'}>
+        <Link to={"/concurs/id"}>
           <ButtonCustom
             className={styles.cardSectionShowUserBtn}
             startIcon={<PeopleOutlineIcon />}

@@ -56,9 +56,9 @@ function getRouteIndex(pathname) {
       return 0;
     case "/myconcurs":
       return 1;
-    case "/profileDetails":
+    case "/allSubcription":
       return 2;
-    case "/mychannel":
+    case "/mychannel/all-concurs":
       return 3;
     default:
       return 0;
@@ -80,7 +80,7 @@ const Header = ({login}) => {
       case 2:
         return Navigate("/allSubcription");
       case 3:
-        return Navigate("/mychannel");
+        return Navigate("/mychannel/all-concurs");
       default:
         return null;
     }
@@ -130,7 +130,7 @@ const Header = ({login}) => {
                 />
                 <Tab
                   component={Link}
-                  to="/mychannel"
+                  to="/mychannel/all-concurs"
                   value={3}
                   icon={<AirplayOutlinedIcon />}
                   iconPosition="top"

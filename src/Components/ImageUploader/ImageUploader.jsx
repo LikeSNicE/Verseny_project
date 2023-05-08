@@ -61,7 +61,7 @@ const ImageUploader = () => {
 
           <div className={styles.imagePreviewBoxBtns}>
             <ButtonCustom>Загрузить</ButtonCustom>
-            <ButtonCustom>Отменить</ButtonCustom>
+            <ButtonCustom onClick={handleRemoveImage}>Отменить</ButtonCustom>
           </div>
         </div>
       </div>

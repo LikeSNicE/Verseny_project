@@ -31,8 +31,6 @@
       padding-bottom: 10px;
     }
     &TabBlock {
-      // margin-top: 20px;
-      // margin: 10px 0;
       & a {
         padding: 10px;
         color: #000;
@@ -61,19 +59,20 @@
 
 .sectionUpdateMain {
   &NameChanging {
+    margin-top: 30px !important;
     & input {
       font-size: 24px !important;
-      padding: 0 5px !important;
     }
   }
   &TitleData {
     font-size: 24px;
     font-weight: bold;
-    margin-top: 25px;
+    margin-top: 50px;
   }
-  &BtnBox {
+  &BtnChange {
     display: flex;
     justify-content: flex-end;
+    
   }
 }
 

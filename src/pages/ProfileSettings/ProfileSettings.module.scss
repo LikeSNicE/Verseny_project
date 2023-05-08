@@ -10,7 +10,6 @@
       z-index: 10 !important;
       justify-content: start;
       transition: all 1s !important;
-      
     }
 
     &BtnText {
@@ -183,8 +182,7 @@
   }
 }
 
-
-// 
+//
 
 .modalSection {
   &Top {
@@ -324,6 +322,8 @@
   background: rgba(165, 165, 165, 0.3) !important;
   justify-content: start;
   transition: all 1s !important;
+  color: #fff !important;
+  text-transform: inherit !important;
   &:hover {
     background: rgba(165, 165, 165, 1) !important;
     border-radius: 10px !important;

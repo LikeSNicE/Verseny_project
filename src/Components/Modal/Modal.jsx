@@ -1,11 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Modal.module.scss";
-import { Box, Modal, IconButton } from "@mui/material";
+import {
+  Box,
+  Modal,
+  IconButton,
+  AppBar,
+  Toolbar,
+  useScrollTrigger,
+  Button,
+} from "@mui/material";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import ButtonCustom from "../ButtonCustom/ButtonCustom";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 
+function ElevationScroll(props) {
+  const { children, window } = props;
+
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined,
+  });
+
+  return React.cloneElement(children, {
+    elevation: trigger ? 4 : 0,
+  });
+}
 
 const ModalCustom = (props) => {
   const {
@@ -13,9 +32,9 @@ const ModalCustom = (props) => {
     icon,
     iconStyles,
     text,
-    btnStyles,
-    btnLabel,
-    btnStartIcon,
+    btnStyles = "",
+    btnLabel = "",
+    btnStartIcon = "",
     labelStyles,
     children,
     heightModal,
@@ -28,16 +47,15 @@ const ModalCustom = (props) => {
     position: "absolute",
     top: "50%",
     left: "50%",
+    width: "60%",
     transform: "translate(-50%, -50%)",
-    width: "80%",
     bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
     overflow: "auto",
     height: heightModal,
-    borderRadius: '10px',
+    borderRadius: "10px",
   };
-
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -48,7 +66,7 @@ const ModalCustom = (props) => {
 
   return (
     <div className={rootClass}>
-      <ButtonCustom
+      <Button
         onClick={handleOpen}
         startIcon={btnStartIcon}
         children={btnLabel}
@@ -69,7 +87,11 @@ const ModalCustom = (props) => {
             iconStyles={iconStyles}
             icon={icon}
           />
-          <div className={labelStyles}>{children}</div>
+          <div className={labelStyles}>
+            <div className={styles.modalContainer}>
+              <div>{children}</div>
+            </div>
+          </div>
         </Box>
       </Modal>
     </div>

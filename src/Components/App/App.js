@@ -52,7 +52,7 @@ const App = () => {
           <Route path="/myconcurs" element={<MyConcurs />} />
           <Route path="/allSubcription" element={<AllSubcriptions />} />
           <Route path="/channel/id/*" element={<Channel />} />
-          <Route path="/mychannel" element={<MyChannel />} />
+          <Route path="/mychannel/*" element={<MyChannel />} />
           <Route path="/mychannel/create/*" element={<CreateComponent />}>
             <Route path="main" element={<MainConcurs />} />
             <Route path="description" element={<DescriptionConcurs />} />
@@ -60,12 +60,7 @@ const App = () => {
             <Route path="conditions" element={<ConditionsConcurs />} />
             <Route path="result" element={<ResultConcurs />} />
           </Route>
-          <Route path="/mychannel/update/*" element={<UpdateConcurs/>}>
-            {/* <Route path="main/id" element />
-            <Route path="description/id" element />
-            <Route path="prizes/id" element />
-            <Route path="conditions/id" element /> */}
-          </Route>
+          <Route path="/mychannel/update/*" element={<UpdateConcurs/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/signin/*" element={<Signin />}>
             <Route path="user" element={<User />} />
@@ -73,7 +68,7 @@ const App = () => {
           </Route>
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/test" element={<TestPages />} />
+          <Route path="/test/*" element={<TestPages />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Container>

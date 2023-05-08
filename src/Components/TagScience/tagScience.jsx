@@ -1,20 +1,19 @@
-import React from 'react';
-import { Typography } from '@mui/material';
+import React from "react";
+import { Typography } from "@mui/material";
 
-const TagScience = ({children,className,backgroundColor}) => {
-
-
-
+const TagScience = ({ children}) => {
   return (
     <Typography
-      className={className}
-      sx={{
-        background: backgroundColor,
+      style={{
         padding: "5px 8px",
         borderRadius: "10px",
         color: "#fff",
-        fontSize: '12px',
-        height: '30px',
+        fontSize: "12px",
+        height: "30px",
+        width: "150px",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
       }}
     >
       {children}

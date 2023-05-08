@@ -18,8 +18,8 @@ const HomePage = () => {
       iconStatus: <AccessTimeOutlinedIcon />,
       statusText: "Через 10 часов",
       posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
+        "https://mobimg.b-cdn.net/v3/fetch/54/54e7919c1cfb738311b2bad4e510bb89.jpeg",
+      titleCard: "Конкурс открытки «Герои сказок А.Cdsadasdasdadadsaddddd",
       photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
       nameAuthor: "Ubisoft",
       iconType: <ImageOutlinedIcon />,

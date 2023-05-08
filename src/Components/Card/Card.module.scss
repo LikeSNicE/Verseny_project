@@ -6,7 +6,6 @@
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
   &Top {
-    // background: rgba(114, 114, 216, 0.5);
     border-radius: 10px 10px 0px 0px;
     color: #fff;
     padding: 15px;
@@ -31,14 +30,22 @@
       }
     }
   }
+  &Img {
+    // height: 170px;
+      height: 170px;
+      width: 100%;
+      object-fit: cover;
+  }
   &Main {
     padding: 10px;
   }
   &Title {
-    // @extend %textCut;
-    // padding: 5px 10px;
     border-bottom: 1px solid #d9d9d9;
     font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px 0px;
   }
 
   &BoxAuthor {
@@ -70,7 +77,6 @@
     justify-content: space-between;
     align-items: center;
     &TabBtn {
-      // width: 180;
       padding: 6px 8px;
       @extend %textCut;
       font-size: 12px;
@@ -87,10 +93,14 @@
       }
     }
   }
-  &ShowUserBtn{
+  &ShowUserBtn {
     width: 100%;
   }
-  &Participate,&BoxAuthor,&TopBox,&CountType,&ShowUserBtn{
+  &Participate,
+  &BoxAuthor,
+  &TopBox,
+  &CountType,
+  &ShowUserBtn {
     margin-top: 12px !important;
   }
 }

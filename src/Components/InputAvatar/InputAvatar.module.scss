@@ -34,3 +34,13 @@
     display: grid;
     gap: 20px;
 }
+
+.ss-1{
+  & canvas{
+    background-color: #000;
+  }
+}
+
+.konvajs-content{
+  width: 100%;
+}

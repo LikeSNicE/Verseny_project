@@ -14,6 +14,7 @@ const FilterBlockCustom = () => {
   // tag button
 
   const arrayTagButton = [
+    {id: 1,name:"Все",color: "red"},
     { id: 1, name: "Точные науки", color: "red" },
     { id: 2, name: "Програмирования", color: "blue" },
     { id: 3, name: "Рисования", color: "gray" },
