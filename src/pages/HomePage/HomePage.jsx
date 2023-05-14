@@ -1,70 +1,39 @@
 import React from "react";
 import styles from "./HomePage.module.scss";
 import FilterBlockCustom from "../../Components/FilterBlock/FilterBlock";
-import { TextField,styled} from "@mui/material";
-import CardCustom from "../../Components/Card/Card";
-import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
-import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
-import InputCustom from '../../Components/InputCustom/InputCustom';
 import SearchInputCustom from "../../Components/SeacrhInput/SearchInput";
-
+import CardCustom from "../../Components/CardCutsom/CardCustom";
 
 const HomePage = () => {
-
-
-  const dataForCard = [
+  const dataCard = [
     {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://mobimg.b-cdn.net/v3/fetch/54/54e7919c1cfb738311b2bad4e510bb89.jpeg",
-      titleCard: "Конкурс открытки «Герои сказок А.Cdsadasdasdadadsaddddd",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
-    },
-    {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
-    },
-
-    {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
-    },
-    {
-      backgroundTop: "green",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
+      term: {
+        icon: "ErrorOutlineOutlined",
+        //ErrorOutlineOutlined
+        //CheckCircleOutlined
+        message: "Конкурс окончен",
+        state: "Success",
+       
+      },
+      concurs: {
+        img: "https://i.pinimg.com/736x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg",
+        name: "Конкурс открытки «Герои сказок А. С. Пушкина поздравляют с Новым годом и Рождеством»",
+        type: {
+          text: "Фото",
+          icon: "InsertPhotoOutlined",
+        },
+        participant: 20,
+        category: {
+          text: "Гуманитарные науки",
+          color: "#F8B84A",
+        },
+      },
+      author: {
+        avatar:
+          "https://images-ext-1.discordapp.net/external/_DY1anSP2XlAmXYBaMmEcmqza9Wa_yVtbdZy4tBHvoU/%3Fs%3D400%26u%3D6c92f6fc049c598f01fa6554b575c74dbf789e07%26v%3D4%2522%2C/https/avatars.githubusercontent.com/u/85344443",
+        name: "Ubisoft",
+        link: "/channel/Ubisoft",
+      },
     },
   ];
 
@@ -72,17 +41,14 @@ const HomePage = () => {
     <div className={styles.sectionHomePage}>
       <div className={styles.sectionHomePageTitle}>Главная</div>
       <div className={styles.sectionHomePageSearchInput}>
-        {/* <InputCustom type="search"/> */}
-        <SearchInputCustom label="Найдется все"/>
+        <SearchInputCustom label="Найдется все" />
       </div>
       <FilterBlockCustom />
 
       <div className={styles.sectionHomePageInner}>
-        {dataForCard.map((item, index) => (
-          <CardCustom
-            key={index}
-            {...item}
-          />
+        {dataCard.map((item, index) => (
+          <CardCustom role={"admin"} key={index} dataCard={item}>
+          </CardCustom>
         ))}
       </div>
     </div>

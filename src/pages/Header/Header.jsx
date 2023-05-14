@@ -16,17 +16,13 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import styles from "./Header.module.scss";
-import IconButton from "@mui/material/IconButton";
-import CampaignIcon from "@mui/icons-material/Campaign";
-import HomeIcon from "@mui/icons-material/Home";
-import Logo from "../../assets/images/icons/logo.svg";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
-import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
-import AirplayOutlinedIcon from "@mui/icons-material/AirplayOutlined";
 import { Link, useLocation, Navigate } from "react-router-dom";
 import { CustomLinkIcon } from "../../Components/CutsomLink/CustomLink";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
+import IconButton from "@mui/material/IconButton";
+import Logo from "../../assets/images/icons/logo.svg";
+import * as Muicon from "@mui/icons-material";
+
 
 const ToolBarStyled = styled(Toolbar)({
   background: "#fff",
@@ -58,7 +54,7 @@ function getRouteIndex(pathname) {
       return 1;
     case "/allSubcription":
       return 2;
-    case "/mychannel/all-concurs":
+    case "/mychannel":
       return 3;
     default:
       return 0;
@@ -80,7 +76,7 @@ const Header = ({login}) => {
       case 2:
         return Navigate("/allSubcription");
       case 3:
-        return Navigate("/mychannel/all-concurs");
+        return Navigate("/mychannel");
       default:
         return null;
     }
@@ -88,6 +84,14 @@ const Header = ({login}) => {
 
   // menu profile
   const [isOpen, setIsOpen] = useState(false);
+
+  const CampaignIcon = Muicon["CampaignOutlined"];
+  const HomeIcon = Muicon["HomeOutlined"];
+  const SettingIcon = Muicon["SettingsOutlined"];
+  const ExitToAppIcon = Muicon["ExitToAppOutlined"];
+  const SubscriptionIcon = Muicon["SubscriptionsOutlined"]
+  const AirplayOutlinedIcon = Muicon["AirplayOutlined"];
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -124,13 +128,13 @@ const Header = ({login}) => {
                   component={Link}
                   to="/allSubcription"
                   value={2}
-                  icon={<SubscriptionsOutlinedIcon />}
+                  icon={<SubscriptionIcon />}
                   iconPosition="top"
                   label="Подписки"
                 />
                 <Tab
                   component={Link}
-                  to="/mychannel/all-concurs"
+                  to="/mychannel"
                   value={3}
                   icon={<AirplayOutlinedIcon />}
                   iconPosition="top"
@@ -191,7 +195,7 @@ const Header = ({login}) => {
                   <CustomLinkIcon
                     to={"/profileInfoChannel/setting/user"}
                     children={"Настройка аккаунта"}
-                    Icon={<SettingsOutlinedIcon />}
+                    Icon={<SettingIcon />}
                     className={styles.menuProfileItemLink}
                   ></CustomLinkIcon>
                 </MenuItem>
@@ -199,7 +203,7 @@ const Header = ({login}) => {
                   <CustomLinkIcon
                     to={"/ddd"}
                     children={"Выйти"}
-                    Icon={<ExitToAppOutlinedIcon />}
+                    Icon={<ExitToAppIcon />}
                     className={styles.menuProfileItemLink}
                   ></CustomLinkIcon>
                 </MenuItem>

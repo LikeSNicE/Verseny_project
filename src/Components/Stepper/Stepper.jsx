@@ -26,6 +26,7 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
       borderTopWidth: 3,
       borderRadius: 1,
     },
+  
   }));
 
 

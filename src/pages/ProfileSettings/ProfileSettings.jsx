@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { Button, IconButton } from "@mui/material";
 
-import AirplayOutlinedIcon from "@mui/icons-material/AirplayOutlined";
-import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
-import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import { Link, Routes, Route,useLocation,Navigate } from "react-router-dom";
+import { Link, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import imgEdit from "../../assets/images/icons/Edit.svg";
 import styles from "./ProfileSettings.module.scss";
 import SettingUser from "../settingUser/settingUser";
@@ -15,17 +10,25 @@ import ModalDeleteAccount from "../ModalDeleteAccount/ModalDeleteAccount";
 import TooltipCustom from "../../Components/ToolTipCustom/ToolTipCustom";
 import ModalCustom from "../../Components/Modal/Modal";
 import ImageUploader from "../../Components/ImageUploader/ImageUploader";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import TabsCustom from "../../Components/TabsCustom/TabsCustom";
+import TabsCustom from "../../Components/TabsNavCustom/TabsNavCustom";
+import * as Muicon from "@mui/icons-material";
 
 const ProfileInfoChannel = () => {
   const [isOpen, setOpen] = useState(false);
 
   const location = useLocation();
 
-    if (location.pathname === "/profileInfoChannel/setting") {
-      return <Navigate to={"/profileInfoChannel/setting/user"} />;
-    }
+  if (location.pathname === "/profileInfoChannel/setting") {
+    return <Navigate to={"/profileInfoChannel/setting/user"} />;
+  }
+
+  // icons
+  const AirplayOutlinedIcon = Muicon["AirplayOutlined"];
+  const AlternateEmailOutlinedIcon = Muicon["AlternateEmailOutlined"];
+  const CardGiftcardOutlinedIcon = Muicon["CardGiftcardOutlined"];
+  const EmailOutlinedIcon = Muicon["EmailOutlined"];
+  const PersonOutlineOutlinedIcon = Muicon["PersonOutlineOutlined"];
+  const EditOutlinedIcon = Muicon["EditOutlined"];
 
   return (
     <div className={styles.profile}>
@@ -37,9 +40,9 @@ const ProfileInfoChannel = () => {
         />
         <ModalCustom
           rootClass={styles.profileBannerEditBtn}
-          icon={<EditOutlinedIcon />}
-          iconStyles={styles.modalSectionTopIcon}
-          text="Изменить баннер"
+          iconTopSection={<EditOutlinedIcon />}
+          iconTopSectionStyles={styles.modalSectionTopIcon}
+          iconTopSectiontext="Изменить баннер"
           btnStyles={styles.editBtn}
           btnLabel="Изменить баннер"
           btnStartIcon={<EditOutlinedIcon />}
@@ -59,12 +62,12 @@ const ProfileInfoChannel = () => {
               component="label"
               className={styles.profileSectionInfoLeftLink}
             >
-            (
-                <img
-                  className={styles.profileSectionInfoLeftImg}
-                  src="https://cybersport.metaratings.ru/storage/images/e6/ee/e6ee248b4bceb7fdf71a74871f8a0425.jpg"
-                  alt=""
-                />
+              (
+              <img
+                className={styles.profileSectionInfoLeftImg}
+                src="https://cybersport.metaratings.ru/storage/images/e6/ee/e6ee248b4bceb7fdf71a74871f8a0425.jpg"
+                alt=""
+              />
               )
             </Button>
           </div>

@@ -30,15 +30,15 @@ import UpdateConcurs from "../../pages/MyChannel/update/Update";
 
 const App = () => {
   return (
-    <Box>
+    <div>
       <Header login={true} />
       <Container maxWidth={"lg"}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/concurs/id/*" element={<ConcursDetailsContainer />} />
+          <Route path="/" element={<HomePage role="guest" />} />
+          <Route path="/concurs/id" element={<ConcursDetailsContainer />} />
           <Route path="/profileInfoChannel/*" element={<ProfileSettings />} />
           <Route
-            path="/mychannel/concurs-share/id/*"
+            path="/mychannel/concurs-share/id"
             element={<ConcursShare />}
           />
           <Route
@@ -50,9 +50,9 @@ const App = () => {
             element={<ConcursShareUser />}
           />
           <Route path="/myconcurs" element={<MyConcurs />} />
-          <Route path="/allSubcription" element={<AllSubcriptions />} />
-          <Route path="/channel/id/*" element={<Channel />} />
-          <Route path="/mychannel/*" element={<MyChannel />} />
+          <Route path="/allSubcription/*" element={<AllSubcriptions />} />
+          <Route path="/channel/id" element={<Channel  />} />
+          <Route path="/mychannel" element={<MyChannel />} />
           <Route path="/mychannel/create/*" element={<CreateComponent />}>
             <Route path="main" element={<MainConcurs />} />
             <Route path="description" element={<DescriptionConcurs />} />
@@ -72,7 +72,7 @@ const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Container>
-    </Box>
+    </div>
   );
 };
 

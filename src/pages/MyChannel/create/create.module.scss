@@ -10,7 +10,46 @@
 .sectionCreate {
   &BtnNext {
     max-width: 400px;
+    margin-top: 40px !important;
+    text-align: left !important;
+  }
+}
+
+.sectionMain {
+  &BlockFirst {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &Input {
+      max-width: 350px;
+      width: 100%;
+    }
+  }
+  &TitleDate {
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #000;
     margin-top: 40px;
+  }
+
+  &BlockSecond{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    &Date{
+      display: flex;
+      & span{
+        text-align: center;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  &TextWarning{
+    color: #E8533F;
+    text-align: right;
+    margin-top: 10px;
   }
 }
 
@@ -35,6 +74,7 @@
     font-weight: bold;
     margin-top: 60px;
     font-size: 24px;
+    margin-bottom: 15px;
   }
   &Table {
     margin-top: 60px;

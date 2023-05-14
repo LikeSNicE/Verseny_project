@@ -1,40 +1,94 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import styles from "./Select.module.scss";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
+import {
+  styled,
+  InputBase,
+  MenuItem,
+  FormControl,
+  Select,
+} from "@mui/material";
+
+const BootstrapInput = styled(InputBase)(({ theme }) => ({
+  "& .MuiInputBase-input": {
+    borderRadius: 10,
+    position: "relative",
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #B4B4B5",
+    fontSize: 16,
+    padding: "8px 10px",
+    transition: theme.transitions.create(["border-color", "box-shadow"]),
+    "&:focus": {
+      borderRadius: 10,
+      borderColor: "#7272D8",
+    },
+  },
+}));
 
 function SelectUI(props) {
+  const {
+    label,
+    option = [],
+    getValue,
+    size = "small",
+    style,
+    defaultValue = "",
+  } = props;
+  const [options, setOptions] = React.useState(defaultValue);
 
-  const { option, state, label, name,placeholder} = props;
-  const [value,setValue] = useState('По дате');
+  const handleChange = (event) => {
+    setOptions(event.target.value);
+    getValue && getValue(event.target.value);
+  };
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-    state(e.target.value);
-  }
-
-  let classLabel = label ? styles.RadiusNone : "";
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      {label ? <div className={styles.labelSelect}>{label}</div> : ""}
-      <Select
-        value={value}
-        sx={{
-          fontFamily: "Comfortaa",
-          color: "#7272D8",
-          fontWeight: "bold",
-        }}
-        name={name}
-        className={styles.MySelect  + " " + classLabel}
-        onChange={(e) => handleChange(e)}
-        placeholder={placeholder}
-      >
-        {option.map((value,index) => (
-          <MenuItem key={index} sx={{ fontFamily: "Comfortaa" }} value={value.name}>
-            {value.name}
-          </MenuItem>
-        ))}
-      </Select>
+    <div>
+      <FormControl variant="standard">
+        <div style={{ display: "flex", alignItems: "center", height: "45px" }}>
+          {label ? <div className={styles.labelSelect}>{label}</div> : ""}
+          <Select
+            labelId="demo-customized-select-label"
+            id="demo-customized-select"
+            input={<BootstrapInput />}
+            value={options}
+            onChange={handleChange}
+            label={label}
+            displayEmpty
+            size={size}
+            style={style}
+            sx={{
+              "& .css-15ak4lt-MuiSelect-select-MuiInputBase-input.css-15ak4lt-MuiSelect-select-MuiInputBase-input.css-15ak4lt-MuiSelect-select-MuiInputBase-input":
+                {
+                  borderTopLeftRadius: "0px !important",
+                  borderBottomLeftRadius: "0px !important",
+                },
+            }}
+          >
+            <MenuItem value="">
+              <em>Ничего</em>
+            </MenuItem>
+            {
+              // eslint-disable-next-line array-callback-return
+              option.map((item, index) => {
+                // eslint-disable-next-line default-case
+                switch (typeof item) {
+                  case "string":
+                    return (
+                      <MenuItem value={item} key={index}>
+                        {item}
+                      </MenuItem>
+                    );
+                  case "object":
+                    return (
+                      <MenuItem value={item.value} key={index}>
+                        {item.label}
+                      </MenuItem>
+                    );
+                }
+              })
+            }
+          </Select>
+        </div>
+      </FormControl>
     </div>
   );
 }

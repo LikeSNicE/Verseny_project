@@ -1,16 +1,15 @@
-import { Avatar, Box, Button, Typography } from "@mui/material";
-import React from "react";
-import styles from "./ConcursDetails.module.scss";
-import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
-import AddReactionOutlinedIcon from "@mui/icons-material/AddReactionOutlined";
-import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
-import TableUI from "../../Common/Table/Table";
-import {Route, Routes, useLocation,Navigate } from "react-router-dom";
-import PropTypes from "prop-types";
-import TabsCustom from "../../Components/TabsCustom/TabsCustom";
-import { headData,dataTable } from "./ConcursDetailsData";
-import TagScience from "../../Components/TagScience/tagScience";
 
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
+import TabsCustom from "../../Components/TabsCustom/TabsCustom";
+import TagScience from "../../Components/TagScience/tagScience";
+import styles from "./ConcursDetails.module.scss";
+import AvatarCustom from "../../Components/AvatarCustom/AvatarCustom";
+import SubComponents from "../../Components/SubOnChannel/SubOnChannel";
+import TableBlock from "./TableBlock/TableBlock";
+import FeaturesBlock from "./FeaturesBlock/FeaturesBlock";
+import * as Muicon from "@mui/icons-material";
 
 const ConcursDetails = (props) => {
   const {
@@ -26,13 +25,31 @@ const ConcursDetails = (props) => {
     descriptionText,
   } = props;
 
-  const location = useLocation();
 
-     if (location.pathname === "/concurs/id") {
-       return <Navigate to={"/concurs/id/prizes"} />;
-     }
+   const DataAvatar = {
+     name: "Ubisoft",
+     link: "/channel/id",
+     avatar:
+       "https://img5.goodfon.ru/wallpaper/nbig/f/6e/the-last-of-us-part-2-odni-iz-nas-elli-ellie-ps4-game-art.jpg",
+   };
 
- 
+   const DataTabs = [
+     {
+       id: 1,
+       label: "Призы конкурса",
+       value: <TableBlock />,
+     },
+     {
+       id: 2,
+       label: "Подробности",
+       value: <FeaturesBlock />,
+     },
+   ];
+
+
+  const AddReactionIcon = Muicon["AddReactionOutlined"];
+  const PeopleIcon = Muicon["PeopleOutlined"];
+
   return (
     <div className={styles.concursDetailsSection}>
       <div className={styles.concursDetailsSectionPoster}>
@@ -42,9 +59,7 @@ const ConcursDetails = (props) => {
       <div className={styles.concursDetailsSectionBoxTitles}>
         <div className={styles.concursDetailsSectionTitleMain}>{titleMain}</div>
         <div className={styles.concursDetailsSectionTab}>
-          <TagScience
-            children={tabText}
-          />
+          <TagScience children={tabText} />
         </div>
       </div>
 
@@ -59,13 +74,13 @@ const ConcursDetails = (props) => {
 
       <div className={styles.concursDetailsSectionParticipate}>
         <div className={styles.concursDetailsSectionParticipateGroup}>
-          <PeopleOutlineIcon />
+          <PeopleIcon />
           <p>{countUser} участников</p>
         </div>
         <div>
           <ButtonCustom
             className={styles.concursDetailsSectionParticipateBtn}
-            startIcon={<AddReactionOutlinedIcon />}
+            startIcon={<AddReactionIcon  />}
           >
             Участвовать
           </ButtonCustom>
@@ -76,20 +91,10 @@ const ConcursDetails = (props) => {
 
       <div className={styles.concursDetailsSectionBoxAuthor}>
         <div className={styles.concursDetailsSectionBoxAuthorLeft}>
-          <div className={styles.concursDetailsSectionBoxAuthorLeftAvatar}>
-            <Avatar src={authorPhoto} />
-          </div>
-          <div className={styles.concursDetailsSectionBoxAuthorLeftInfo}>
-            <p>{authorName}</p>
-            <p>{authorCountOfSubscribers} подписчиков</p>
-          </div>
+          <AvatarCustom data={DataAvatar} />
         </div>
         <div className={styles.concursDetailsSectionBoxAuthorRight}>
-          <ButtonCustom
-            className={styles.concursDetailsSectionBoxAuthorRightBtn}
-          >
-            Подписаться
-          </ButtonCustom>
+          <SubComponents/>
         </div>
       </div>
 
@@ -103,49 +108,11 @@ const ConcursDetails = (props) => {
       </div>
 
       <div className={styles.concursDetailsSectionNav}>
-        <div className={styles.concursDetailsSectionNavPrizes}>
-          <TabsCustom to="prizes">Призы консурса</TabsCustom>
-        </div>
-        <div className={styles.concursDetailsSectionNavCondition}>
-          <TabsCustom to="condition"> Условия проведения</TabsCustom>
-        </div>
-      </div>
-
-      <div className={styles.concursDetailsSectionSwitchTabs}>
-        {/* <TableUI data={dataTable} head={headData}  /> */}
-        <Routes>
-          <Route path="prizes" element={<TableBlock />} />
-          <Route path="condition" element={<FeatuersBlock />} />
-        </Routes>
+        <TabsCustom dataTabs={DataTabs}/>
       </div>
     </div>
   );
 };
-
-const TableBlock = () => {
-   
-  return (
-     <TableUI data={dataTable} head={headData}/> 
-  );
-}
-
-const FeatuersBlock = () => {
-  return (
-    <div className={styles.conditionSection}>
-      <h3 className={styles.conditionSectionTitle}>Условия конкурса : </h3>
-      <ul className={styles.conditionSectionList}>
-        <li className={styles.conditionSectionListItem}>
-          Для участия в розыгрыше необходимо: - Подписаться на группу: *ссылка*;
-          - Сделать репост этой записи.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur corporis repudiandae veniam perferendis sit! Accusamus autem debitis impedit exercitationem quam? Nesciunt minima, qui quibusdam in culpa quod similique facere provident?
-          Nisi repellendus ducimus ipsam cupiditate dolorem omnis. Recusandae maiores quam iste velit commodi veritatis facilis reprehenderit nisi dolorem vel officiis sint et, a illo, molestiae doloremque, aperiam voluptatum deserunt voluptas.
-        </li>
-      </ul>
-    </div>
-  );
-};
-
-
 export default ConcursDetails;
 
 ConcursDetails.propTypes = {
@@ -153,11 +120,7 @@ ConcursDetails.propTypes = {
   titleMain: PropTypes.string,
   tabText: PropTypes.string,
   dataStartNumber: PropTypes.string,
-  dataStartMonth: PropTypes.string,
-  dataStartYear: PropTypes.string,
-  dataEndMonth: PropTypes.string,
   dataEndNumber: PropTypes.string,
-  dataEndYear: PropTypes.string,
   authorName: PropTypes.string,
   authorPhoto: PropTypes.string,
   countUser: PropTypes.number,

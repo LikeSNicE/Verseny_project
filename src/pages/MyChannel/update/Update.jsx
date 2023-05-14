@@ -8,7 +8,7 @@ import {
   useMatch,
   useLocation,
 } from "react-router-dom";
-import TabsCustom from "../../../Components/TabsCustom/TabsCustom";
+import TabsCustom from "../../../Components/TabsNavCustom/TabsNavCustom";
 import ButtonCustom from "../../../Components/ButtonCustom/ButtonCustom";
 import MainUpdateConcurs from "./pages/main";
 import DescriptionUpdateConcurs from "./pages/description";
@@ -32,9 +32,7 @@ const UpdateConcurs = () => {
           <Route path="condition/id" element={<ConditionsUpdateConcurs />} />
         </Routes>
 
-        <div className={styles.sectionUpdateMainBtnBox}>
-          <ButtonCustom>Изменить</ButtonCustom>
-        </div>
+       
       </div>
       <div className={styles.sectionUpdateRight}>
         <div className={styles.sectionUpdateRightTitle}>О конкурсе</div>

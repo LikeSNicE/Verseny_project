@@ -2,22 +2,32 @@ import React from "react";
 import styles from "./Channel.module.scss";
 import { Avatar } from "@mui/material";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import FilterBlockCustom from "../../Components/FilterBlock/FilterBlock";
-import CardCustom from "../../Components/Card/Card";
-import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
-import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
+import CardCustom from "../../Components/CardCutsom/CardCustom";
 import TabsCustom from "../../Components/TabsCustom/TabsCustom";
+import * as Muicon from "@mui/icons-material";
+
 
 const Channel = () => {
-  const location = useLocation();
 
-  if (location.pathname === "/channel/id"){
-    return <Navigate to={"/channel/id/all-concurs"} />;
-  }else{
-    
-  }
+  const VersenyLogo = Muicon['CampaignOutlined'];
+  const ListFeautes = Muicon["ListAltOutlined"];
+
+  const DataTabs = [
+    {
+      id: 1,
+      label: 'Конкурсы',
+      value: <Concurs/>,
+      icon: <VersenyLogo/>
+    },
+    {
+      id: 2,
+      label: "Подробности",
+      value: 'Hello',
+      icon: <ListFeautes/>
+    }
+  ]
+
   return (
     <div className={styles.sectionChannel}>
       <img
@@ -45,10 +55,6 @@ const Channel = () => {
             </div>
           </div>
           <div className={styles.sectionChannelInfoRightBlock}>
-            <ButtonCustom className={styles.sectionChannelInfoRightBlockShare}>
-              {<ShareOutlinedIcon />}
-            </ButtonCustom>
-
             <ButtonCustom
               className={styles.sectionChannelInfoRightBlockSubscribe}
             >
@@ -58,7 +64,7 @@ const Channel = () => {
         </div>
 
         <div className={styles.sectionChannelInfoBottom}>
-          <TabsCustom
+          {/* <TabsCustom
             className={styles.sectionChannelInfoBottomLink}
             to="all-concurs"
           >
@@ -69,14 +75,11 @@ const Channel = () => {
             to="feauters"
           >
             Подробности
-          </TabsCustom>
+          </TabsCustom> */}
+          <TabsCustom dataTabs={DataTabs}/>
         </div>
       </div>
-
-      <Routes>
-        <Route path="all-concurs" element={<Concurs />} />
-        <Route path="feauters" />
-      </Routes>
+      
     </div>
   );
 };
@@ -84,80 +87,45 @@ const Channel = () => {
 export default Channel;
 
 const Concurs = () => {
-  const dataForCard = [
-    {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
-    },
-    {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
-    },
 
+  const dataCard = [
     {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
-    },
-    {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
+      term: {
+        icon: "ErrorOutlineOutlined",
+        //ErrorOutlineOutlined
+        //CheckCircleOutlined
+        message: "Конкурс окончен",
+        state: "Success",
+      },
+      concurs: {
+        img: "https://i.pinimg.com/736x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg",
+        name: "Конкурс открытки «Герои сказок А. С. Пушкина поздравляют с Новым годом и Рождеством»",
+        type: {
+          text: "Фото",
+          icon: "InsertPhotoOutlined",
+        },
+        participant: 20,
+        category: {
+          text: "Гуманитарные науки",
+          color: "#F8B84A",
+        },
+      },
+      author: {
+        avatar:
+          "https://images-ext-1.discordapp.net/external/_DY1anSP2XlAmXYBaMmEcmqza9Wa_yVtbdZy4tBHvoU/%3Fs%3D400%26u%3D6c92f6fc049c598f01fa6554b575c74dbf789e07%26v%3D4%2522%2C/https/avatars.githubusercontent.com/u/85344443",
+        name: "Ubisoft",
+        link: "/channel/@Ubisoft",
+      },
     },
   ];
+
 
   return (
     <div className={styles.sectionChannelConcurs}>
       <FilterBlockCustom />
       <div className={styles.sectionChannelConcursInner}>
-        {dataForCard.map((item, index) => (
-          <CardCustom
-            key={index}
-            backgroundTop={item.backgroundTop}
-            iconStatus={item.iconStatus}
-            statusText={item.statusText}
-            posterCard={item.posterCard}
-            titleCard={item.titleCard}
-            photoAuthor={item.photoAuthor}
-            nameAuthor={item.nameAuthor}
-            iconType={item.iconType}
-            textType={item.textType}
-            countUser={item.countUser}
-          />
+        {dataCard.map((item, index) => (
+          <CardCustom role={""} key={index} dataCard={item}/>
         ))}
       </div>
     </div>

@@ -17,6 +17,7 @@
     display: inline-block;
     border: dashed 3px #000;
     border-image: url("http://i.stack.imgur.com/wLdVc.png") 1 round;
+    margin: 20px 0;
 }
 .dragDropContainerIcon{
     display: block;
@@ -35,12 +36,14 @@
     gap: 20px;
 }
 
-.ss-1{
+.konvajs-content{
+  width: 100%;
   & canvas{
-    background-color: #000;
+    width: 100% !important;
   }
 }
 
-.konvajs-content{
-  width: 100%;
+.avatarCreating{
+  margin: 20px auto;
+  
 }

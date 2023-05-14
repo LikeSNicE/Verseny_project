@@ -2,20 +2,22 @@ import React, { useState } from "react";
 import styles from "./AllSubcriptions.module.scss";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
 import SearchInputCustom from "../../Components/SeacrhInput/SearchInput";
-import { Avatar, Tabs, Tab, Typography } from "@mui/material";
-import { Route, Routes, NavLink, Link,useParams } from "react-router-dom";
-import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
+import { Avatar,Typography } from "@mui/material";
+import { Route, Routes, NavLink, Link, useParams } from "react-router-dom";
 import * as Muicon from "@mui/icons-material";
-import FilterBlockCustom from "../../Components/FilterBlock/FilterBlock";
-import CardCustom from "../../Components/Card/Card";
 import EmptySub from "./emptySub/emptySub";
+
+import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
+
+import TabsCustom from "../../Components/TabsCustom/TabsCustom";
+import TabItemFirst from "./Tabs/TabItemFirst";
 
 const arraySubcriptions = [
   {
     id: 1,
     nameCompany: "Ubisoft",
     subcriptions: 30467,
-    path: "/test/ubisoft",
+    path: "/all-sub/ubisoft",
     avatarCompany:
       "https://i.pinimg.com/564x/aa/79/53/aa79530eb4a9010a9f33232965a0ac8d.jpg",
   },
@@ -37,59 +39,47 @@ const arraySubcriptions = [
   },
 ];
 
-const dataForCard = [
+export const dataCard = [
   {
-    backgroundTop: "rgba(114, 114, 216, 0.5)",
-    iconStatus: <Muicon.AccessTimeOutlined />,
-    statusText: "Через 10 часов",
-    posterCard:
-      "https://mobimg.b-cdn.net/v3/fetch/54/54e7919c1cfb738311b2bad4e510bb89.jpeg",
-    titleCard: "Конкурс открытки «Герои сказок А.Cdsadasdasdadadsaddddd",
-    photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-    nameAuthor: "Ubisoft",
-    iconType: <Muicon.ImageOutlined />,
-    textType: "Фото",
-    countUser: "100",
+    term: {
+      icon: "ErrorOutlineOutlined",
+      //ErrorOutlineOutlined
+      //CheckCircleOutlined
+      message: "Конкурс окончен",
+      state: "Success",
+    },
+    concurs: {
+      img: "https://i.pinimg.com/736x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg",
+      name: "Конкурс открытки «Герои сказок А. С. Пушкина поздравляют с Новым годом и Рождеством»",
+      type: {
+        text: "Фото",
+        icon: "InsertPhotoOutlined",
+      },
+      participant: 20,
+      category: {
+        text: "Гуманитарные науки",
+        color: "#F8B84A",
+      },
+    },
+    author: {
+      avatar:
+        "https://images-ext-1.discordapp.net/external/_DY1anSP2XlAmXYBaMmEcmqza9Wa_yVtbdZy4tBHvoU/%3Fs%3D400%26u%3D6c92f6fc049c598f01fa6554b575c74dbf789e07%26v%3D4%2522%2C/https/avatars.githubusercontent.com/u/85344443",
+      name: "Ubisoft",
+      link: "/channel/@Ubisoft",
+    },
   },
-  {
-    backgroundTop: "rgba(114, 114, 216, 0.5)",
-    iconStatus: <Muicon.AccessTimeOutlined />,
-    statusText: "Через 10 часов",
-    posterCard:
-      "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-    titleCard: "Конкурс открытки «Герои сказок А.C",
-    photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-    nameAuthor: "Ubisoft",
-    iconType: <Muicon.ImageOutlined />,
-    textType: "Фото",
-    countUser: "100",
-  },
+];
 
+const DataTabs = [
   {
-    backgroundTop: "rgba(114, 114, 216, 0.5)",
-    iconStatus: <Muicon.AccessTimeOutlined />,
-    statusText: "Через 10 часов",
-    posterCard:
-      "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-    titleCard: "Конкурс открытки «Герои сказок А.C",
-    photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-    nameAuthor: "Ubisoft",
-    iconType: <Muicon.ImageOutlined />,
-    textType: "Фото",
-    countUser: "100",
+    id: 1,
+    label: "Конкурсы",
+    value: <TabItemFirst />,
   },
   {
-    backgroundTop: "green",
-    iconStatus: <Muicon.AccessTimeOutlined />,
-    statusText: "Через 10 часов",
-    posterCard:
-      "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-    titleCard: "Конкурс открытки «Герои сказок А.C",
-    photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-    nameAuthor: "Ubisoft",
-    iconType: <Muicon.ImageOutlined />,
-    textType: "Фото",
-    countUser: "100",
+    id: 2,
+    label: "Подробности",
+    value: "Hello",
   },
 ];
 
@@ -126,7 +116,7 @@ const AllSubcriptions = () => {
     };
   };
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(arraySubcriptions);
 
   return (
     <div className={styles.sectionSubscription}>
@@ -149,7 +139,7 @@ const AllSubcriptions = () => {
               onClick={() => setData(item)}
               style={navLinkStyles}
               className={styles.sectionSubscriptionListChannelsLink}
-              to={"/test/" + item.id}
+              to={"/allSubcription/" + item.id}
             >
               <div className={styles.sectionSubscriptionListChannelsItem}>
                 <div className={styles.sectionSubscriptionListChannelsItemImg}>
@@ -180,13 +170,11 @@ const AllSubcriptions = () => {
       </div>
       <div className={styles.sectionSubscriptionInfoChannel}>
         <Routes>
+          <Route index element={<EmptySub />} />
           <Route
-            index
-            element={
-             <EmptySub/>
-            }
+            path=":id"
+            element={<SubDetails getValue={data} arr={arraySubcriptions} />}
           />
-          <Route path="/:id" element={<SubDetails getValue={data} />} />
         </Routes>
       </div>
     </div>
@@ -196,17 +184,13 @@ const AllSubcriptions = () => {
 export default AllSubcriptions;
 
 const SubDetails = ({ getValue }) => {
-  const [value, setValue] = React.useState(0);
-  const {id} = useParams();
-  console.log(useParams())
+  //const [value, setValue] = React.useState(0);
+  const { id } = useParams();
+  console.log(id);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  if(getValue){
-    return <EmptySub/>
-  }
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
 
   return (
     <div className={styles.sectionSubInfoChannel}>
@@ -230,28 +214,7 @@ const SubDetails = ({ getValue }) => {
       </div>
 
       <div>
-        <div>
-          <Tabs
-            className={styles.tabs}
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
-          >
-            <Tab className={styles.tabsItem} label="Конкурсы" />
-            <Tab className={styles.tabsItem} label="Подробности" />
-          </Tabs>
-        </div>
-        <TabPanel value={value} index={0}>
-          <FilterBlockCustom />
-          <div className={styles.sectionSubInfoChannelConcurs}>
-            {dataForCard.map((item, index) => (
-              <CardCustom key={index} {...item} />
-            ))}
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Item Two
-        </TabPanel>
+        <TabsCustom dataTabs={DataTabs}/>
       </div>
     </div>
   );

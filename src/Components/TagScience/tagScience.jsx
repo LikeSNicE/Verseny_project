@@ -1,23 +1,14 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import styles from './tagScience.module.scss';
 
-const TagScience = ({ children}) => {
+const TagScience = ({ children, backgroundColor }) => {
   return (
-    <Typography
-      style={{
-        padding: "5px 8px",
-        borderRadius: "10px",
-        color: "#fff",
-        fontSize: "12px",
-        height: "30px",
-        width: "150px",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap",
-      }}
+    <span
+      className={styles.blockCategory}
+      style={{ backgroundColor: backgroundColor }}
     >
       {children}
-    </Typography>
+    </span>
   );
 };
 

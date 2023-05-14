@@ -29,6 +29,7 @@ export default function Login() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          padding: '0 0 40px'
         }}
       >
         <div className={styles.containerLogin}>

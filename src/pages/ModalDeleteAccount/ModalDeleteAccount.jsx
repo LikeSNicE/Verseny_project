@@ -14,18 +14,18 @@ const ModalDeleteAccount = () => {
   return (
     <div>
       <ModalCustom
-        icon={<DeleteOutlineOutlinedIcon />}
-        iconStyles={styles.modalSectionTopLeftIcon}
-        text="Удалить аккаунт"
+        iconTopSection={<DeleteOutlineOutlinedIcon />}
+        iconTopSectionStyles={styles.modalSectionTopLeftIcon}
+        iconTopSectiontext="Удалить аккаунт"
         btnStyles={styles.modalSectionTopLeftIcon}
         btnLabel={
           <div
             className={styles.modalSectionTopLeftIcon}
             onClick={() => setIsOpen(true)}
           >
-            <TooltipCustom placement='top' titleText="Удалить канал">
-              <div style={{display: 'flex'}}>
-                <DeleteOutlineOutlinedIcon/>
+            <TooltipCustom placement="top" titleText="Удалить канал">
+              <div style={{ display: "flex" }}>
+                <DeleteOutlineOutlinedIcon />
               </div>
             </TooltipCustom>
           </div>

@@ -17,6 +17,9 @@ const MainUpdateConcurs = () => {
       <div className={styles.sectionUpdateMainTitleData}>
         Дата начало - конец :
       </div>
+      <div className={styles.sectionUpdateMainBtnBox}>
+          <ButtonCustom>Изменить</ButtonCustom>
+        </div>
     </div>
   );
 };

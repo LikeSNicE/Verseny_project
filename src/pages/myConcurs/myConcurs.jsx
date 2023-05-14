@@ -1,204 +1,134 @@
 import React from "react";
 import styles from "./myConcurs.module.scss";
-import CardCustom from "../../Components/Card/Card";
+import AvatarCustom from "../../Components/AvatarCustom/AvatarCustom";
+import TabsCustom from "../../Components/TabsCustom/TabsCustom";
+import * as Muicon from "@mui/icons-material";
+import WinsConcurs from "./winsConcurs/winsConcurs";
 import FilterBlockCustom from "../../Components/FilterBlock/FilterBlock";
-import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
-import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
-import ModalCustom from "../../Components/Modal/Modal";
-import TableUI from "../../Common/Table/Table";
-import { useState } from "react";
+import { Grid, MenuItem } from "@mui/material";
+import ButtonDropdown from "../../Components/ButtonDropDownCustom/ButtonDropdown";
+import IconCustom from "../../Components/IconCustom/IconCustom";
+import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
+import CardCustom from "../../Components/CardCutsom/CardCustom";
+
+const AccessTimeOutlined = Muicon["AccessTimeOutlined"];
+
+const DataAvatar = {
+  name: "Ubisoft",
+  link: "/channel/id",
+  description: "bekkozha.ayan@mail.ru",
+  avatar:
+    "https://img5.goodfon.ru/wallpaper/nbig/f/6e/the-last-of-us-part-2-odni-iz-nas-elli-ellie-ps4-game-art.jpg",
+};
+
+const dataForWins = [
+  {
+    poster:
+      "https://sun1-96.userapi.com/C8JROvbxlgJguZqdSFJqaieJR9hGDynU_Btadg/KLoQ-0g5c2A.jpg",
+    description: "Конкурс открытки «Герои сказок А. С...",
+  },
+];
+
+const DataTabs = [
+  {
+    id: 1,
+    label: "Победы",
+    icon: <Muicon.EmojiEventsOutlined />,
+    value: (
+      <div>
+        <WinsConcurs data={dataForWins} dataAvatar={DataAvatar} />
+      </div>
+    ),
+  },
+  {
+    id: 2,
+    label: "Ожидаемые конкурсы",
+    icon: <AccessTimeOutlined />,
+    value: <div>Hello</div>,
+  },
+];
+
+
+
+const dataCard = [
+  {
+    term: {
+      icon: "ErrorOutlineOutlined",
+      //ErrorOutlineOutlined
+      //CheckCircleOutlined
+      message: "Конкурс окончен",
+      state: "Success",
+    },
+    concurs: {
+      img: "https://i.pinimg.com/736x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg",
+      name: "Конкурс открытки «Герои сказок А. С. Пушкина поздравляют с Новым годом и Рождеством»",
+      type: {
+        text: "Фото",
+        icon: "InsertPhotoOutlined",
+      },
+      participant: 20,
+      category: {
+        text: "Гуманитарные науки",
+        color: "#F8B84A",
+      },
+    },
+    author: {
+      avatar:
+        "https://images-ext-1.discordapp.net/external/_DY1anSP2XlAmXYBaMmEcmqza9Wa_yVtbdZy4tBHvoU/%3Fs%3D400%26u%3D6c92f6fc049c598f01fa6554b575c74dbf789e07%26v%3D4%2522%2C/https/avatars.githubusercontent.com/u/85344443",
+      name: "Ubisoft",
+      link: "/channel/@Ubisoft",
+    },
+  },
+];
 
 const MyConcurs = () => {
-
-  // modalstate
-  const [isOpenModal,setOpenModal] = useState(false);
-
-  // card
-  const dataForCard = [
-    {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
-    },
-    {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
-    },
-
-    {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
-    },
-    {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <AccessTimeOutlinedIcon />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <ImageOutlinedIcon />,
-      textType: "Фото",
-      countUser: "100",
-    },
-  ];
-
-  const headData = ["Место", "Приз", "Участники"];
-  const dataTable = [
-    [
-      {
-        PlaceIcon: "1",
-      },
-      {
-        AboutFile: ["100000 тенге"],
-      },
-      {
-        //import Avatar from './UI/User/Avatar';
-        Avatar: {
-          photo:
-            "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
-          alt: "logo",
-          name: "Беккожа Аян",
-          email: "bekkozha.ayan@mail.ru",
-        },
-      },
-    ],
-    [
-      {
-        PlaceIcon: "2",
-      },
-      {
-        AboutFile: ["50000 тенге"],
-      },
-      {
-        //import Avatar from './UI/User/Avatar';
-        Avatar: {
-          photo:
-            "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
-          alt: "logo",
-          name: "Беккожа Аян",
-          email: "bekkozha.ayan@mail.ru",
-        },
-      },
-    ],
-    [
-      {
-        PlaceIcon: "3",
-      },
-      {
-        AboutFile: ["25000 тенге"],
-      },
-      {
-        //import Avatar from './UI/User/Avatar';
-        Avatar: {
-          photo:
-            "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
-          alt: "logo",
-          name: "Беккожа Аян",
-          email: "bekkozha.ayan@mail.ru",
-        },
-      },
-    ],
-    [
-      {
-        PlaceIcon: "4",
-      },
-      {
-        AboutFile: ["12500 тенге"],
-      },
-      {
-        //import Avatar from './UI/User/Avatar';
-        Avatar: {
-          photo:
-            "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
-          alt: "logo",
-          name: "Беккожа Аян",
-          email: "bekkozha.ayan@mail.ru",
-        },
-      },
-    ],
-    [
-      {
-        PlaceIcon: "5",
-      },
-      {
-        AboutFile: ["6250 тенге"],
-      },
-      {
-        //import Avatar from './UI/User/Avatar';
-        Avatar: {
-          photo:
-            "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
-          alt: "logo",
-          name: "Беккожа Аян",
-          email: "bekkozha.ayan@mail.ru",
-        },
-      },
-    ],
-  ];
-
   return (
     <div className={styles.myconcurs}>
-      <div className={styles.myconcursTitle}>Ваши участия</div>
-      <FilterBlockCustom />
 
-      <div className={styles.myconcursInner}>
-        {dataForCard.map((item, index) => (
-          <CardCustom key={index} {...item} />
-        ))}
-      </div>
-      {/* <ModalSeeWinners/> */}
-      <ModalCustom
-        icon={<ImageOutlinedIcon />}
-        iconStyles={styles.modalSectionTopIcon}
-        text="Open Modal"
-        btnStyles={styles.editBtn}
-        btnStartIcon={<ImageOutlinedIcon />}
-        btnLabel="Open Modal"
-        labelStyles={styles.modalSectionMain}
-        heightModal="700px"
-        open={isOpenModal}
-        setIsOpen={setOpenModal}
-      >
-        <div>
-          <img
-            className={styles.modalSectionImg}
-            src="https://mobimg.b-cdn.net/v3/fetch/04/04bbc582f281ec9c6a67139d1e228ff4.jpeg"
-            alt="poster of concurs"
-          />
+      <div className={styles.myconcursMain}>
+        <div className={styles.myconcursMainInfo}>
+          <TabsCustom dataTabs={DataTabs} />
+        </div>
+        <div className={styles.myconcursMainResult}>
+          <div className={styles.myconcursMainResultFilter}>
+            <FilterBlockCustom />
+          </div>
 
-          <div className={styles.myconcursTable}>
-            <TableUI head={headData} data={dataTable} />
+          <div className={styles.myconcursMainItems}>
+
+            {dataCard.map((item, index) => (
+              <CardCustom key={index} dataCard={item}>
+                <Grid container spacing={0.5}>
+                  <Grid item xs={8}>
+                    <ButtonCustom
+                      style={{ fontSize: "13px", width: "100%" }}
+                      color="primary"
+                      startIcon={<IconCustom icon={"PeopleAltOutlined"} />}
+                    >
+                      Участники
+                    </ButtonCustom>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <ButtonDropdown
+                      buttonChildren="Еще"
+                      style={{ backgroundColor: "#D9D9D9", fontSize: "13px" }}
+                    >
+                      <MenuItem>
+                        <IconCustom icon="ModeEditOutlineOutlined" />
+                        Редактировать
+                      </MenuItem>
+                      <MenuItem>
+                        <IconCustom icon="DeleteOutlineOutlined" />
+                        Удалить
+                      </MenuItem>
+                    </ButtonDropdown>
+                  </Grid>
+                </Grid>
+              </CardCustom>
+            ))}
           </div>
         </div>
-      </ModalCustom>
+      </div>
     </div>
   );
 };

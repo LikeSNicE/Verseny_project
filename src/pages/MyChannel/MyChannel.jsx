@@ -5,82 +5,34 @@ import ModalCustom from "../../Components/Modal/Modal";
 import ImageUploader from "../../Components/ImageUploader/ImageUploader";
 import imgEdit from "../../assets/images/icons/Edit.svg";
 import { Button } from "@mui/material";
-import { Link,Routes,Route,useLocation,Navigate } from "react-router-dom";
-import FilterBlockCustom from "../../Components/FilterBlock/FilterBlock";
-import CardCustom from "../../Components/Card/Card";
+import { Link } from "react-router-dom";
 import TabsCustom from "../../Components/TabsCustom/TabsCustom";
 import InputAvatar from "../../Components/InputAvatar/InputAvatar";
-import * as Muicon from "@mui/icons-material"
-import Avatar from "react-avatar-edit";
+import * as Muicon from "@mui/icons-material";
+import TabConcurs from "./Tabs/TabConcurs";
 
 const MyChannel = () => {
   let [hovered, setHovered] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [isAvatar, setIsAvatar] = useState(false);
 
+  const VersenyLogo = Muicon["CampaignOutlined"];
+  const ListFeautes = Muicon["ListAltOutlined"];
 
-
-  const dataForCard = [
+  const DataTabs = [
     {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <Muicon.AccessAlarmOutlined />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <Muicon.ImageOutlined />,
-      textType: "Фото",
-      countUser: "100",
+      id: 1,
+      label: "Конкурсы",
+      value: <TabConcurs />,
+      icon: <VersenyLogo />,
     },
     {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <Muicon.AccessAlarmOutlined />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <Muicon.ImageOutlined />,
-      textType: "Фото",
-      countUser: "100",
-    },
-
-    {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <Muicon.AccessAlarmOutlined />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <Muicon.ImageOutlined />,
-      textType: "Фото",
-      countUser: "100",
-    },
-    {
-      backgroundTop: "rgba(114, 114, 216, 0.5)",
-      iconStatus: <Muicon.AccessAlarmOutlined />,
-      statusText: "Через 10 часов",
-      posterCard:
-        "https://pbs.twimg.com/media/FWw6puNWQAEhQ29?format=jpg&name=large",
-      titleCard: "Конкурс открытки «Герои сказок А.C",
-      photoAuthor: "https://avatars.githubusercontent.com/u/85344443?s=64&v=4",
-      nameAuthor: "Ubisoft",
-      iconType: <Muicon.ImageOutlined />,
-      textType: "Фото",
-      countUser: "100",
+      id: 2,
+      label: "Подробности",
+      value: "Hello",
+      icon: <ListFeautes />,
     },
   ];
-
-  const location = useLocation();
-
-  if(location.pathname === "/mychannel"){
-    return <Navigate to={"/mychannel/all-concurs"}/>
-  }
 
   return (
     <div className={styles.sectionChannel}>
@@ -91,9 +43,9 @@ const MyChannel = () => {
         />
         <ModalCustom
           rootClass={styles.profileBannerEditBtn}
-          icon={<Muicon.EditOutlined />}
-          iconStyles={styles.modalSectionTopIcon}
-          text="Изменить обложку"
+          iconTopSection={<Muicon.EditOutlined />}
+          iconTopSectionStyles={styles.modalSectionTopIcon}
+          iconTopSectiontext="Изменить обложку"
           btnStyles={styles.editBtn}
           btnLabel="Изменить обложку"
           btnStartIcon={<Muicon.EditOutlined />}
@@ -137,14 +89,14 @@ const MyChannel = () => {
                   />
                 )}
               </Button>
-              <div>
+              <div className={styles.profileSectionModalAvatar}>
                 <ModalCustom
                   icon={<Muicon.EditOutlined />}
                   text="Изменение фото профиля"
                   open={isAvatar}
                   setIsOpen={setIsAvatar}
                 >
-                  <InputAvatar getAvatar={() => console.log('')}/>
+                  <InputAvatar getAvatar={() => console.log("")} />
                 </ModalCustom>
               </div>
             </div>
@@ -224,36 +176,9 @@ const MyChannel = () => {
           </div>
         </div>
         <div className={styles.profileSectionNav}>
-          <TabsCustom
-            className={styles.profileSectionNavLink}
-            to={"all-concurs"}
-          >
-            Конкурсы
-          </TabsCustom>
-          <TabsCustom className={styles.profileSectionNavLink} to={"features"}>
-            Подробности
-          </TabsCustom>
+          <TabsCustom dataTabs={DataTabs} />
         </div>
       </div>
-
-      <Routes>
-        <Route
-          path="all-concurs"
-          element={
-            <div>
-              <FilterBlockCustom />
-
-              <div className={styles.profileCards}>
-                {dataForCard.map((item, index) => (
-                  <CardCustom key={index} {...item} />
-                ))}
-              </div>
-            </div>
-          }
-        />
-
-        <Route path="features" element={<div>Привет</div>} />
-      </Routes>
     </div>
   );
 };

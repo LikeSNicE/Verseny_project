@@ -41,30 +41,39 @@ export default function InputAvatar({getAvatar,defaultAvatar}) {
       };
     }
     else{
-      setError("Данный файл не является фотографием!!");
+      setError("Данный файл не является фотографией!!");
       setDrag(false);
     }
   }
 
   if(image.length !== 0) return (
     <div className={styles.dragDropContainerGap}>
-      <Avatar
-        imageWidth={400}
-        src={image}
-        onClose={onClose}
-        onCrop={onCrop}
-        cropRadius={0}
-        className={'ss-1'}
-        imageHeight={400}
-      />
-      <ButtonCustom
-        variant="outlined"
-        color="error"
-        onClick={onClose}
-        style={{ width: "100%" }}
-      >
-        Закрыть
-      </ButtonCustom>
+      <div className={styles.avatarCreating}>
+        <Avatar
+          imageWidth={600}
+          src={image}
+          onClose={onClose}
+          onCrop={onCrop}
+          cropRadius={0}
+          imageHeight={600}
+        />
+      </div>
+      <div style={{ display: "flex" }}>
+        <ButtonCustom
+          variant="contained"
+          style={{ width: "50%", marginRight: "10px" }}
+        >
+          Загрузить
+        </ButtonCustom>
+        <ButtonCustom
+          variant="outlined"
+          color="error"
+          onClick={onClose}
+          style={{ width: "50%", marginLeft: "10px" }}
+        >
+          Закрыть
+        </ButtonCustom>
+      </div>
     </div>
   );
 

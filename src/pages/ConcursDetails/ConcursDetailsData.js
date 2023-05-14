@@ -40,4 +40,13 @@ export const dataTable = [
       AboutFile: ["6250 тенге"],
     },
   ],
+  [
+    {
+      PlaceIcon: "10",
+    },
+    {
+      AboutFile: ["6250 тенге"],
+    },
+  ],
+  
 ];

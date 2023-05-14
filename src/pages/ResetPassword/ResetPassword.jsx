@@ -5,6 +5,7 @@ import { Avatar } from "@mui/material";
 import TextFieldUI from "../../Components/InputCustom/InputCustom";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import { useForm } from "react-hook-form";
+import AvatarCustom from "../../Components/AvatarCustom/AvatarCustom";
 
 const ResetPassword = () => {
   const {
@@ -21,6 +22,14 @@ const ResetPassword = () => {
     reset();
   };
 
+  const DataAvatar = {
+    name: "Ubisoft",
+    link: "/channel/id",
+    description: "bekkozha.ayan@mail.ru",
+    avatar:
+      "https://img5.goodfon.ru/wallpaper/nbig/f/6e/the-last-of-us-part-2-odni-iz-nas-elli-ellie-ps4-game-art.jpg",
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.sectionResetPas}>
       <img className={styles.sectionResetPasImg} src={Logo} alt="Logo" />
@@ -28,7 +37,7 @@ const ResetPassword = () => {
         Отлично! Вы cбросили пароль от аккаунта:
       </div>
       <div className={styles.sectionResetPasProfile}>
-        <Avatar
+        {/* <Avatar
           className={styles.sectionResetPasProfileImg}
           src="https://avatars.githubusercontent.com/u/85344443?s=400&u=6c92f6fc049c598f01fa6554b575c74dbf789e07&v=4"
           alt="profile photo"
@@ -36,7 +45,8 @@ const ResetPassword = () => {
         <div className={styles.sectionResetPasProfileInfo}>
           <p className={styles.sectionResetPasProfileName}>Беккожа Аян</p>
           <p className={styles.sectionResetPasProfileCompany}>Ubisoft</p>
-        </div>
+        </div> */}
+        <AvatarCustom sizeAvatar={{width:"40px",height: '40px'}} data={DataAvatar}/>
       </div>
       <div className={styles.sectionResetPasInput}>
         <TextFieldUI

@@ -3,7 +3,7 @@
 .sectionDescription,
 .sectionPrizes,
 .sectionCondition {
-  padding: 0 0 20px;
+  padding: 0 0 40px;
 }
 
 .sectionUpdate {
@@ -72,7 +72,9 @@
   &BtnChange {
     display: flex;
     justify-content: flex-end;
-    
+  }
+  &BtnBox{
+    margin-top: 20px;
   }
 }
 

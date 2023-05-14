@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "../update.module.scss";
 import TableUI from "../../../../Common/Table/Table";
 import { dataTable, headData } from "./prizesUpdateData";
+import ButtonCustom from "../../../../Components/ButtonCustom/ButtonCustom";
 
 const PrizesConcursUpdate = () => {
   const [counter, setCounter] = useState(0);
@@ -28,7 +29,11 @@ const PrizesConcursUpdate = () => {
         </button>
       </div>
       <div className={styles.sectionUpdatePrizesTable}>
-        <TableUI head={headData} data={dataTable}/> 
+        <TableUI head={headData} data={dataTable} />
+      </div>
+
+      <div className={styles.sectionUpdateMainBtnBox}>
+        <ButtonCustom>Изменить</ButtonCustom>
       </div>
     </div>
   );

@@ -29,9 +29,9 @@ function ElevationScroll(props) {
 const ModalCustom = (props) => {
   const {
     rootClass,
-    icon,
-    iconStyles,
-    text,
+    iconTopSection,
+    iconTopSectionStyles,
+    iconTopSectiontext,
     btnStyles = "",
     btnLabel = "",
     btnStartIcon = "",
@@ -83,9 +83,9 @@ const ModalCustom = (props) => {
           <ModalTopSection
             iconCross={<CloseOutlinedIcon />}
             onClick={handleClose}
-            text={text}
-            iconStyles={iconStyles}
-            icon={icon}
+            text={iconTopSectiontext}
+            iconStyles={iconTopSectionStyles}
+            icon={iconTopSection}
           />
           <div className={labelStyles}>
             <div className={styles.modalContainer}>
