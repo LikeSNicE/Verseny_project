@@ -1,7 +1,7 @@
 import "./App.scss";
 import ConcursDetailsContainer from "../../pages/ConcursDetails/ConcursDetailsContainer";
 import Header from "../../pages/Header/Header";
-import { Box, Container } from "@mui/material";
+import {Container } from "@mui/material";
 import ProfileSettings from "../../pages/ProfileSettings/ProfileSettings";
 import MyConcurs from "../../pages/myConcurs/myConcurs";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
@@ -27,47 +27,71 @@ import Prizes from "../../pages/MyChannel/create/pages/prizes";
 import ConditionsConcurs from "../../pages/MyChannel/create/pages/conditions";
 import ResultConcurs from "../../pages/MyChannel/create/pages/result";
 import UpdateConcurs from "../../pages/MyChannel/update/Update";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { useContext } from "react";
+import { Context } from "../..";
+import { observer } from "mobx-react-lite";
+
 
 const App = () => {
+
+  const {Authstore} = useContext(Context)
+
   return (
     <div>
       <Header login={true} />
-      <Container maxWidth={"lg"}>
+      <Container
+        style={{ maxWidth: "1020px", padding: "0 10px", margin: "0 auto" }}
+      >
         <Routes>
-          <Route path="/" element={<HomePage role="guest" />} />
-          <Route path="/concurs/id" element={<ConcursDetailsContainer />} />
-          <Route path="/profileInfoChannel/*" element={<ProfileSettings />} />
           <Route
-            path="/mychannel/concurs-share/id"
-            element={<ConcursShare />}
-          />
-          <Route
-            path="/mychannel/concurs-share/concurs-winner/id"
-            element={<ConcursShareWinners />}
-          />
-          <Route
-            path="/mychannel/concurs-share/id/user/id"
-            element={<ConcursShareUser />}
-          />
-          <Route path="/myconcurs" element={<MyConcurs />} />
-          <Route path="/allSubcription/*" element={<AllSubcriptions />} />
-          <Route path="/channel/id" element={<Channel  />} />
-          <Route path="/mychannel" element={<MyChannel />} />
-          <Route path="/mychannel/create/*" element={<CreateComponent />}>
-            <Route path="main" element={<MainConcurs />} />
-            <Route path="description" element={<DescriptionConcurs />} />
-            <Route path="prizes" element={<Prizes />} />
-            <Route path="conditions" element={<ConditionsConcurs />} />
-            <Route path="result" element={<ResultConcurs />} />
+            element={
+              <ProtectedRoute user={Authstore.isAuth} redirectPath="/login" />
+            }
+          >
+            <Route path="/" element={<HomePage role="guest" />} />
+            <Route path="/concurs/id" element={<ConcursDetailsContainer />} />
+            <Route path="/profileInfoChannel/*" element={<ProfileSettings />} />
+            <Route
+              path="/mychannel/concurs-share/id"
+              element={<ConcursShare />}
+            />
+            <Route
+              path="/mychannel/concurs-share/concurs-winner/id"
+              element={<ConcursShareWinners />}
+            />
+            <Route
+              path="/mychannel/concurs-share/id/user/id"
+              element={<ConcursShareUser />}
+            />
+            <Route path="/myconcurs" element={<MyConcurs />} />
+            <Route path="/allSubcription/*" element={<AllSubcriptions />} />
+            <Route path="/channel/id" element={<Channel />} />
+            <Route path="/mychannel" element={<MyChannel />} />
+            <Route path="/mychannel/create/*" element={<CreateComponent />}>
+              <Route path="main" element={<MainConcurs />} />
+              <Route path="description" element={<DescriptionConcurs />} />
+              <Route path="prizes" element={<Prizes />} />
+              <Route path="conditions" element={<ConditionsConcurs />} />
+              <Route path="result" element={<ResultConcurs />} />
+            </Route>
+            <Route path="/mychannel/update/*" element={<UpdateConcurs />} />
           </Route>
-          <Route path="/mychannel/update/*" element={<UpdateConcurs/>}/>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signin/*" element={<Signin />}>
-            <Route path="user" element={<User />} />
-            <Route path="channel" element={<ChannelForm />} />
+
+          <Route
+            element={
+              <ProtectedRoute user={!Authstore.isAuth} redirectPath="/" />
+            }
+          >
+            <Route path="/login" element={<Login />} />
+            <Route path="/signin/*" element={<Signin />}>
+              <Route path="user" element={<User />} />
+              <Route path="channel" element={<ChannelForm />} />
+            </Route>
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
           </Route>
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+
           <Route path="/test/*" element={<TestPages />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
@@ -76,4 +100,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default observer(App);

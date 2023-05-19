@@ -10,6 +10,7 @@ import TabsCustom from "../../Components/TabsCustom/TabsCustom";
 import InputAvatar from "../../Components/InputAvatar/InputAvatar";
 import * as Muicon from "@mui/icons-material";
 import TabConcurs from "./Tabs/TabConcurs";
+import InputAvatarModal from "../../Components/ModalComponents/InputAvatarModal/InputAvatarModal";
 
 const MyChannel = () => {
   let [hovered, setHovered] = useState(false);
@@ -91,12 +92,12 @@ const MyChannel = () => {
               </Button>
               <div className={styles.profileSectionModalAvatar}>
                 <ModalCustom
-                  icon={<Muicon.EditOutlined />}
-                  text="Изменение фото профиля"
+                  iconTopSection={<Muicon.EditOutlined />}
+                  iconTopSectiontext="Изменение фото профиля"
                   open={isAvatar}
                   setIsOpen={setIsAvatar}
                 >
-                  <InputAvatar getAvatar={() => console.log("")} />
+                  <InputAvatarModal />
                 </ModalCustom>
               </div>
             </div>

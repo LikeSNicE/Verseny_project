@@ -39,8 +39,22 @@ export default function FileProgress({ file = [], setFile, progress = 0 }) {
   if (progress === 100) {
     return <AlertCustom error={"Вы загрузили данный файл успешно!"} severity="success" />;
   }
+
+  const fileOverflow = () => {
+    if(file.length !== 0){
+      return {
+        height: '300px',
+        overflow: 'auto',
+        paddingRight: '10px',
+        marginTop: '10px'
+      }
+    }
+    return {};
+  }
+
+
   return (
-    <div className={styles.dragDropSection}>
+    <div style={fileOverflow()} className={styles.dragDropSection}>
       {file.map((value, index) => (
         <div className={styles.dragDropContainerGap}>
           <div className={styles.dragDropContainerBox}>

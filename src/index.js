@@ -1,25 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.scss';
-import App from './Components/App/App';
-import reportWebVitals from './reportWebVitals';
-import { createTheme,ThemeProvider } from '@mui/material';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.scss";
+import App from "./Components/App/App";
+import reportWebVitals from "./reportWebVitals";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { BrowserRouter } from "react-router-dom";
+import AuthStore from "./mobx/authStore";
+import { createContext } from "react";
+
+const Authstore = new AuthStore();
+
+export const Context = createContext({
+  Authstore,
+});
 
 const theme = createTheme({
   typography: {
-    fontFamily: ["Comfortaa","cursive"].join(','),
+    fontFamily: ["Comfortaa", "cursive"].join(","),
   },
 });
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </BrowserRouter>
+    <Context.Provider value={{Authstore}}>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
+    </Context.Provider>
   </React.StrictMode>
 );
 

@@ -10,18 +10,16 @@ import SubComponents from "../../Components/SubOnChannel/SubOnChannel";
 import TableBlock from "./TableBlock/TableBlock";
 import FeaturesBlock from "./FeaturesBlock/FeaturesBlock";
 import * as Muicon from "@mui/icons-material";
+import ModalParticipate from "../../Components/ModalComponents/ParticipateModal/ParticipateModal";
 
 const ConcursDetails = (props) => {
   const {
-    posterMain,
+    img,
     titleMain,
     tabText,
     dataStartNumber,
     dataEndNumber,
     countUser,
-    authorPhoto,
-    authorName,
-    authorCountOfSubscribers,
     descriptionText,
   } = props;
 
@@ -53,7 +51,7 @@ const ConcursDetails = (props) => {
   return (
     <div className={styles.concursDetailsSection}>
       <div className={styles.concursDetailsSectionPoster}>
-        <img src={posterMain} alt="Poster Main" />
+        <img src={img} alt="Poster Main" />
       </div>
 
       <div className={styles.concursDetailsSectionBoxTitles}>
@@ -78,12 +76,7 @@ const ConcursDetails = (props) => {
           <p>{countUser} участников</p>
         </div>
         <div>
-          <ButtonCustom
-            className={styles.concursDetailsSectionParticipateBtn}
-            startIcon={<AddReactionIcon  />}
-          >
-            Участвовать
-          </ButtonCustom>
+          <ModalParticipate />
         </div>
       </div>
 
@@ -94,7 +87,7 @@ const ConcursDetails = (props) => {
           <AvatarCustom data={DataAvatar} />
         </div>
         <div className={styles.concursDetailsSectionBoxAuthorRight}>
-          <SubComponents/>
+          <SubComponents />
         </div>
       </div>
 
@@ -108,7 +101,7 @@ const ConcursDetails = (props) => {
       </div>
 
       <div className={styles.concursDetailsSectionNav}>
-        <TabsCustom dataTabs={DataTabs}/>
+        <TabsCustom dataTabs={DataTabs} />
       </div>
     </div>
   );

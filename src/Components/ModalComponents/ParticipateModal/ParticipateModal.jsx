@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styles from './ParticipateModal.module.scss';
-import ModalCustom from "../Modal/Modal";
+import ModalCustom from "../../Modal/Modal";
 import * as Muicon from "@mui/icons-material";
-import InputFile from "../InputFile/InputFile";
-import FileProgress from "../InputFile/FileProgress";
+import InputFile from "../../InputFile/InputFile";
+import FileProgress from "../../InputFile/FileProgress";
 import { useForm } from "react-hook-form";
-import ButtonCustom from "../ButtonCustom/ButtonCustom";
+import ButtonCustom from "../../ButtonCustom/ButtonCustom";
 
 const ModalParticipate = () => {
   const [isOpen,setOpen] = useState();
@@ -47,9 +47,8 @@ const ModalParticipate = () => {
             file={Object.values(watch("files", []))}
             setFile={setValue}
           />
-
+          {watch("files", []).length !== 0 && <ButtonCustom style={{marginTop:'10px'}}>HI</ButtonCustom>}
         </div>
-        <ButtonCustom>HI</ButtonCustom>
       </ModalCustom>
     </form>
   );

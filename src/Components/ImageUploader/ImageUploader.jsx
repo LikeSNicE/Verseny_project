@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import styles from "./ImageUploader.module.scss";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-import { Button, Alert, AlertTitle, Stack } from "@mui/material";
+import { Alert, AlertTitle, Stack } from "@mui/material";
 import ButtonCustom from "../ButtonCustom/ButtonCustom";
 
 

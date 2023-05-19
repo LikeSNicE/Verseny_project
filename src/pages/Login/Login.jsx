@@ -1,26 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ReactComponent as Logo } from "../../assets/images/icons/logo.svg";
 import InputCustom from "../../Components/InputCustom/InputCustom";
 import { useForm } from "react-hook-form";
 import { Grid, Link } from "@mui/material";
 import styles from "./Login.module.scss";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
-//import { Routes, Route,Link } from 'react-router-dom';
+import { observer } from "mobx-react-lite";
+import { Context } from "../..";
+import LoadingCustom from "../../Components/LoadingCustom/LoadingCustom";
 
-export default function Login() {
+
+function Login() {
   const {
-    reset,
     handleSubmit,
     register,
     formState: { errors, isValid },
-  } = useForm({
-    mode: "onBlur",
-  });
+  } = useForm({});
+
+  const {Authstore} = useContext(Context);
+
+  const {name} = Authstore.user
+  
 
   const onSubmit = (data) => {
-    console.log(data);
-    reset();
+    const formData = new FormData();
+    for (let prop in data) {
+      formData.append(prop, data[prop]);
+    }
+    Authstore.login(formData);
   };
+
+  if(Authstore.isLoading){
+    return(
+      <LoadingCustom/>
+    )
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -29,7 +43,7 @@ export default function Login() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          padding: '0 0 40px'
+          padding: "0 0 40px",
         }}
       >
         <div className={styles.containerLogin}>
@@ -54,12 +68,10 @@ export default function Login() {
                 errorText={errors?.password && errors?.password?.message}
                 register={register("password", {
                   required: "Поле обязателько к заполнению",
-                  // pattern:
-                  //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/,
                   minLength: {
                     value: 8,
-                    message: 'Пароль должен содержать минимум 8 символов'
-                  }
+                    message: "Пароль должен содержать минимум 8 символов",
+                  },
                 })}
               />
               <Link
@@ -71,7 +83,7 @@ export default function Login() {
               </Link>
             </div>
           </Grid>
-          <ButtonCustom type="submit" style={{ width: "100%" }}>
+          <ButtonCustom loading={Authstore.isLoading} type="submit" style={{ width: "100%" }}>
             Войти
           </ButtonCustom>
           <div className={styles.containerLoginFlex}>
@@ -94,3 +106,5 @@ export default function Login() {
     </form>
   );
 }
+
+export default observer(Login);

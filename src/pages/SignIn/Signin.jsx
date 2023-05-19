@@ -26,7 +26,7 @@ export default function Signin() {
   });
   const [valid, setValid] = useState(false);
   const onSubmit = (data) => {
-    //console.log(data.avatar);
+    console.log(data);
     Object.values(data).map((value) => console.log(value ? true : false));
   };
 

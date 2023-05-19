@@ -59,17 +59,17 @@ export default function InputAvatar({getAvatar,defaultAvatar}) {
         />
       </div>
       <div style={{ display: "flex" }}>
-        <ButtonCustom
+        {/* <ButtonCustom
           variant="contained"
           style={{ width: "50%", marginRight: "10px" }}
         >
           Загрузить
-        </ButtonCustom>
+        </ButtonCustom> */}
         <ButtonCustom
           variant="outlined"
           color="error"
           onClick={onClose}
-          style={{ width: "50%", marginLeft: "10px" }}
+          style={{width: '100%'}}
         >
           Закрыть
         </ButtonCustom>

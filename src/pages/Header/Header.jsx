@@ -22,6 +22,9 @@ import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import IconButton from "@mui/material/IconButton";
 import Logo from "../../assets/images/icons/logo.svg";
 import * as Muicon from "@mui/icons-material";
+import { useContext } from "react";
+import { observer } from "mobx-react-lite";
+import { Context } from "../..";
 
 
 const ToolBarStyled = styled(Toolbar)({
@@ -92,11 +95,14 @@ const Header = ({login}) => {
   const SubscriptionIcon = Muicon["SubscriptionsOutlined"]
   const AirplayOutlinedIcon = Muicon["AirplayOutlined"];
 
+  const {Authstore} = useContext(Context)
+
+  
 
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ mb: "40px" }}>
-        {login ? (
+        {Authstore.isAuth ? (
           <AppBar position="static">
             <ToolBarStyled>
               <IconButton>
@@ -199,13 +205,8 @@ const Header = ({login}) => {
                     className={styles.menuProfileItemLink}
                   ></CustomLinkIcon>
                 </MenuItem>
-                <MenuItem onClick={() => setIsOpen(false)}>
-                  <CustomLinkIcon
-                    to={"/ddd"}
-                    children={"Выйти"}
-                    Icon={<ExitToAppIcon />}
-                    className={styles.menuProfileItemLink}
-                  ></CustomLinkIcon>
+                <MenuItem onClick={() => Authstore.logout()}>
+                  
                 </MenuItem>
               </div>
             </Menu>
@@ -232,4 +233,4 @@ const Header = ({login}) => {
   );
 };
 
-export default Header;
+export default observer(Header);

@@ -43,6 +43,30 @@ export default function User() {
           pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
         })}
       />
+      <TextFieldUI
+        type="password"
+        label="Пароль"
+        errorText={errors?.email && errors?.email?.message}
+        register={register("password", {
+          required: "Поле обязателько к заполнению",
+          minLength: {
+            value: 8,
+            message: "Пароль должен содержать минимум 8 символов",
+          },
+        })}
+      />
+      <TextFieldUI
+        type="password"
+        label="Повторить пароль"
+        errorText={errors?.email && errors?.email?.message}
+        register={register("password", {
+          required: "Поле обязателько к заполнению",
+          minLength: {
+            value: 8,
+            message: "Пароль должен содержать минимум 8 символов",
+          },
+        })}
+      />
     </div>
   );
 }

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./HomePage.module.scss";
 import FilterBlockCustom from "../../Components/FilterBlock/FilterBlock";
 import SearchInputCustom from "../../Components/SeacrhInput/SearchInput";
 import CardCustom from "../../Components/CardCutsom/CardCustom";
+import axios from "axios";
 
 const HomePage = () => {
   const dataCard = [
@@ -13,7 +14,6 @@ const HomePage = () => {
         //CheckCircleOutlined
         message: "Конкурс окончен",
         state: "Success",
-       
       },
       concurs: {
         img: "https://i.pinimg.com/736x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg",
@@ -37,6 +37,7 @@ const HomePage = () => {
     },
   ];
 
+
   return (
     <div className={styles.sectionHomePage}>
       <div className={styles.sectionHomePageTitle}>Главная</div>
@@ -47,8 +48,7 @@ const HomePage = () => {
 
       <div className={styles.sectionHomePageInner}>
         {dataCard.map((item, index) => (
-          <CardCustom role={"admin"} key={index} dataCard={item}>
-          </CardCustom>
+          <CardCustom role={"admin"} key={index} dataCard={item}></CardCustom>
         ))}
       </div>
     </div>

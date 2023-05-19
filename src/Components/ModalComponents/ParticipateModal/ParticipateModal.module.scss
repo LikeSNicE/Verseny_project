@@ -1,11 +1,12 @@
 .participateBtn {
-  background: #7272d8;
-  color: #fff;
-  border-radius: 10px;
+  background: #7272d8 !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  text-transform: inherit !important;
   &:hover {
-    background: #7272d8;
-    color: #fff;
-    border-radius: 10px;
+    background: #7272d8 !important;
+    color: #fff !important;
+    border-radius: 10px !important;
   }
   &TopSection {
     background: #7272d8;
@@ -21,6 +22,6 @@
 .inputFiles{
   margin: 10px 0;
   width: 100%;
-  // height: 500px;
   padding-right: 10px;
 }
+
