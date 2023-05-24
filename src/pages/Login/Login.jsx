@@ -1,26 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ReactComponent as Logo } from "../../assets/images/icons/logo.svg";
 import InputCustom from "../../Components/InputCustom/InputCustom";
 import { useForm } from "react-hook-form";
-import { Grid, Link } from "@mui/material";
+import { Grid, Link, Alert, Snackbar } from "@mui/material";
 import styles from "./Login.module.scss";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import { observer } from "mobx-react-lite";
 import { Context } from "../..";
 import LoadingCustom from "../../Components/LoadingCustom/LoadingCustom";
-
+import AlertCustom from "../../Components/AlertCustom/AlertCustom";
 
 function Login() {
+  // use-form
   const {
     handleSubmit,
     register,
     formState: { errors, isValid },
   } = useForm({});
 
-  const {Authstore} = useContext(Context);
-
-  const {name} = Authstore.user
-  
+  const { Authstore } = useContext(Context);
+  // Alert
+  const [isSnack, setIsSnack] = useState(false);
 
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -30,10 +30,8 @@ function Login() {
     Authstore.login(formData);
   };
 
-  if(Authstore.isLoading){
-    return(
-      <LoadingCustom/>
-    )
+  if (Authstore.isLoading) {
+    return <LoadingCustom />;
   }
 
   return (
@@ -83,7 +81,12 @@ function Login() {
               </Link>
             </div>
           </Grid>
-          <ButtonCustom loading={Authstore.isLoading} type="submit" style={{ width: "100%" }}>
+          <ButtonCustom
+            onClick={() => setIsSnack(true)}
+            loading={Authstore.isLoading}
+            type="submit"
+            style={{ width: "100%" }}
+          >
             Войти
           </ButtonCustom>
           <div className={styles.containerLoginFlex}>
@@ -103,6 +106,14 @@ function Login() {
           </div>
         </div>
       </div>
+      <Snackbar open={isSnack} autoHideDuration={3000} onClose={() => setIsSnack(false)}>
+        <Alert
+          onClose={() => setIsSnack(false)}
+          severity={"success"}
+        >
+          {"Done"}
+        </Alert>
+      </Snackbar>
     </form>
   );
 }

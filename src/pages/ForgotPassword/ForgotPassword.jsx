@@ -1,26 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../assets/images/icons/logo.svg";
 import styles from "./ForgotPassword.module.scss";
 import TextFieldUI from "../../Components/InputCustom/InputCustom";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
-
+import { useContext } from "react";
+import { Context } from "../..";
+import { observer } from "mobx-react-lite";
+import AlertCustom from "../../Components/AlertCustom/AlertCustom";
 
 const ForgotPassword = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    reset
+    reset,
   } = useForm({
     mode: "onBlur",
   });
 
+   const { Authstore } = useContext(Context);
+
+  
+
+  // const res = await axios.get('https://httpbin.org/get', { params: { answer: 42 } });
+
+  // context
+ 
+
   const onSubmit = (data) => {
-    console.log(data);
-    reset();
+    Authstore.forgotPassword(data.email)
   };
 
   return (
@@ -42,6 +52,13 @@ const ForgotPassword = () => {
           })}
         />
       </div>
+
+      <AlertCustom
+        severity={Authstore.severity}
+        error={Authstore.messageAlert}
+        setError={Authstore.setMessageAlert}
+      />
+
       <ButtonCustom
         type="submit"
         disabled={!isValid}
@@ -58,4 +75,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default observer(ForgotPassword);

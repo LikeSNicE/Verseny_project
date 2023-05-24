@@ -31,16 +31,6 @@ const dataForWins = [
 
 const DataTabs = [
   {
-    id: 1,
-    label: "Победы",
-    icon: <Muicon.EmojiEventsOutlined />,
-    value: (
-      <div>
-        <WinsConcurs data={dataForWins} dataAvatar={DataAvatar} />
-      </div>
-    ),
-  },
-  {
     id: 2,
     label: "Ожидаемые конкурсы",
     icon: <AccessTimeOutlined />,

@@ -1,8 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useContext } from "react";
 import styles from "./ImageUploader.module.scss";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import { Alert, AlertTitle, Stack } from "@mui/material";
 import ButtonCustom from "../ButtonCustom/ButtonCustom";
+import { useForm } from "react-hook-form";
+import { Context } from "../..";
+import { observer } from "mobx-react-lite";
 
 
 const ImageUploader = () => {
@@ -29,6 +32,7 @@ const ImageUploader = () => {
       fileReader.readAsDataURL(avatar[0]);
       fileReader.onload = () => {
         setImage(fileReader.result);
+        setError("")
       };
     } else {
       setError("Данный файл не является фотографием!!");
@@ -52,18 +56,36 @@ const ImageUploader = () => {
     reader.readAsDataURL(file);
   };
 
+    const { setValue, handleSubmit } = useForm();
+    const { Authstore } = useContext(Context);
+
+    const onSubmit = (data) => {
+      const formdata = new FormData();
+      for (let prop in data) {
+        formdata.append(prop, data[prop]);
+      }
+      try {
+        const response = Authstore.updatePhoto(formdata);
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
   // Верстка DoneUpload
   if (image.length !== 0) {
     return (
       <div>
-        <div className={styles.imagePreview}>
-          <img onChange={handleAddImage} src={image} alt="preview" />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.imagePreview}>
+            <img onChange={handleAddImage} src={image} alt="preview" />
 
-          <div className={styles.imagePreviewBoxBtns}>
-            <ButtonCustom>Загрузить</ButtonCustom>
-            <ButtonCustom onClick={handleRemoveImage}>Отменить</ButtonCustom>
+            <div className={styles.imagePreviewBoxBtns}>
+              <ButtonCustom type="submit">Загрузить</ButtonCustom>
+              <ButtonCustom onClick={handleRemoveImage}>Отменить</ButtonCustom>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     );
   }
@@ -149,4 +171,4 @@ const ImageUploader = () => {
   );
 };
 
-export default ImageUploader;
+export default observer(ImageUploader);

@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import styles from "./AllSubcriptions.module.scss";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
 import SearchInputCustom from "../../Components/SeacrhInput/SearchInput";
-import { Avatar,Typography } from "@mui/material";
-import { Route, Routes, NavLink, Link, useParams } from "react-router-dom";
-import * as Muicon from "@mui/icons-material";
+import { Avatar, } from "@mui/material";
+import { Route, Routes, NavLink, Link} from "react-router-dom";
 import EmptySub from "./emptySub/emptySub";
-
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
-
 import TabsCustom from "../../Components/TabsCustom/TabsCustom";
 import TabItemFirst from "./Tabs/TabItemFirst";
+import SubComponents from "../../Components/SubOnChannel/SubOnChannel";
 
 const arraySubcriptions = [
   {
@@ -83,26 +81,7 @@ const DataTabs = [
   },
 ];
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
 
-  return (
-    <div
-      className={styles.tabPanel}
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <div className={styles.tabPanelValue}>
-          <Typography>{children}</Typography>
-        </div>
-      )}
-    </div>
-  );
-}
 
 const AllSubcriptions = () => {
   const navLinkStyles = ({ isActive }) => {
@@ -184,13 +163,6 @@ const AllSubcriptions = () => {
 export default AllSubcriptions;
 
 const SubDetails = ({ getValue }) => {
-  //const [value, setValue] = React.useState(0);
-  const { id } = useParams();
-  console.log(id);
-
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  // };
 
   return (
     <div className={styles.sectionSubInfoChannel}>
@@ -208,7 +180,8 @@ const SubDetails = ({ getValue }) => {
         </div>
         <div className={styles.sectionSubInfoChannelTopRight}>
           <div>
-            <ButtonCustom>Вы подписаны</ButtonCustom>
+            {/* <ButtonCustom>Вы подписаны</ButtonCustom> */}
+            <SubComponents/>
           </div>
         </div>
       </div>

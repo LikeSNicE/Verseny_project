@@ -64,18 +64,6 @@ const Channel = () => {
         </div>
 
         <div className={styles.sectionChannelInfoBottom}>
-          {/* <TabsCustom
-            className={styles.sectionChannelInfoBottomLink}
-            to="all-concurs"
-          >
-            Конкурсы
-          </TabsCustom>
-          <TabsCustom
-            className={styles.sectionChannelInfoBottomLink}
-            to="feauters"
-          >
-            Подробности
-          </TabsCustom> */}
           <TabsCustom dataTabs={DataTabs}/>
         </div>
       </div>

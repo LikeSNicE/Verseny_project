@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../assets/images/icons/logo.svg";
 import styles from "./ResetPassword.module.scss";
 import { Avatar } from "@mui/material";
@@ -6,47 +6,82 @@ import TextFieldUI from "../../Components/InputCustom/InputCustom";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import { useForm } from "react-hook-form";
 import AvatarCustom from "../../Components/AvatarCustom/AvatarCustom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../..";
+import { observer } from "mobx-react-lite";
+import LoadingCustom from "../../Components/LoadingCustom/LoadingCustom";
 
 const ResetPassword = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    reset
+    reset,
   } = useForm({
     mode: "onBlur",
   });
 
+  const { Authstore } = useContext(Context);
+  const { token } = useParams();
+
+  useEffect(() => {
+    Authstore.recognizeUserToToken(token)
+      .then((response) => {
+        setSuccess(response.success);
+        setUser(response.data);
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
+  const [success, setSuccess] = useState(false);
+  const [user, setUser] = useState({
+    avatar: "",
+    nickname: "",
+    description: "",
+  });
+
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
     console.log(data);
-    reset();
+    console.log(user.id);
+    Authstore.isLoadingButton = true;
+    try {
+      Authstore.resetPassword({ ...data, user_id: user.id,email: user.email });
+      navigate("/login");
+    } catch (error) {
+    } finally {
+      Authstore.isLoadingButton = false;
+    }
+    // reset();
   };
 
-  const DataAvatar = {
-    name: "Ubisoft",
-    link: "/channel/id",
-    description: "bekkozha.ayan@mail.ru",
-    avatar:
-      "https://img5.goodfon.ru/wallpaper/nbig/f/6e/the-last-of-us-part-2-odni-iz-nas-elli-ellie-ps4-game-art.jpg",
+  const getUserData = (user) => {
+    return {
+      name: user.name,
+      description: user.email,
+      avatar: user.avatar,
+    };
   };
+
+  if (Authstore.isLoading) {
+    return <LoadingCustom />;
+  }
+
+  if (!success) {
+    return <div>Пароль был изпользован</div>;
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.sectionResetPas}>
       <img className={styles.sectionResetPasImg} src={Logo} alt="Logo" />
-      <div className={styles.sectionResetPasTitle}>
-        Отлично! Вы cбросили пароль от аккаунта:
-      </div>
+      <div className={styles.sectionResetPasTitle}>Сброс Пароля :</div>
       <div className={styles.sectionResetPasProfile}>
-        {/* <Avatar
-          className={styles.sectionResetPasProfileImg}
-          src="https://avatars.githubusercontent.com/u/85344443?s=400&u=6c92f6fc049c598f01fa6554b575c74dbf789e07&v=4"
-          alt="profile photo"
+        <AvatarCustom
+          sizeAvatar={{ width: "40px", height: "40px" }}
+          data={getUserData(user)}
         />
-        <div className={styles.sectionResetPasProfileInfo}>
-          <p className={styles.sectionResetPasProfileName}>Беккожа Аян</p>
-          <p className={styles.sectionResetPasProfileCompany}>Ubisoft</p>
-        </div> */}
-        <AvatarCustom sizeAvatar={{width:"40px",height: '40px'}} data={DataAvatar}/>
       </div>
       <div className={styles.sectionResetPasInput}>
         <TextFieldUI
@@ -54,8 +89,6 @@ const ResetPassword = () => {
           label="Введите пароль"
           register={register("password", {
             required: true,
-            // pattern:
-            //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/,
             minLength: {
               value: 8,
               message: "Пароль должен содержать минимум 8 символов",
@@ -68,26 +101,21 @@ const ResetPassword = () => {
         <TextFieldUI
           type="password"
           label="Введите пароль повторно"
-          register={register("confirmPassword", {
+          register={register("password_confirmation", {
             required: true,
-            // pattern:
-            //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/,
-            validate: (value) =>
-              value === errors.password.current || "Passwords do not match",
+            // validate: (value) =>
+            //   value === errors.password.current || "Passwords do not match",
           })}
           errorText={
             errors?.confirmPassword && errors?.confirmPassword?.message
           }
         />
       </div>
-      <ButtonCustom
-        className={styles.sectionResetPasBtn}
-        type="submit"
-      >
+      <ButtonCustom className={styles.sectionResetPasBtn} type="submit">
         Сбросить
       </ButtonCustom>
     </form>
   );
 };
 
-export default ResetPassword;
+export default observer(ResetPassword);

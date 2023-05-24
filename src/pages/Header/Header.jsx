@@ -96,6 +96,7 @@ const Header = ({login}) => {
   const AirplayOutlinedIcon = Muicon["AirplayOutlined"];
 
   const {Authstore} = useContext(Context)
+  const {nickname,name,avatar} = Authstore.user;
 
   
 
@@ -150,7 +151,8 @@ const Header = ({login}) => {
 
               <Avatar
                 onClick={(e) => setIsOpen(true)}
-                src="https://avatars.githubusercontent.com/u/85344443?s=400&u=6c92f6fc049c598f01fa6554b575c74dbf789e07&v=4"
+                src={avatar}
+                alt={name}
                 sx={{
                   width: "40px",
                   height: "40px",
@@ -182,17 +184,17 @@ const Header = ({login}) => {
               <Stack className={styles.menuProfileBox}>
                 <div className={styles.menuProfileBoxLeft}>
                   <Typography className={styles.menuProfileBoxLeftAuthor}>
-                    Луценко Никита
+                    {name}
                   </Typography>
                   <Typography
                     fontWeight={"bold"}
                     className={styles.menuProfileBoxLeftCompany}
                   >
-                    Ubisoft1
+                    {nickname}
                   </Typography>
                 </div>
                 <div>
-                  <Avatar src="https://avatars.githubusercontent.com/u/85344443?s=400&u=6c92f6fc049c598f01fa6554b575c74dbf789e07&v=4" />
+                  <Avatar src={avatar} alt={name} />
                 </div>
               </Stack>
               <Divider />
@@ -206,7 +208,13 @@ const Header = ({login}) => {
                   ></CustomLinkIcon>
                 </MenuItem>
                 <MenuItem onClick={() => Authstore.logout()}>
-                  
+                  <CustomLinkIcon
+                    to={"/logout"}
+                    Icon={<ExitToAppIcon />}
+                    className={styles.menuProfileItemLink}
+                  >
+                    Выйти
+                  </CustomLinkIcon>
                 </MenuItem>
               </div>
             </Menu>

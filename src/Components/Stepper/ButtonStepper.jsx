@@ -3,6 +3,7 @@ import ButtonCustom from "../ButtonCustom/ButtonCustom";
 import { Grid } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Link } from "react-router-dom";
+import styles from './Stepper.module.scss';
 
 export default function ButtonStepper({
   stepRoute,
@@ -28,6 +29,7 @@ export default function ButtonStepper({
           endIcon={<ArrowForwardIcon />}
           color="primary"
           onClick={() => setStep(activeStep + 1)}
+          className={styles.btnStart}
         >
           {buttonStepperText.nextButton}
         </ButtonCustom>
@@ -35,7 +37,7 @@ export default function ButtonStepper({
     );
   if (activeStep === endStep)
     return (
-      <Grid container spacing={2}>
+      <Grid sx={{marginTop: '20px'}} container spacing={2}>
         <Grid item xs={4}>
           <Link
             to={
@@ -55,14 +57,14 @@ export default function ButtonStepper({
           </Link>
         </Grid>
         <Grid item xs={8}>
-          <ButtonCustom style={{ width: "100%" }} color="primary">
+          <ButtonCustom type="submit" style={{ width: "100%" }} color="primary">
             {buttonStepperText.finallyButton}
           </ButtonCustom>
         </Grid>
       </Grid>
     );
   return (
-    <Grid container spacing={2}>
+    <Grid sx={{marginTop: '20px',height: '45px'}} container spacing={2}>
       <Grid item xs={4}>
         <Link
           to={
@@ -76,6 +78,7 @@ export default function ButtonStepper({
             style={{ width: "100%" }}
             variant="outlined"
             onClick={() => setStep(activeStep - 1)}
+            className={styles.btnFinallyBack}
           >
             Назад
           </ButtonCustom>
@@ -91,10 +94,11 @@ export default function ButtonStepper({
           style={{ textDecoration: "none" }}
         >
           <ButtonCustom
-            style={{ width: "100%" }}
+            style={{ width: "100%",height: '45px'}}
             endIcon={<ArrowForwardIcon />}
             color="primary"
             onClick={() => setStep(activeStep + 1)}
+            className={styles.btnFinallyRegist}
           >
             {buttonStepperText.nextButton}
           </ButtonCustom>

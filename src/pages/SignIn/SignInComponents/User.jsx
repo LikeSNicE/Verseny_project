@@ -8,64 +8,46 @@ import { useForm } from 'react-hook-form';
 export default function User() {
   const contextOutlet = useOutletContext();
 
-  useEffect(()=>{
-    contextOutlet.setValue("gender","");
-  },[]); 
 
-  const {handleSubmit,reset,register,formState: {
-    errors
-  }} = useForm({
-    mode: 'onBlur'
-  })
    
   return (
     <div className={styles.containerSigninForm}>
+      <div className={styles.containerSigninForm}>
+        <TextFieldUI
+          type="email"
+          label="Email"
+          errorText={
+            contextOutlet.errors?.email && contextOutlet.errors?.email?.message
+          }
+          register={contextOutlet.register("email", {
+            required: "Поле обязателько к заполнению",
+            pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+          })}
+        />
+        <TextFieldUI
+          type="password"
+          label="Пароль"
+          errorText={
+            contextOutlet.errors?.email && contextOutlet.errors?.email?.message
+          }
+          register={contextOutlet.register("password", {
+            required: "Поле обязателько к заполнению",
+            minLength: {
+              value: 8,
+              message: "Пароль должен содержать минимум 8 символов",
+            },
+          })}
+        />
+      </div>
       <TextFieldUI
         register={contextOutlet.register("name")}
-        label="Введите имя"
-      />
-      <TextFieldUI
-        register={contextOutlet.register("surname")}
-        label="Введите фамилия"
+        label="Введите Ф.И.О"
       />
       <RadioButtonCustom
         onChange={(e) => contextOutlet.setValue("gender", e.target.value)}
         defaultChecked={contextOutlet.getValues("gender")}
         radio={["Мужской", "Женский"]}
         formLabel={"Пол"}
-      />
-      <TextFieldUI
-        type="email"
-        label="Email"
-        errorText={errors?.email && errors?.email?.message}
-        register={register("email", {
-          required: "Поле обязателько к заполнению",
-          pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-        })}
-      />
-      <TextFieldUI
-        type="password"
-        label="Пароль"
-        errorText={errors?.email && errors?.email?.message}
-        register={register("password", {
-          required: "Поле обязателько к заполнению",
-          minLength: {
-            value: 8,
-            message: "Пароль должен содержать минимум 8 символов",
-          },
-        })}
-      />
-      <TextFieldUI
-        type="password"
-        label="Повторить пароль"
-        errorText={errors?.email && errors?.email?.message}
-        register={register("password", {
-          required: "Поле обязателько к заполнению",
-          minLength: {
-            value: 8,
-            message: "Пароль должен содержать минимум 8 символов",
-          },
-        })}
       />
     </div>
   );

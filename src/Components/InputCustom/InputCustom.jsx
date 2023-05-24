@@ -59,6 +59,7 @@ export default function TextFieldUI(props) {
       size="small"
       error={errorText.length !== 0}
       helperText={errorText.length !== 0 && errorText}
+      val
       {...register}
     />
   );

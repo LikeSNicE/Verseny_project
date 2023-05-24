@@ -6,12 +6,9 @@ import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import RadioButtonCustom from "../../Components/RadioBtn/RadioBtn";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
-
-
 const SettingUser = () => {
 
   const arrayRadioBtn = ["Мужской","Женский"]
-
   return (
     <div className={styles.profileSettingLeft}>
       <div className={styles.profileSettingLeftTitle}>
@@ -21,17 +18,12 @@ const SettingUser = () => {
         <div className={styles.profileSettingLeftTitleSubtitle}>Профиль</div>
       </div>
 
-      <div className={styles.profileSettingLeftField}>
-        <div className={styles.profileSettingLeftFieldName}>Имя :</div>
-        <div className={styles.profileSettingLeftFieldInput}>
-          <InputCustom label="Имя" />
-        </div>
-      </div>
+      
 
       <div className={styles.profileSettingLeftField}>
-        <div className={styles.profileSettingLeftFieldName}>Фамилия :</div>
+        <div className={styles.profileSettingLeftFieldName}>Ф.и.о :</div>
         <div className={styles.profileSettingLeftFieldInput}>
-          <InputCustom label="Фамилия" />
+          <InputCustom label="Ф.И.О" />
         </div>
       </div>
 

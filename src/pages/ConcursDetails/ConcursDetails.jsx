@@ -45,7 +45,6 @@ const ConcursDetails = (props) => {
    ];
 
 
-  const AddReactionIcon = Muicon["AddReactionOutlined"];
   const PeopleIcon = Muicon["PeopleOutlined"];
 
   return (

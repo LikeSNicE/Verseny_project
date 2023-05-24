@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Button, IconButton } from "@mui/material";
-
+import { Button} from "@mui/material";
 import { Link, Routes, Route, useLocation, Navigate } from "react-router-dom";
-import imgEdit from "../../assets/images/icons/Edit.svg";
 import styles from "./ProfileSettings.module.scss";
 import SettingUser from "../settingUser/settingUser";
 import SettingChannel from "../settingChannel/settingChannel";
@@ -11,16 +9,30 @@ import TooltipCustom from "../../Components/ToolTipCustom/ToolTipCustom";
 import ModalCustom from "../../Components/Modal/Modal";
 import ImageUploader from "../../Components/ImageUploader/ImageUploader";
 import TabsCustom from "../../Components/TabsNavCustom/TabsNavCustom";
+import InputAvatarModal from "../../Components/ModalComponents/InputAvatarModal/InputAvatarModal";
+import imgEdit from "../../assets/images/icons/Edit.svg";
 import * as Muicon from "@mui/icons-material";
+import { useContext } from "react";
+import { Context } from "../..";
+import { observer } from "mobx-react-lite";
+import InputBannerModal from "../../Components/ModalComponents/InputBannerModal/InputBannerModal";
 
 const ProfileInfoChannel = () => {
+  // State
+  const [hovered, setHovered] = useState(false);
+  const [isAvatar, setIsAvatar] = useState(false);
   const [isOpen, setOpen] = useState(false);
+  const { Authstore } = useContext(Context);
+
+  //
+  const { id, created_at, email, gender, avatar, name, nickname,header } =
+    Authstore.user;
 
   const location = useLocation();
-
   if (location.pathname === "/profileInfoChannel/setting") {
     return <Navigate to={"/profileInfoChannel/setting/user"} />;
   }
+
 
   // icons
   const AirplayOutlinedIcon = Muicon["AirplayOutlined"];
@@ -30,12 +42,19 @@ const ProfileInfoChannel = () => {
   const PersonOutlineOutlinedIcon = Muicon["PersonOutlineOutlined"];
   const EditOutlinedIcon = Muicon["EditOutlined"];
 
+
+
   return (
     <div className={styles.profile}>
       {/*profile header*/}
       <div className={styles.profileBanner}>
         <img
-          src="https://pbs.twimg.com/media/D6H3CT0WwAA5_yg.jpg"
+          className={styles.profileBannerImg}
+          src={
+            header
+              ? header
+              : "https://klike.net/uploads/posts/2022-12/1671597724_3-61.jpg"
+          }
           alt="profile header_photo"
         />
         <ModalCustom
@@ -49,7 +68,7 @@ const ProfileInfoChannel = () => {
           open={isOpen}
           setIsOpen={setOpen}
         >
-          <ImageUploader />
+          <InputBannerModal setIsOpen={setOpen}/>
         </ModalCustom>
       </div>
 
@@ -61,19 +80,46 @@ const ProfileInfoChannel = () => {
               variant="contained"
               component="label"
               className={styles.profileSectionInfoLeftLink}
+              onMouseLeave={() => setHovered(false)}
+              onMouseEnter={(e) => {
+                e.stopPropagation();
+                setHovered(true);
+              }}
             >
-              (
-              <img
-                className={styles.profileSectionInfoLeftImg}
-                src="https://cybersport.metaratings.ru/storage/images/e6/ee/e6ee248b4bceb7fdf71a74871f8a0425.jpg"
-                alt=""
-              />
-              )
+              {hovered ? (
+                <div>
+                  <div className={styles.profileSectionInfoLeftLinkHover}>
+                    <img
+                      src={imgEdit}
+                      alt=""
+                      onClick={() => setIsAvatar(true)}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <img
+                  className={styles.profileSectionInfoLeftImg}
+                  src={avatar}
+                  alt="photoOfUser"
+                />
+              )}
             </Button>
+            <div className={styles.profileSectionModalAvatar}>
+              <ModalCustom
+                iconTopSection={<Muicon.EditOutlined />}
+                iconTopSectiontext="Изменение фото профиля"
+                open={isAvatar}
+                setIsOpen={setIsAvatar}
+              >
+                <InputAvatarModal setIsOpen={setIsAvatar} />
+              </ModalCustom>
+            </div>
           </div>
           <div className={styles.profileSectionInfoLeftText}>
-            <p className={styles.profileSectionInfoLeftTextName}>Беккожа Аян</p>
-            <p className={styles.profileSectionInfoLeftTextCompany}>Ubisoft</p>
+            <p className={styles.profileSectionInfoLeftTextName}>{name}</p>
+            <p className={styles.profileSectionInfoLeftTextCompany}>
+              {nickname}
+            </p>
           </div>
         </div>
 
@@ -138,19 +184,19 @@ const ProfileInfoChannel = () => {
             <h3>Подробная информация</h3>
             <div className={styles.profileSettingRightBottomData}>
               <p>{<AlternateEmailOutlinedIcon />}</p>
-              <p>id_1</p>
+              <p>id : {id}</p>
             </div>
             <div className={styles.profileSettingRightBottomData}>
               <p>{<CardGiftcardOutlinedIcon />}</p>
-              <p>Дата создание аккаунта: 10.11.2023 г.</p>
+              <p>Дата создание аккаунта: {created_at} г.</p>
             </div>
             <div className={styles.profileSettingRightBottomData}>
               <p>{<EmailOutlinedIcon />}</p>
-              <p>bekkozha.ayan@mail.ru</p>
+              <p>Email : {email}</p>
             </div>
             <div className={styles.profileSettingRightBottomData}>
               <p>{<PersonOutlineOutlinedIcon />}</p>
-              <p>Мужской</p>
+              <p>Пол : {gender}</p>
             </div>
           </div>
         </div>
@@ -159,4 +205,4 @@ const ProfileInfoChannel = () => {
   );
 };
 
-export default ProfileInfoChannel;
+export default observer(ProfileInfoChannel);

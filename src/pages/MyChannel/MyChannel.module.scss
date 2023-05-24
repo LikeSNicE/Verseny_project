@@ -4,6 +4,12 @@
 
 .profileBanner {
   position: relative;
+  &Img{
+    max-width: 1000px;
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+  }
   &EditBtn {
     font-size: 12px !important;
     position: absolute !important;

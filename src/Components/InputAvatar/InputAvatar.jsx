@@ -1,84 +1,78 @@
-import React, {useState,useRef} from 'react'
+import React, { useState, useRef } from "react";
 import styles from "./InputAvatar.module.scss";
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import { Alert,AlertTitle,Stack } from '@mui/material';
-import Avatar from 'react-avatar-edit';
-import ButtonCustom from '../ButtonCustom/ButtonCustom';
+import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
+import { Alert, AlertTitle, Stack } from "@mui/material";
+import Avatar from "react-avatar-edit";
+import ButtonCustom from "../ButtonCustom/ButtonCustom";
 
-
-export default function InputAvatar({getAvatar,defaultAvatar}) {
+export default function InputAvatar({ getAvatar, defaultAvatar }) {
   const checkImage = defaultAvatar !== undefined ? defaultAvatar : "";
-  const [drag,setDrag] = useState(false);
-  const [error,setError] = useState('');
-  const [image,setImage] = useState(checkImage);
+  const [drag, setDrag] = useState(false);
+  const [error, setError] = useState("");
+  const [image, setImage] = useState(checkImage);
   const inputRef = useRef();
-  
-  const dragStart = (e) =>{
+
+  const dragStart = (e) => {
     e.preventDefault();
     setDrag(true);
-  }
-  const dragEnd = (e) =>{
+  };
+  const dragEnd = (e) => {
     e.preventDefault();
     setDrag(false);
-  }
-  const onCrop = (view) =>{
-    getAvatar(view,image);
-  }
-  const onClose = ()=>{
+  };
+  const onCrop = (view) => {
+    getAvatar(view, image);
+  };
+  const onClose = () => {
     setDrag(false);
     getAvatar("");
     setImage("");
-  }
-  const onSetFileHandler = (e,avatar) =>{
+  };
+  const onSetFileHandler = (e, avatar) => {
     e.preventDefault();
-    const validExtensions = ["image/jpeg","image/jpg","image/png"];
+    const validExtensions = ["image/jpeg", "image/jpg", "image/png"];
 
-    if(validExtensions.includes(avatar[0].type)){
+    if (validExtensions.includes(avatar[0].type)) {
       const fileReader = new FileReader();
-      fileReader.readAsDataURL(avatar[0])
-      fileReader.onload = ()=>{
-          setImage(fileReader.result);
+      fileReader.readAsDataURL(avatar[0]);
+      fileReader.onload = () => {
+        setImage(fileReader.result);
+        setError("");
       };
-    }
-    else{
+    } else {
       setError("Данный файл не является фотографией!!");
       setDrag(false);
     }
-  }
+  };
 
-  if(image.length !== 0) return (
-    <div className={styles.dragDropContainerGap}>
-      <div className={styles.avatarCreating}>
-        <Avatar
-          imageWidth={600}
-          src={image}
-          onClose={onClose}
-          onCrop={onCrop}
-          cropRadius={0}
-          imageHeight={600}
-        />
+  if (image.length !== 0)
+    return (
+      <div className={styles.dragDropContainerGap}>
+        <div className={styles.avatarCreating}>
+          <Avatar
+            imageWidth={600}
+            src={image}
+            onClose={onClose}
+            onCrop={onCrop}
+            cropRadius={0}
+            imageHeight={600}
+          />
+        </div>
+        <div style={{ display: "flex" }}>
+          <ButtonCustom
+            variant="outlined"
+            color="error"
+            onClick={onClose}
+            style={{ width: "100%" }}
+          >
+            Закрыть
+          </ButtonCustom>
+        </div>
       </div>
-      <div style={{ display: "flex" }}>
-        {/* <ButtonCustom
-          variant="contained"
-          style={{ width: "50%", marginRight: "10px" }}
-        >
-          Загрузить
-        </ButtonCustom> */}
-        <ButtonCustom
-          variant="outlined"
-          color="error"
-          onClick={onClose}
-          style={{width: '100%'}}
-        >
-          Закрыть
-        </ButtonCustom>
-      </div>
-    </div>
-  );
+    );
 
   return (
-    <div style={{ display: "grid", gap: "20px" }}>
+    <div style={{ display: "grid" }}>
       <div className={styles.dragDropBorder}>
         <div className={styles.dragDropContainer}>
           <div>
@@ -133,7 +127,7 @@ export default function InputAvatar({getAvatar,defaultAvatar}) {
       {error.length === 0 ? (
         ""
       ) : (
-        <Stack sx={{ width: "100%" }} spacing={2}>
+        <Stack sx={{ width: "100%" }} spacing={1}>
           <Alert severity="error">
             <AlertTitle>Ошибка</AlertTitle>
             <strong>{error}</strong>

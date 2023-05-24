@@ -5,7 +5,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { ThemeProvider, createTheme } from "@mui/material";
-import styles from './TabsCustom.module.scss';
+import styles from "./TabsCustom.module.scss";
 
 const theme = createTheme({
   typography: {
@@ -65,15 +65,8 @@ export default function TabsCustom({ dataTabs }) {
                 key={item.id}
                 icon={item.icon}
                 iconPosition="start"
-                sx={{ textTransform: "inherit",minHeight: '48px'}
-                }
+                sx={{ textTransform: "inherit", minHeight: "48px" }}
                 label={<div>{item.label}</div>}
-                // MuiButtonBase-root
-                // MuiTab-root
-                // MuiTab-labelIcon
-                // MuiTab-textColorPrimary
-                // Mui-selected
-                // css-quqrw3-MuiButtonBase-root-MuiTab-root
               />
             ))}
           </Tabs>
