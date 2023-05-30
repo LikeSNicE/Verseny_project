@@ -1,4 +1,3 @@
-
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
@@ -13,37 +12,50 @@ import * as Muicon from "@mui/icons-material";
 import ModalParticipate from "../../Components/ModalComponents/ParticipateModal/ParticipateModal";
 
 const ConcursDetails = (props) => {
+  
+  const {concurs,author,preview} = props;
+  
   const {
+    id,
     img,
-    titleMain,
-    tabText,
-    dataStartNumber,
-    dataEndNumber,
-    countUser,
-    descriptionText,
-  } = props;
+    name,
+    category,
+    start_contest,
+    end_contest,
+    participant,
+    description,
+    type,
+    folder_contest,
+    conditionals,
+    json_winners,
+    isParticipation,
+  } = concurs;
 
+  const {
+    avatar,
+    nickname
+  } = author;
 
-   const DataAvatar = {
-     name: "Ubisoft",
-     link: "/channel/id",
-     avatar:
-       "https://img5.goodfon.ru/wallpaper/nbig/f/6e/the-last-of-us-part-2-odni-iz-nas-elli-ellie-ps4-game-art.jpg",
-   };
+ 
 
-   const DataTabs = [
-     {
-       id: 1,
-       label: "Призы конкурса",
-       value: <TableBlock />,
-     },
-     {
-       id: 2,
-       label: "Подробности",
-       value: <FeaturesBlock />,
-     },
-   ];
+  const DataAvatar = {
+    name: nickname,
+    link: "/channel/id",
+    avatar: avatar,
+  };
 
+  const DataTabs = [
+    {
+      id: 1,
+      label: "Призы конкурса",
+      value: <TableBlock json_winners={json_winners} />,
+    },
+    {
+      id: 2,
+      label: "Условия конкурса",
+      value: <FeaturesBlock text={conditionals} />,
+    },
+  ];
 
   const PeopleIcon = Muicon["PeopleOutlined"];
 
@@ -54,9 +66,9 @@ const ConcursDetails = (props) => {
       </div>
 
       <div className={styles.concursDetailsSectionBoxTitles}>
-        <div className={styles.concursDetailsSectionTitleMain}>{titleMain}</div>
+        <div className={styles.concursDetailsSectionTitleMain}>{name}</div>
         <div className={styles.concursDetailsSectionTab}>
-          <TagScience children={tabText} />
+          <TagScience backgroundColor={category.color} children={category.name} />
         </div>
       </div>
 
@@ -65,17 +77,17 @@ const ConcursDetails = (props) => {
           Дата начало - конец :
         </h1>
         <h3 className={styles.concursDetailsSectionDateSubtitle}>
-          {dataStartNumber} - {dataEndNumber}
+          {start_contest} - {end_contest}
         </h3>
       </div>
 
       <div className={styles.concursDetailsSectionParticipate}>
         <div className={styles.concursDetailsSectionParticipateGroup}>
           <PeopleIcon />
-          <p>{countUser} участников</p>
+          <p>{participant} участников</p>
         </div>
         <div>
-          <ModalParticipate />
+          <ModalParticipate participation={type} isParticipation={isParticipation} />
         </div>
       </div>
 
@@ -85,17 +97,21 @@ const ConcursDetails = (props) => {
         <div className={styles.concursDetailsSectionBoxAuthorLeft}>
           <AvatarCustom data={DataAvatar} />
         </div>
-        <div className={styles.concursDetailsSectionBoxAuthorRight}>
-          <SubComponents />
-        </div>
+        {preview ? (
+          ""
+        ) : (
+          <div className={styles.concursDetailsSectionBoxAuthorRight}>
+            <SubComponents />
+          </div>
+        )}
       </div>
 
       <div className={styles.concursDetailsSectionDescription}>
         <h3 className={styles.concursDetailsSectionDescriptionTitle}>
-          Описание конкурса :{" "}
+          Описание конкурса :
         </h3>
         <p className={styles.concursDetailsSectionDescriptionText}>
-          {descriptionText}
+          {description}
         </p>
       </div>
 

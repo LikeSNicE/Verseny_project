@@ -42,6 +42,7 @@ export default function InputAvatar({ getAvatar, defaultAvatar }) {
     } else {
       setError("Данный файл не является фотографией!!");
       setDrag(false);
+      
     }
   };
 

@@ -81,19 +81,21 @@ const BootstrapButton = styled(LoadingButton)({
   },
 });
 
-function ButtonCustom({
-  children,
-  variant = "contained",
-  color,
-  startIcon,
-  endIcon,
-  onClick,
-  style,
-  type = "button",
-  loading = false,
-  className,
-  disabled = false,
-}) {
+function ButtonCustom(props) {
+  const {
+    children,
+    variant = "contained",
+    color,
+    startIcon,
+    endIcon,
+    onClick,
+    style,
+    type = "button",
+    loading = false,
+    className,
+    disabled = false,
+  } = props;
+
   return (
     <BootstrapButton
       variant={variant}

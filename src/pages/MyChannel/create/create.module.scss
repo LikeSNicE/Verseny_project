@@ -2,7 +2,7 @@
 .sectionDescription,
 .sectionPrizes,
 .sectionConditions,
-.sectionResult {
+.sectionResult{
   padding: 0 0 40px;
   margin-top: 40px;
 }
@@ -10,12 +10,18 @@
 .sectionCreate {
   &BtnNext {
     max-width: 400px;
-    margin-top: 40px !important;
-    text-align: left !important;
+    margin-left: auto !important;
   }
 }
 
 .sectionMain {
+  &InputPoster{
+    margin: 40px 0;
+  }
+  &FlexTitle{
+    display: flex;
+    justify-content: space-between;
+  }
   &BlockFirst {
     display: flex;
     justify-content: space-between;
@@ -26,28 +32,30 @@
     }
   }
   &TitleDate {
-    font-size: 27px;
+    font-size: 24px;
     font-weight: 700;
     line-height: 30px;
     color: #000;
     margin-top: 40px;
   }
 
-  &BlockSecond{
+  &BlockSecond {
     display: flex;
     justify-content: space-between;
     margin-top: 25px;
-    &Date{
+    &Date {
       display: flex;
-      & span{
+      max-width: 530px;
+      width: 100%;
+      & span {
         text-align: center;
         display: flex;
         align-items: center;
       }
     }
   }
-  &TextWarning{
-    color: #E8533F;
+  &TextWarning {
+    color: #e8533f;
     text-align: right;
     margin-top: 10px;
   }
@@ -55,13 +63,13 @@
 
 .sectionDescription {
   &GroupFont {
-    margin-top: 60px;
+    // margin-top: 60px;
   }
   &TextArea {
     margin-top: 20px;
     width: 100%;
     resize: none;
-    min-height: 540px;
+    min-height: 400px;
     overflow: auto;
     border-radius: 10px;
     padding: 20px;
@@ -126,4 +134,8 @@
       align-self: center;
     }
   }
+}
+
+.sectionResult{
+  margin-top: 40px !important;
 }

@@ -4,37 +4,22 @@ import {
   Box,
   Modal,
   IconButton,
-  AppBar,
-  Toolbar,
-  useScrollTrigger,
   Button,
 } from "@mui/material";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import ButtonCustom from "../ButtonCustom/ButtonCustom";
 
-function ElevationScroll(props) {
-  const { children, window } = props;
 
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-    target: window ? window() : undefined,
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-  });
-}
 
 const ModalCustom = (props) => {
   const {
     rootClass,
     iconTopSection,
     iconTopSectionStyles,
-    iconTopSectiontext,
+    TopSectiontext,
     btnStyles = "",
     btnLabel = "",
     btnStartIcon = "",
+    btnDisabled,
     labelStyles,
     children,
     heightModal,
@@ -71,6 +56,7 @@ const ModalCustom = (props) => {
         startIcon={btnStartIcon}
         children={btnLabel}
         className={btnStyles}
+        disabled={btnDisabled}
       />
       <Modal
         className={className}
@@ -83,7 +69,7 @@ const ModalCustom = (props) => {
           <ModalTopSection
             iconCross={<CloseOutlinedIcon />}
             onClick={handleClose}
-            text={iconTopSectiontext}
+            text={TopSectiontext}
             iconStyles={iconTopSectionStyles}
             icon={iconTopSection}
           />

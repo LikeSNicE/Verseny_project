@@ -1,11 +1,44 @@
 import React, { useState } from "react";
 import styles from "../update.module.scss";
 import TableUI from "../../../../Common/Table/Table";
-import { dataTable, headData } from "./prizesUpdateData";
+import { headData } from "./prizesUpdateData";
 import ButtonCustom from "../../../../Components/ButtonCustom/ButtonCustom";
+import CounterCustom from "../../../../Components/CounterCustom/CounterCustom";
+import { useForm } from "react-hook-form";
 
 const PrizesConcursUpdate = () => {
-  const [counter, setCounter] = useState(0);
+  const { register } = useForm();
+
+  const [data, setData] = useState([
+    [
+      {
+        PlaceIcon: "1",
+      },
+      {
+        TextField: {
+          label: "Введите приз",
+          register: register("prizes_1"),
+        },
+      },
+    ],
+  ]);
+
+  const generateArray = (value) => {
+    let generateArray = Array(value)
+      .fill()
+      .map((item, i) => [
+        {
+          PlaceIcon: `${i + 1}`,
+        },
+        {
+          TextField: {
+            label: "Введите приз",
+            register: register(`prizes_${i + 1}`),
+          },
+        },
+      ]);
+    setData(generateArray);
+  };
 
   return (
     <div className={styles.sectionUpdatePrizes}>
@@ -14,22 +47,13 @@ const PrizesConcursUpdate = () => {
         Количество мест победителей:
       </div>
       <div className={styles.sectionUpdatePrizesCounter}>
-        <button
-          onClick={() => setCounter(counter - 1)}
-          className={styles.sectionUpdatePrizesCounterBtnMinus}
-        >
-          -
-        </button>
-        <div className={styles.sectionUpdatePrizesCounterInput}>{counter}</div>
-        <button
-          onClick={() => setCounter(counter + 1)}
-          className={styles.sectionUpdatePrizesCounterBtnPlus}
-        >
-          +
-        </button>
+        <div>
+          <CounterCustom getValue={(value) => generateArray(value)} />
+        </div>
       </div>
+
       <div className={styles.sectionUpdatePrizesTable}>
-        <TableUI head={headData} data={dataTable} />
+        <TableUI data={data} head={headData} />
       </div>
 
       <div className={styles.sectionUpdateMainBtnBox}>

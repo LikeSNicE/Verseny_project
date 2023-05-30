@@ -13,6 +13,7 @@ import InputAvatarModal from "../../Components/ModalComponents/InputAvatarModal/
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 import { Context } from "../..";
+import { isFileByUrl } from "../../Common/Table/isFileByUrl/isFileToUrl";
 
 const MyChannel = () => {
 
@@ -20,7 +21,7 @@ const MyChannel = () => {
   const ListFeautes = Muicon["ListAltOutlined"];
 
   const {Authstore} = useContext(Context)
-  const {name,nickname,avatar,header} = Authstore.user
+  const {name,nickname,avatar,header,subcribers,description} = Authstore.user
 
   const DataTabs = [
     {
@@ -32,10 +33,18 @@ const MyChannel = () => {
     {
       id: 2,
       label: "Подробности",
-      value: "Hello",
+      value: description,
       icon: <ListFeautes />,
     },
   ];
+
+  console.log(description)
+
+  // header default image
+  // const isFileByUrl = (filename) => {
+  //   const typeFilesImage = ['jpg','jpeg','png'];
+  //   return typeFilesImage.includes(filename.split('.').pop());
+  // }
 
   return (
     <div className={styles.sectionChannel}>
@@ -43,7 +52,7 @@ const MyChannel = () => {
         <img
           className={styles.profileBannerImg}
           src={
-            header
+            isFileByUrl(header)
               ? header
               : "https://klike.net/uploads/posts/2022-12/1671597724_3-61.jpg"
           }
@@ -73,7 +82,7 @@ const MyChannel = () => {
             <div className={styles.profileSectionInfoLeftText}>
               <p className={styles.profileSectionInfoLeftTextName}>{name}</p>
               <p className={styles.profileSectionInfoLeftTextSubcribers}>
-                30 467 подписчиков
+                {subcribers} подписчиков
               </p>
             </div>
           </div>

@@ -9,6 +9,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../..";
 import LoadingCustom from "../../Components/LoadingCustom/LoadingCustom";
 import AlertCustom from "../../Components/AlertCustom/AlertCustom";
+import FetchAuthService from "../../services/fetchService";
 
 function Login() {
   // use-form
@@ -16,18 +17,30 @@ function Login() {
     handleSubmit,
     register,
     formState: { errors, isValid },
-  } = useForm({});
+  } = useForm({ mode: "onBlur" });
 
   const { Authstore } = useContext(Context);
-  // Alert
-  const [isSnack, setIsSnack] = useState(false);
 
-  const onSubmit = (data) => {
+  const [error, setError] = useState("");
+
+  const onSubmit = async (data) => {
+  
     const formData = new FormData();
     for (let prop in data) {
       formData.append(prop, data[prop]);
     }
-    Authstore.login(formData);
+    
+    const loginResult = await Authstore.login(formData);
+
+    console.log(loginResult)
+
+    if (loginResult.isAuth) {
+      localStorage.setItem("token", loginResult.user.access_token);
+      Authstore.setAuth(loginResult.isAuth);
+      Authstore.setUser(loginResult.user.user);
+    } else {
+      setError(loginResult.message)
+    }
   };
 
   if (Authstore.isLoading) {
@@ -66,12 +79,13 @@ function Login() {
                 errorText={errors?.password && errors?.password?.message}
                 register={register("password", {
                   required: "Поле обязателько к заполнению",
-                  minLength: {
-                    value: 8,
-                    message: "Пароль должен содержать минимум 8 символов",
-                  },
+                  // minLength: {
+                  //   value: 8,
+                  //   message: "Пароль должен содержать минимум 8 символов",
+                  // },
                 })}
               />
+              <AlertCustom setError={setError} error={error} />
               <Link
                 href="/forgot-password"
                 underline="hover"
@@ -82,10 +96,10 @@ function Login() {
             </div>
           </Grid>
           <ButtonCustom
-            onClick={() => setIsSnack(true)}
-            loading={Authstore.isLoading}
+            loading={Authstore.isLoadingButton}
             type="submit"
             style={{ width: "100%" }}
+            disabled={!isValid}
           >
             Войти
           </ButtonCustom>
@@ -106,14 +120,6 @@ function Login() {
           </div>
         </div>
       </div>
-      <Snackbar open={isSnack} autoHideDuration={3000} onClose={() => setIsSnack(false)}>
-        <Alert
-          onClose={() => setIsSnack(false)}
-          severity={"success"}
-        >
-          {"Done"}
-        </Alert>
-      </Snackbar>
     </form>
   );
 }

@@ -11,6 +11,7 @@ export default function TextFieldUI(props) {
     type = "text",
     register,
     errorText = "",
+    inputProps = {}
   } = props;
 
   const CssTextField = styled(TextField)({
@@ -59,7 +60,10 @@ export default function TextFieldUI(props) {
       size="small"
       error={errorText.length !== 0}
       helperText={errorText.length !== 0 && errorText}
-      val
+      InputLabelProps={{
+        shrink: 'true'
+      }}
+      inputProps={inputProps}
       {...register}
     />
   );

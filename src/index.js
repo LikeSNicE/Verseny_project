@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import App from "./pages/App/App";
@@ -7,11 +7,23 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
 import AuthStore from "./mobx/authStore";
 import { createContext } from "react";
+import UserStore from "./mobx/userStore";
+import ContestStore from "./mobx/contestStore";
 
 const Authstore = new AuthStore();
+const Userstore = new UserStore();
+const Conteststore = new ContestStore();
+
+if (localStorage.getItem("token") !== null) {
+  Authstore.refresh();
+  Conteststore.GetCategoriesAndTypes()
+}
+
 
 export const Context = createContext({
   Authstore,
+  Userstore,
+  Conteststore
 });
 
 const theme = createTheme({
@@ -21,9 +33,10 @@ const theme = createTheme({
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
-    <Context.Provider value={{Authstore}}>
+    <Context.Provider value={{ Authstore,Userstore,Conteststore }}>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <App />

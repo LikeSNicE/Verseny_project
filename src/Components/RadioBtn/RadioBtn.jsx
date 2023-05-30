@@ -20,14 +20,32 @@ function BpRadio(props) {
   );
 }
 
-export default function RadioButtonCustom({ radio, formLabel, row = true,className }) {
+export default function RadioButtonCustom({
+  radio,
+  formLabel,
+  row = true,
+  className,
+  defaultChecked = "",
+  onChange,
+}) {
+  const [checked, setChecked] = React.useState(
+    defaultChecked.length === 0 ? "" : defaultChecked
+  );
+
+  const OnChangeRadioButton = (e) => {
+    setChecked(e.target.value);
+    onChange(e.target.value);
+  };
   return (
     <FormControl className={className}>
       <p>{formLabel}</p>
       <RadioGroup
+        value={checked}
+        // defaultValue={checked}
         row={row}
         aria-labelledby="demo-customized-radios"
         name="customized-radios"
+        defaultValue={"Мужской"}
       >
         {radio.map((valueRadio, index) => (
           <FormControlLabel
@@ -35,8 +53,11 @@ export default function RadioButtonCustom({ radio, formLabel, row = true,classNa
             value={valueRadio}
             control={<BpRadio />}
             label={valueRadio}
+            onChange={OnChangeRadioButton}
+          
           />
         ))}
+        {console.log(defaultChecked)}
       </RadioGroup>
     </FormControl>
   );

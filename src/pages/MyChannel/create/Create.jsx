@@ -10,8 +10,12 @@ import TextFieldUI from "../../../Components/InputCustom/InputCustom";
 
 const CreateComponent = () => {
   const [step, setStep] = useState(1);
-  const { register, setValue, getValues, handleSubmit } = useForm();
-
+  const {
+    register,
+    setValue,
+    getValues,
+    watch,
+  } = useForm();
 
   return (
     <div className={styles.sectionCreate}>
@@ -20,7 +24,7 @@ const CreateComponent = () => {
       </div>
 
       {useMatch(stepperData[step - 1].fullPath) ? (
-        <Outlet context={{ register, setValue, getValues }} />
+        <Outlet context={{ register, setValue, getValues, watch }} />
       ) : (
         <Navigate to={stepperData[step - 1].path} />
       )}
@@ -37,8 +41,6 @@ const CreateComponent = () => {
           endStep={stepperData.length}
         />
       </div>
-
-
     </div>
   );
 };

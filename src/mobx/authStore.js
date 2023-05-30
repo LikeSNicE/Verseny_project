@@ -1,7 +1,10 @@
 import { makeAutoObservable } from "mobx";
 import FetchAuthService from "../services/fetchService";
+import UserStore from "./userStore";
+import UserService from "../services/userService";
+import ChannelService from "../services/channelService";
 
-export default class AuthStore {
+export default  class AuthStore {
   constructor() {
     makeAutoObservable(this);
   }
@@ -24,6 +27,7 @@ export default class AuthStore {
     header: "",
     created_at: "",
     email: "",
+    subcribers: 0,
   };
 
   //actions
@@ -42,16 +46,22 @@ export default class AuthStore {
   // action async
 
   async login(formData) {
-    this.isLoading = true;
+    this.isLoadingButton = true;
     try {
       const response = await FetchAuthService.login(formData);
-      localStorage.setItem("token", response.data.data.access_token);
-      this.setAuth(true);
-      this.setUser(response.data.data.user);
+      return {
+        user: response.data.data,
+        isAuth: true,
+        message: "Авторизация прошла успешна",
+      };
     } catch (error) {
-      console.log(error);
+      return {
+        user: this.user,
+        isAuth: false,
+        message: error.response.data.message,
+      };
     } finally {
-      this.isLoading = false;
+      this.isLoadingButton = false;
     }
   }
 
@@ -85,6 +95,7 @@ export default class AuthStore {
       this.setUser(response.data.data.user);
     } catch (error) {
       console.log(error);
+      localStorage.removeItem("token");
     } finally {
       this.isLoading = false;
     }
@@ -98,7 +109,7 @@ export default class AuthStore {
       this.severity = "success";
     } catch (error) {
       console.log(error);
-      this.messageAlert = error.data.message;
+      this.messageAlert = "Был введен неправильный email";
       this.severity = "error";
     } finally {
       this.isLoadingButton = false;
@@ -132,4 +143,31 @@ export default class AuthStore {
   async updatePhoto(formdata) {
     return await FetchAuthService.updatePhoto(this.user.id, formdata);
   }
+
+  // users
+
+  async updateDataUser(data, id) {
+    try {
+      const response = await UserService.updateUserData(data, id);
+      this.setUser(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // channels
+
+  async updateDataChannel(data, id) {
+    try {
+      const response = await ChannelService.updateDataChannel(data, id);
+      this.setUser(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // contest 
+  
 }

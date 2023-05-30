@@ -1,48 +1,95 @@
-import React from 'react';
-import styles from '../create.module.scss';
-import ImageUploader from '../../../../Components/ImageUploader/ImageUploader';
-import TextFieldUI from '../../../../Components/InputCustom/InputCustom';
-import SelectUI from '../../../../Components/Select/Select';
+import React, { useContext } from "react";
+import styles from "../create.module.scss";
+import ImageUploader from "../../../../Components/ImageUploader/ImageUploader";
+import TextFieldUI from "../../../../Components/InputCustom/InputCustom";
+import SelectUI from "../../../../Components/Select/Select";
+import CategoryContest from "../../../../Components/CategoryContest/CategoryContest";
+import { useOutletContext } from "react-router-dom";
+import InputPoster from "../../../../Components/InputPoster/InputPoster";
+import { Context } from "../../../..";
+import { observer } from "mobx-react-lite";
 
 const MainConcurs = () => {
+  // store
+  const { Conteststore } = useContext(Context);
 
-   const arraySelectOptionCategory = [
-     { label: "По дате", value: "1" },
-     { label: "По количеству", value: "2" },
-   ];
+  const context = useOutletContext();
+  
+  // min date 
+  const today = new Date().toISOString().split("T")[0];
 
-   const arraySelectOptionTypeParticipation = [
-     { label: "По дате", value: "1" },
-     { label: "По количеству", value: "2" },
-   ];
+  // max date 
+  const inputStartContest = {
+    min: today,
+  };
+
+  const inputEndContest = {
+    min: context.watch("start_contest") ? context.watch("start_contest") : today,
+  };
 
   return (
     <div className={styles.sectionMain}>
-      <ImageUploader />
+      {/* <ImageUploader /> */}
+      <div className={styles.sectionMainInputPoster}>
+        <InputPoster
+          defaultImage={context.getValues("img")}
+          getImage={(image) => context.setValue("img", image)}
+        />
+      </div>
+
       <div className={styles.sectionMainBlockFirst}>
         <div className={styles.sectionMainBlockFirstInput}>
-          <TextFieldUI variant="standard" label="Введите название" />
+          <TextFieldUI
+            register={context.register("name", {
+              required: "Поле обязателько к заполнению",
+            })}
+            variant="standard"
+            label="Введите название"
+          />
         </div>
         <div className={styles.sectionMainBlockFirstSelect}>
-          <SelectUI
-            option={arraySelectOptionCategory}
-            label="Выберите категорию"
+          <CategoryContest
+            defaultData={context.getValues("category_id")}
+            getData={(value) => context.setValue("category_id", value)}
           />
         </div>
       </div>
 
-      <div className={styles.sectionMainTitleDate}>Дата начало - конец : </div>
+      <div className={styles.sectionMainFlexTitle}>
+        <div className={styles.sectionMainTitleDate}>Дата начало - конец :</div>
+
+        <div className={styles.sectionMainTitleDate}>Выбирите тип участия</div>
+      </div>
 
       <div className={styles.sectionMainBlockSecond}>
         <div className={styles.sectionMainBlockSecondDate}>
-          <TextFieldUI type={"date"} style={{ marginRight: "10px" }} />
+          <TextFieldUI
+            inputProps={inputStartContest}
+            register={context.register("start_contest", {
+              required: "Поле обязателько к заполнению",
+            })}
+            type={"date"}
+            style={{ marginRight: "10px" }}
+          />
           <span>-</span>
-          <TextFieldUI type={"date"} style={{ marginLeft: "10px" }} />
+          <TextFieldUI
+            register={context.register("end_contest", {
+              required: "Поле обязателько к заполнению",
+            })}
+            type={"date"}
+            style={{ marginLeft: "10px" }}
+            inputProps={inputEndContest}
+          />
         </div>
+
         <div className={styles.sectionMainBlockSecondCategory}>
           <SelectUI
-            option={arraySelectOptionTypeParticipation}
-            label="Выберите тип участия"
+            emptyLabel={"Выберите тип участия"}
+            // option={arraySelectOptionTypeParticipation}
+            option={Conteststore.typesOfContest}
+            // label="Выберите тип участия"
+            defaultValue={context.getValues("type_contest_id")}
+            getValue={(value) => context.setValue("type_contest_id", value)}
           />
         </div>
       </div>
@@ -54,4 +101,4 @@ const MainConcurs = () => {
   );
 };
 
-export default MainConcurs;
+export default observer(MainConcurs);

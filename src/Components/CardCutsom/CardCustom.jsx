@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import CardTopSection from "./CardTopSection/CardTopSection";
 import styles from "./CardCustom.module.scss";
 import AvatarCustom from "../AvatarCustom/AvatarCustom";
@@ -10,10 +10,13 @@ import ButtonDropdown from "../../Components/ButtonDropDownCustom/ButtonDropdown
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
 import * as Muicon from "@mui/icons-material";
 import TagScience from "../TagScience/tagScience";
+import ModalCustom from "../Modal/Modal";
+import DeleteContestModal from "../ModalComponents/DeleteContestModal/DelereContest";
 
-export default function CardCustom({ dataCard, children,role }) {
-
+export default function CardCustom({ dataCard, children, role }) {
   const PeopleIcon = Muicon["PeopleOutline"];
+  const DeleteIcon = Muicon["DeleteOutlineOutlined"];
+  const [open, setIsOpen] = useState(false);
 
   return (
     <div className={styles.containerCard}>
@@ -42,12 +45,6 @@ export default function CardCustom({ dataCard, children,role }) {
           </h4>
         </div>
         <div className={styles.containerCardFlex}>
-          {/* <span
-            className={styles.blockCategory}
-            style={{ backgroundColor: dataCard.concurs.category.color }}
-          >
-            {dataCard.concurs.category.text}
-          </span> */}
           <TagScience backgroundColor={dataCard.concurs.category.color}>
             {dataCard.concurs.category.text}
           </TagScience>
@@ -79,8 +76,10 @@ export default function CardCustom({ dataCard, children,role }) {
                       Редактировать
                     </MenuItem>
                     <MenuItem>
-                      <IconCustom icon="DeleteOutlineOutlined" />
-                      Удалить
+                      <div onClick={() => setIsOpen(true)}>
+                        <IconCustom icon="DeleteOutlineOutlined" />
+                        Удалить
+                      </div>
                     </MenuItem>
                   </ButtonDropdown>
                 </Grid>
@@ -98,6 +97,15 @@ export default function CardCustom({ dataCard, children,role }) {
           )}
         </div>
       </div>
+      <ModalCustom
+        iconTopSection={<DeleteIcon />}
+        TopSectiontext="Удаление конкурса"
+        open={open}
+        setIsOpen={setIsOpen}
+        iconTopSectionStyles={styles.topIcon}
+      >
+        <DeleteContestModal />
+      </ModalCustom>
     </div>
   );
 }

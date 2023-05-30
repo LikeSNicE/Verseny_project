@@ -1,4 +1,4 @@
-import ModalConcursShare from "../ModalConcursShareWinner/ModalConcursShare";
+import ModalConcursShare from "../../Components/ModalComponents/ModalConcursShareWinner/ModalConcursShare";
 
 export const top100Films = [
   { title: "Данил", year: 2003 },
@@ -129,20 +129,14 @@ export const top100Films = [
   { title: "Monty Python and the Holy Grail", year: 1975 },
 ];
 
-export const headData = ["Место", "Пользователь", "Выбор победителя", ""];
+export const headData = ["Место", "Приз", "Выбор победителя", ""];
 export const dataTable = [
   [
     {
       PlaceIcon: "1",
     },
     {
-      Avatar: {
-        photo:
-          "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
-        alt: "logo",
-        name: "Беккожа Аян",
-        email: "bekkozha.ayan@mail.ru",
-      },
+      AboutFile: ["10000 тенге"],
     },
     {
       AutoComplete: top100Films,
@@ -156,13 +150,7 @@ export const dataTable = [
       PlaceIcon: "2",
     },
     {
-      Avatar: {
-        photo:
-          "https://vignette4.wikia.nocookie.net/steven-universe/images/0/08/Fusion_Cuisine_017.png/revision/latest?cb=20160709182139%22,",
-        alt: "logo",
-        name: "Беккожа Аян",
-        email: "bekkozha.ayan@mail.ru",
-      },
+      AboutFile: ["50000 тенге"],
     },
     {
       AutoComplete: top100Films,
@@ -171,5 +159,4 @@ export const dataTable = [
       Modal: <ModalConcursShare />,
     },
   ],
-
 ];

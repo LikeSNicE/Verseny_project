@@ -1,6 +1,6 @@
 import Api from "../api/api";
 
-export default class FetchAuthService {
+export default class FetchService {
   // auth
   static async login(value) {
     return await Api.post("login", value);
@@ -54,4 +54,5 @@ export default class FetchAuthService {
   static async updatePhoto(id,formdata){
     return Api.post(`/channels/file/${id}`, formdata);
   }
+
 }

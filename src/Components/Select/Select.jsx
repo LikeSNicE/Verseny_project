@@ -32,6 +32,8 @@ function SelectUI(props) {
     size = "small",
     style,
     defaultValue = "",
+    emptyLabel = "Ничего",
+    
   } = props;
   const [options, setOptions] = React.useState(defaultValue);
 
@@ -58,13 +60,13 @@ function SelectUI(props) {
             sx={{
               "& .css-15ak4lt-MuiSelect-select-MuiInputBase-input.css-15ak4lt-MuiSelect-select-MuiInputBase-input.css-15ak4lt-MuiSelect-select-MuiInputBase-input":
                 {
-                  borderTopLeftRadius: "0px !important",
-                  borderBottomLeftRadius: "0px !important",
+                  borderTopLeftRadius: label ? "0px !important" : "",
+                  borderBottomLeftRadius: label ? "0px !important" : "",
                 },
             }}
           >
             <MenuItem value="">
-              <em>Ничего</em>
+              <em>{emptyLabel}</em>
             </MenuItem>
             {
               // eslint-disable-next-line array-callback-return

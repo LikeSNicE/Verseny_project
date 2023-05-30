@@ -15,22 +15,19 @@ const ForgotPassword = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    reset,
   } = useForm({
     mode: "onBlur",
   });
 
-   const { Authstore } = useContext(Context);
+  const { Authstore } = useContext(Context);
 
-  
 
-  // const res = await axios.get('https://httpbin.org/get', { params: { answer: 42 } });
-
-  // context
- 
+  const onClose = (value = "") => {
+    Authstore.setMessageAlert(value);
+  }
 
   const onSubmit = (data) => {
-    Authstore.forgotPassword(data.email)
+    Authstore.forgotPassword(data.email);
   };
 
   return (
@@ -53,11 +50,13 @@ const ForgotPassword = () => {
         />
       </div>
 
-      <AlertCustom
-        severity={Authstore.severity}
-        error={Authstore.messageAlert}
-        setError={Authstore.setMessageAlert}
-      />
+      <div className={styles.notification}>
+        <AlertCustom
+          severity={Authstore.severity}
+          error={Authstore.messageAlert}
+          setError={onClose}
+        />
+      </div>
 
       <ButtonCustom
         type="submit"

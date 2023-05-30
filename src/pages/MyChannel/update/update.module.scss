@@ -83,44 +83,10 @@
     font-size: 24px;
     margin-top: 30px;
   }
-  &Counter {
-    margin-top: 20px;
-    display: flex;
-    background-color: #5461a4;
-    max-width: 150px;
-    border-radius: 10px;
-    &BtnMinus,
-    &BtnPlus {
-      background-color: #5461a4;
-      border: none;
-      color: #fff;
-      font-size: 20px;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-    }
-    &BtnMinus {
-      border-radius: 10px 0 0 10px;
-    }
-    &BtnPlus {
-      border-radius: 0 10px 10px 0;
-    }
-    &Input {
-      text-align: center;
-      font-size: 20px;
-      border: none;
-      color: #202030;
-      background-color: #f5f5f5;
-      min-height: 30px;
-      width: 50px;
-      display: flex;
-      align-items: center;
-      height: 44px;
-      justify-content: center;
-      align-self: center;
-    }
+  &Counter{
+    margin: 20px 0 0 !important;
   }
   &Table {
-    margin: 20px 0;
+    margin: 20px 0 !important;
   }
 }

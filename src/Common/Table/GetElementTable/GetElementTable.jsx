@@ -7,7 +7,7 @@ import SelectComboBox from "../SelectComboBox/SelectComboBox";
 import FormCheckBox from "../FormCheckBox/FormCheckBox";
 import PlaceIcon from "../../../Components/PlaceIconCustom/PlaceIconCustom";
 import AutocompleteComponent from "../AutoComplete/AutoComplete";
-import ModalConcursShare from "../../../pages/ModalConcursShareWinner/ModalConcursShare";
+import ModalConcursShare from "../../../Components/ModalComponents/ModalConcursShareWinner/ModalConcursShare";
 import TextFieldUI from "../../../Components/InputCustom/InputCustom";
 
 

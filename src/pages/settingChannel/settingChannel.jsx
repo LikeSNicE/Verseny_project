@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AirplayOutlinedIcon from "@mui/icons-material/AirplayOutlined";
 import InputCustom from "../../Components/InputCustom/InputCustom";
 import styles from "./settingChannel.module.scss";
 import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
-import ButtonGroupCustom from "../../Components/ButtonGroupCustom/ButtonGroupCustom";
+import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { Context } from "../..";
 
 const SettingChannel = () => {
+
+  const {handleSubmit,setValue,formState:{isValid},reset,register,getValues} = useForm();
+  const {Authstore} = useContext(Context)
+
+
+  useEffect(() => {
+    reset({
+      nickname: Authstore.user.nickname,
+      description: Authstore.user.description
+    })
+  },[reset,Authstore.user])
+
+  const onSubmit = (data) => {
+    Authstore.updateDataChannel(data,Authstore.user.channel_id)
+   
+  }
+
   return (
-    <div className={styles.channelSettingLeft}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={styles.channelSettingLeft}
+    >
       <div className={styles.channelSettingLeftTitle}>
         <div className={styles.channelSettingLeftTitleIcon}>
           {<AirplayOutlinedIcon />}
@@ -18,21 +40,34 @@ const SettingChannel = () => {
       <div className={styles.channelSettingLeftField}>
         <div className={styles.channelSettingLeftFieldName}>Никнеим :</div>
         <div className={styles.channelSettingLeftFieldInput}>
-          <InputCustom label="Никнейм" />
+          <InputCustom
+            register={register("nickname", {
+              required: "nickname",
+            })}
+            label="Никнейм"
+          />
         </div>
       </div>
 
       <h4 className={styles.channelSettingLeftTitleDetails}>Подробности:</h4>
 
       <textarea
+        // ref={register({ required: true, maxLength: 1000 })}
+        onInput={(e) => setValue("description", e.target.value)}
         placeholder="Введите подробности"
         className={styles.channelSettingLeftTextArea}
-      ></textarea>
+      >
+       {Authstore.user.description}
+      </textarea>
 
-      <ButtonCustom className={styles.channelSettingLeftBtn}>
+      <ButtonCustom
+        type="submit"
+        disabled={!isValid}
+        className={styles.channelSettingLeftBtn}
+      >
         Редактировать
       </ButtonCustom>
-    </div>
+    </form>
   );
 };
 

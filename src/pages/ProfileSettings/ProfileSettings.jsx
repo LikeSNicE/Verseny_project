@@ -4,7 +4,7 @@ import { Link, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import styles from "./ProfileSettings.module.scss";
 import SettingUser from "../settingUser/settingUser";
 import SettingChannel from "../settingChannel/settingChannel";
-import ModalDeleteAccount from "../ModalDeleteAccount/ModalDeleteAccount";
+import ModalDeleteAccount from "../../Components/ModalComponents/ModalDeleteAccount/ModalDeleteAccount";
 import TooltipCustom from "../../Components/ToolTipCustom/ToolTipCustom";
 import ModalCustom from "../../Components/Modal/Modal";
 import ImageUploader from "../../Components/ImageUploader/ImageUploader";
@@ -16,6 +16,7 @@ import { useContext } from "react";
 import { Context } from "../..";
 import { observer } from "mobx-react-lite";
 import InputBannerModal from "../../Components/ModalComponents/InputBannerModal/InputBannerModal";
+import { isFileByUrl } from "../../Common/Table/isFileByUrl/isFileToUrl";
 
 const ProfileInfoChannel = () => {
   // State
@@ -51,7 +52,7 @@ const ProfileInfoChannel = () => {
         <img
           className={styles.profileBannerImg}
           src={
-            header
+            isFileByUrl(header)
               ? header
               : "https://klike.net/uploads/posts/2022-12/1671597724_3-61.jpg"
           }
@@ -61,14 +62,14 @@ const ProfileInfoChannel = () => {
           rootClass={styles.profileBannerEditBtn}
           iconTopSection={<EditOutlinedIcon />}
           iconTopSectionStyles={styles.modalSectionTopIcon}
-          iconTopSectiontext="Изменить баннер"
+          TopSectiontext="Изменение баннера"
           btnStyles={styles.editBtn}
           btnLabel="Изменить баннер"
           btnStartIcon={<EditOutlinedIcon />}
           open={isOpen}
           setIsOpen={setOpen}
         >
-          <InputBannerModal setIsOpen={setOpen}/>
+          <InputBannerModal setIsOpen={setOpen} />
         </ModalCustom>
       </div>
 
@@ -106,8 +107,9 @@ const ProfileInfoChannel = () => {
             </Button>
             <div className={styles.profileSectionModalAvatar}>
               <ModalCustom
+                iconTopSectionStyles={styles.modalSectionTopIcon}
                 iconTopSection={<Muicon.EditOutlined />}
-                iconTopSectiontext="Изменение фото профиля"
+                TopSectiontext="Изменение фото профиля"
                 open={isAvatar}
                 setIsOpen={setIsAvatar}
               >

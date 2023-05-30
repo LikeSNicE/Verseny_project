@@ -6,36 +6,37 @@ import InputFile from "../../InputFile/InputFile";
 import FileProgress from "../../InputFile/FileProgress";
 import { useForm } from "react-hook-form";
 import ButtonCustom from "../../ButtonCustom/ButtonCustom";
+import IconCustom from "../../IconCustom/IconCustom";
 
-const ModalParticipate = () => {
-  const [isOpen,setOpen] = useState();
-  const  AddReactionIcon = Muicon['AddReactionOutlined']
-  const [progress,setProgress] = useState(0);
-  const [file,setFile] = useState([])
+const ModalParticipate = ({ isParticipation = false, participation }) => {
+  const [isOpen, setOpen] = useState();
+  const AddReactionIcon = Muicon["AddReactionOutlined"];
+  const [progress, setProgress] = useState(0);
+  const [file, setFile] = useState([]);
   const { setValue, watch, handleSubmit } = useForm();
 
   const getFile = (fileData) => {
     console.log(fileData);
     setFile(fileData);
     setValue("files", fileData);
-    
-  }
+  };
 
   const onSubmit = (data) => {
     console.log(data);
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <ModalCustom
         open={isOpen}
         setIsOpen={setOpen}
-        btnStartIcon={<AddReactionIcon />}
+        btnStartIcon={<IconCustom icon={participation.icon} />}
         btnStyles={styles.participateBtn}
         btnLabel="Участие в конкурсе"
+        btnDisabled = {isParticipation}
         iconTopSection={<AddReactionIcon />}
         iconTopSectionStyles={styles.participateBtnTopSection}
-        iconTopSectiontext="Участие в конкурсе"
+        TopSectiontext="Участие в конкурсе"
       >
         <div className={styles.inputFiles}>
           <InputFile
@@ -47,11 +48,13 @@ const ModalParticipate = () => {
             file={Object.values(watch("files", []))}
             setFile={setValue}
           />
-          {watch("files", []).length !== 0 && <ButtonCustom style={{marginTop:'10px'}}>HI</ButtonCustom>}
+          {watch("files", []).length !== 0 && (
+            <ButtonCustom style={{ marginTop: "10px" }}>HI</ButtonCustom>
+          )}
         </div>
       </ModalCustom>
     </form>
   );
-}
+};
 
 export default ModalParticipate;

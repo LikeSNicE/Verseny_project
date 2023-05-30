@@ -2,10 +2,10 @@ import React from 'react';
 import TableUI from '../../../Common/Table/Table';
 import { dataTable,headData } from '../ConcursDetailsData';
 
-const TableBlock = () => {
+const TableBlock = ({json_winners = dataTable}) => {
   return (
     <div>
-      <TableUI data={dataTable} head={headData} />
+      <TableUI data={json_winners} head={headData} />
     </div>
   );
 };

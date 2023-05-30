@@ -28,23 +28,11 @@ const ConcursShare = () => {
        label: "Файлы",
        value: <ConcursShareFiles />,
      },
-     {
-       id: 2,
-       label: "Фото",
-       value: <ConcursSharePhotos />,
-     },
    ];
 
    const EmojiEventsOutlinedIcon = Muicon["EmojiEventsOutlined"];
    const InsertDriveFileOutlinedIcon = Muicon["InsertDriveFileOutlined"];
    const PeopleOutlinedIcon = Muicon["PeopleOutlined"];
-
-
-  //  import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
-
-  //  import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
-  //  import Diversity3OutlinedIcon from "@mui/icons-material/Diversity3Outlined";
-
 
   // ui
   return (

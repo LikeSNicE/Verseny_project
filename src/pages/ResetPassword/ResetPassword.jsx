@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { Context } from "../..";
 import { observer } from "mobx-react-lite";
 import LoadingCustom from "../../Components/LoadingCustom/LoadingCustom";
+import FetchAuthService from "../../services/fetchService";
 
 const ResetPassword = () => {
   const {
@@ -26,10 +27,16 @@ const ResetPassword = () => {
   const { token } = useParams();
 
   useEffect(() => {
-    Authstore.recognizeUserToToken(token)
+    // Authstore.recognizeUserToToken(token)
+    // .then((response) => {
+    //   setSuccess(response.success);
+    //   setUser(response.data);
+    // })
+    // .catch((e) => console.log(e));
+    FetchAuthService.recognizeUserToToken(token)
       .then((response) => {
-        setSuccess(response.success);
-        setUser(response.data);
+        setSuccess(true);
+        setUser(response.data.data);
       })
       .catch((e) => console.log(e));
   }, []);
@@ -48,7 +55,7 @@ const ResetPassword = () => {
     console.log(user.id);
     Authstore.isLoadingButton = true;
     try {
-      Authstore.resetPassword({ ...data, user_id: user.id,email: user.email });
+      Authstore.resetPassword({ ...data, user_id: user.id, email: user.email });
       navigate("/login");
     } catch (error) {
     } finally {

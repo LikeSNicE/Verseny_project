@@ -1,161 +1,47 @@
-import { useState,useRef } from "react";
+import { useState, useRef } from "react";
 import styles from "./testPages.module.scss";
-import { Alert, AlertTitle, Stack } from "@mui/material";
-import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-import ButtonCustom from "../../Components/ButtonCustom/ButtonCustom";
-import LoadingCustom from '../../Components/LoadingCustom/LoadingCustom'
+import InputPoster from "../../Components/InputPoster/InputPoster";
+import CategoryContest from "../../Components/CategoryContest/CategoryContest";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import "./testPages.scss";
+import { DirtyLensOutlined } from "@mui/icons-material";
+import { Button } from "@mui/material";
 
 const TestPages = () => {
+  const [hover, setHover] = useState(false);
 
-  return(
-    <LoadingCustom/>
-  )
+  const category = [
+    {
+      color: "#E8533F",
+      name: "Точные науки",
+      value: "1",
+    },
+    {
+      color: "#5B6AB0",
+      name: "Программирования",
+      value: "2",
+    },
+  ];
 
-  // const [drag, setDrag] = useState(false);
-  // const [error, setError] = useState("");
-  // const [image, setImage] = useState("");
-  // const inputRef = useRef();
-
-  // const handleDragStart = (e) => {
-  //   e.preventDefault();
-  //   setDrag(true);
-  // };
-
-  // const handleDragLeave = (e) => {
-  //   e.preventDefault();
-  //   setDrag(false);
-  // };
-
-  // const handleDrop = (e, avatar) => {
-  //   e.preventDefault();
-  //   const validExtensions = ["image/jpeg", "image/jpg", "image/png"];
-  //   if (validExtensions.includes(avatar[0].type)) {
-  //     const fileReader = new FileReader();
-  //     fileReader.readAsDataURL(avatar[0]);
-  //     fileReader.onload = () => {
-  //       setImage(fileReader.result);
-  //     };
-  //   } else {
-  //     setError("Данный файл не является фотографием!!");
-  //     setDrag(false);
-  //   }
-  // };
-
-  // function handleRemoveImage() {
-  //   setImage("");
-  //   setDrag(false);
-  //   setError("")
-  // }
-
-  // const handleAddImage = (e) => {
-  //   e.preventDefault();
-  //   let file = e.dataTransfer.files[0];
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     setImage(reader.result);
-  //   };
-  //   reader.readAsDataURL(file);
-  // };
-
-  //  if (image.length !== 0) {
-  //    return (
-  //      <div>
-  //        <div className={styles.imagePreview}>
-  //          <img
-  //            onChange={handleAddImage}
-  //            src={image}
-  //            alt="preview"
-  //            className={styles.imagePreviewCreate}
-  //          />
-  //        </div>
-  //        <ButtonCustom
-  //          onClick={handleRemoveImage}
-  //          className={styles.imagePreviewBtnCancel}
-  //        >
-  //          Отменить
-  //        </ButtonCustom>
-  //      </div>
-  //    );
-  //  }
-
-  // return (
-  //   <div>
-  //     <div>
-  //       <div>
-  //         <div>
-  //           {drag ? (
-  //             <div
-  //               onDragStart={(e) => handleDragStart(e)}
-  //               onDragLeave={(e) => handleDragLeave(e)}
-  //               onDragOver={(e) => handleDragStart(e)}
-  //               onClick={(e) => inputRef.current.click()}
-  //               onChange={handleAddImage}
-  //               className={styles.dropZone}
-  //               onDrop={(e) => handleDrop(e, e.dataTransfer.files)}
-  //             >
-  //               <h1 className={styles.dropZoneTitle}>
-  //                 <div className={styles.dropZoneIcon}>
-  //                   <FileDownloadOutlinedIcon />
-  //                 </div>
-  //                 Перетащите изображение
-  //                 <br />
-  //                 или
-  //                 <br />
-  //                 Нажмите кнопку для загрузки
-  //               </h1>
-  //               <h4 className={styles.dropZoneSubtitle}>
-  //                 Советуем использовать файлы размера от 1200 X 270 в формате
-  //                 JPG, для лучшего качества изображения
-  //               </h4>
-  //             </div>
-  //           ) : (
-  //             <div
-  //               onDragStart={(e) => handleDragStart(e)}
-  //               onDragLeave={(e) => handleDragLeave(e)}
-  //               onDragOver={(e) => handleDragStart(e)}
-  //               onClick={(e) => inputRef.current.click()}
-  //               onChange={handleAddImage}
-  //               className={styles.dropZone}
-  //               onDrop={(e) => handleDrop(e, e.dataTransfer.files)}
-  //             >
-  //               <h1 className={styles.dropZoneTitle}>
-  //                 <div className={styles.dropZoneIcon}>
-  //                   <FileDownloadOutlinedIcon />
-  //                 </div>
-  //                 Перетащите изображение
-  //                 <br />
-  //                 или
-  //                 <br />
-  //                 Нажмите кнопку для загрузки
-  //               </h1>
-  //               <h4 className={styles.dropZoneSubtitle}>
-  //                 Cоветуем использовать картинку большего размера, для лучшего качества 
-  //               </h4>
-  //             </div>
-  //           )}
-  //           <input
-  //             type="file"
-  //             style={{ display: "none" }}
-  //             onChange={(e) => handleDrop(e, e.target.files)}
-  //             name="avatar"
-  //             ref={inputRef}
-  //             accept="image/png, image/gif, image/jpeg"
-  //           />
-  //         </div>
-  //       </div>
-  //     </div>
-  //     {error.length === 0 ? (
-  //       ""
-  //     ) : (
-  //       <Stack sx={{ width: "100%" }} spacing={2}>
-  //         <Alert severity="error">
-  //           <AlertTitle>Ошибка</AlertTitle>
-  //           <strong>{error}</strong>
-  //         </Alert>
-  //       </Stack>
-  //     )}
-  //   </div>
-  // );
+  return (
+    // <div style={{ paddingBottom: "40px" }}>
+    //   <div
+    //     onMouseEnter={() => setHover(true)}
+    //     onMouseLeave={() => setHover(false)}
+    //     className="image-container"
+    //   >
+    //     <img
+    //       src="https://football-fun-live.com/uploads/42/posts/bavariyajpeg.jpeg"
+    //       alt="Your-img"
+    //     />
+    //     <div className={hover ? "image-container-under" : ""}></div>
+    //     <button className="image-button">
+    //       <DeleteOutlinedIcon />
+    //     </button>
+    //   </div>
+    // </div>
+    <InputPoster getImage={() => ''}  />
+  );
 };
 
 export default TestPages;
